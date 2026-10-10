@@ -37,6 +37,7 @@ type PageId =
   | "home"
   | "resources"
   | "learn"
+  | "tools"
   | "projects"
   | "community"
   | "assistant"
@@ -47,6 +48,7 @@ const nav: { id: PageId; label: string; icon: any }[] = [
   { id: "home", label: "首页", icon: LayoutDashboard },
   { id: "resources", label: "找资源", icon: Map },
   { id: "learn", label: "学技能", icon: GraduationCap },
+  { id: "tools", label: "AI工具", icon: Sparkles },
   { id: "projects", label: "找项目", icon: BriefcaseBusiness },
   { id: "community", label: "创业社区", icon: Users },
   { id: "assistant", label: "AI助手", icon: Bot },
@@ -1287,6 +1289,74 @@ function ResourcesPage() {
     </>
   );
 }
+function AiToolsPage() {
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("全部");
+  const tools = [
+    { name: "ChatGPT", category: "研究与写作", tone: "chat", desc: "拆解需求、生成方案、整理资料并协助完成日常交付。", use: "适合：研究、文案、方案、客户沟通", link: "https://chatgpt.com/", label: "开始使用" },
+    { name: "OpenAI API", category: "开发与集成", tone: "api", desc: "把模型能力接入你的网站、工作流或内部工具，形成可交付产品。", use: "适合：AI 应用、自动化、产品原型", link: "https://platform.openai.com/", label: "查看平台" },
+    { name: "Codex", category: "开发与集成", tone: "codex", desc: "用自然语言完成代码搭建、调试、测试和迭代，适合一人开发。", use: "适合：网站、脚本、MVP、自动化", link: "https://platform.openai.com/docs/codex", label: "查看文档" },
+    { name: "Dify", category: "应用与知识库", tone: "dify", desc: "搭建知识库、工作流和可发布的 AI 应用，减少重复开发。", use: "适合：客服、知识助手、企业服务", link: "https://dify.ai/", label: "打开 Dify" },
+    { name: "n8n", category: "自动化", tone: "n8n", desc: "连接表单、表格、邮件和 AI 节点，把重复动作变成可复用流程。", use: "适合：获客、内容分发、通知、同步", link: "https://n8n.io/", label: "打开 n8n" },
+    { name: "ComfyUI", category: "视觉与视频", tone: "visual", desc: "用节点工作流控制图像生成、风格一致性和批量素材生产。", use: "适合：商品图、封面、短视频素材", link: "https://www.comfy.org/", label: "查看项目" },
+    { name: "PromptHub", category: "提示词资产", tone: "prompt", desc: "发现、反推、改写和验证提示词，把经验沉淀为可复用资产。", use: "适合：提示词库、团队规范、内容生产", link: "https://prompthub.xin/", label: "打开平台" },
+    { name: "GitHub", category: "开发与部署", tone: "github", desc: "托管代码、协作开发并通过 GitHub Pages 发布静态网站。", use: "适合：版本管理、部署、开源协作", link: "https://github.com/", label: "打开 GitHub" },
+  ];
+  const categories = ["全部", "研究与写作", "开发与集成", "应用与知识库", "自动化", "视觉与视频", "提示词资产", "开发与部署"];
+  const visible = tools.filter((tool) => {
+    const text = `${tool.name}${tool.category}${tool.desc}${tool.use}`.toLowerCase();
+    return (category === "全部" || tool.category === category) && text.includes(query.toLowerCase());
+  });
+  return (
+    <>
+      <PageHeader
+        eyebrow="AI TOOLKIT"
+        title="把能提高交付效率的工具，放在一个入口。"
+        desc="从一个具体任务开始选择工具，先完成一次可展示成果，再决定是否深入投入。"
+      />
+      <section className="ai-tools-intro" aria-label="AI 工具使用建议">
+        <div>
+          <span className="eyebrow">ONE-PERSON OPERATING SYSTEM</span>
+          <h2>今天要完成什么？</h2>
+          <p>研究、开发、视觉、自动化和提示词，都可以先从最小闭环开始。</p>
+        </div>
+        <div className="ai-tools-intro__steps">
+          <span><b>01</b>选择任务</span>
+          <span><b>02</b>打开工具</span>
+          <span><b>03</b>留下成果</span>
+        </div>
+      </section>
+      <div className="ai-tools-toolbar">
+        <label>
+          <Search size={16} />
+          <input aria-label="搜索 AI 工具" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="搜索工具、场景或能力" />
+        </label>
+        <div className="ai-tools-categories" aria-label="AI 工具分类">
+          {categories.map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{item}</button>)}
+        </div>
+      </div>
+      <div className="ai-tools-grid">
+        {visible.map((tool) => (
+          <article className={`ai-tool-card ai-tool-card--${tool.tone}`} key={tool.name}>
+            <div className="ai-tool-card__top">
+              <span className="ai-tool-mark"><Sparkles size={17} /></span>
+              <span>{tool.category}</span>
+            </div>
+            <h2>{tool.name}</h2>
+            <p>{tool.desc}</p>
+            <small>{tool.use}</small>
+            <a href={tool.link} target="_blank" rel="noreferrer">{tool.label} <ArrowRight size={14} /></a>
+          </article>
+        ))}
+      </div>
+      {!visible.length && <div className="empty-state ai-tools-empty"><Search /><h3>没有找到匹配工具</h3><p>换一个关键词，或切换工具分类。</p><button className="secondary-btn" onClick={() => { setQuery(""); setCategory("全部"); }}>重置筛选</button></div>}
+      <section className="ai-tools-note">
+        <div><span className="eyebrow">DELIVERY RULE</span><h2>工具不是终点，成果才是。</h2><p>每次使用至少留下一个可复用结果：工作流、模板、样品、链接或客户反馈。</p></div>
+        <button className="primary-btn" onClick={() => setCategory("自动化")}>先看自动化工具 <ArrowRight size={14} /></button>
+      </section>
+    </>
+  );
+}
 function LearnPage() {
   const [selected, setSelected] = useState<any>(null);
   const [tab, setTab] = useState("学习路线");
@@ -2169,6 +2239,7 @@ export default function App() {
             {page === "home" && <Dashboard setPage={change} />}{" "}
             {page === "resources" && <ResourcesPage />}
             {page === "learn" && <LearnPage />}
+            {page === "tools" && <AiToolsPage />}
             {page === "projects" && <ProjectsPage />}
             {page === "community" && <CommunityPage />}
             {page === "assistant" && <AssistantPage />}
