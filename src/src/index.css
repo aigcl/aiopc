@@ -2428,3 +2428,73 @@ textarea:focus-visible {
 @media(max-width:1023px){.ai-tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.ai-tools-intro{display:block;padding:18px}.ai-tools-intro__steps{min-width:0;margin-top:17px}.ai-tools-grid{grid-template-columns:1fr}.ai-tools-note{display:block}.ai-tools-note .primary-btn{margin-top:15px}}
 @media(max-width:680px){.product-nav .nav-actions{display:flex;align-items:center;margin-left:auto}.product-nav .nav-actions>.login-nav,.product-nav .nav-actions>.register-nav{display:none}.product-nav .mobile-trigger{display:grid;margin-left:0}}
+
+/* Mobile finish: shorten the opening rhythm and keep the avatar visible without crowding the copy. */
+@media (max-width:680px) {
+  .marketing-hero {
+    min-height: 0 !important;
+  }
+  .hero-content {
+    min-height: 0 !important;
+    padding: 78px 20px 28px !important;
+    justify-content: flex-start !important;
+    background: linear-gradient(180deg, #f5f8f6 0%, #f1f6f3 100%);
+  }
+  .hero-brand {
+    margin-bottom: 4px;
+  }
+  .hero-content h1 {
+    max-width: 340px;
+    margin: 16px 0 15px;
+    font-size: clamp(38px, 11vw, 48px) !important;
+    line-height: 1.08;
+    letter-spacing: -.03em;
+  }
+  .hero-content p {
+    max-width: 335px;
+    margin-bottom: 20px;
+    font-size: 13px !important;
+    line-height: 1.7;
+  }
+  .hero-content > div {
+    gap: 8px;
+  }
+  .hero-content .primary-btn,
+  .hero-content .ghost-btn {
+    min-height: 44px;
+    padding-inline: 15px;
+  }
+  .marketing-hero > video:not(.hero-space-video) {
+    height: 290px !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    object-position: 72% 36% !important;
+  }
+  .marketing-hero::after {
+    bottom: 12px;
+    opacity: .5;
+  }
+  .opc-place-ticker {
+    right: 12px !important;
+    bottom: 12px !important;
+    width: calc(100vw - 24px) !important;
+  }
+  .opc-place-ticker__window {
+    height: 88px;
+  }
+  .opc-place-ticker__track {
+    gap: 6px;
+    padding: 6px;
+  }
+  .opc-place-card {
+    flex-basis: 112px;
+    width: 112px;
+    height: 76px;
+  }
+  .opc-place-card span {
+    right: 6px;
+    bottom: 6px;
+    left: 6px;
+    font-size: 9px;
+  }
+}
