@@ -2,7 +2,7 @@
 
 ## 已准备好的内容
 
-- `CNAME`：绑定 `aiopcone.com`
+- `CNAME`：预留给 `aiopcone.com`，待 DNS 生效后再在 Pages 设置中启用
 - `.github/workflows/deploy-pages.yml`：推送到 `main` 后自动发布
 - `.nojekyll`：确保 `assets` 下的视频、字体和媒体文件按原路径访问
 - 当前根目录 `index.html` 与 `assets/`：作为可直接发布的静态站点
@@ -36,7 +36,7 @@ git push -u origin main
 | A | `@` | `185.199.111.153` |
 | CNAME | `www` | `<你的用户名>.github.io` |
 
-DNS 生效后，在 `Settings > Pages > Custom domain` 填写 `aiopcone.com`，开启 `Enforce HTTPS`。
+DNS 生效后，在 `Settings > Pages > Custom domain` 填写 `aiopcone.com`，开启 `Enforce HTTPS`。当前自动部署暂不把 `CNAME` 写入发布目录，避免 DNS 未生效时影响 `aigcl.github.io/aiopc/` 临时地址。
 
 ## 注意事项
 
