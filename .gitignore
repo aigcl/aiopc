@@ -1,0 +1,20 @@
+node_modules/
+dist/
+.vite/
+playwright-report/
+test-results/
+backups/
+*.tsbuildinfo
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.mp4
+*.webm
+
+# Keep the deployable root files and runtime assets tracked.
+!assets/
+!assets/**
+!index.html
+!CNAME
+!design-qa.md

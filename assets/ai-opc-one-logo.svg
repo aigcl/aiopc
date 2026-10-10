@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 88" role="img" aria-labelledby="title desc">
+  <title id="title">AI OPC ONE</title>
+  <desc id="desc">A、O 与数字 1 融合的 AI OPC ONE 几何标志</desc>
+  <rect width="88" height="88" rx="16" fill="#18312a"/>
+  <g fill="none" stroke="#70efbd" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 65 41 18l23 47M28 50h26"/>
+    <circle cx="63" cy="34" r="15"/>
+    <path d="M70 50v21"/>
+  </g>
+  <text x="108" y="42" fill="#18312a" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="1">AI OPC ONE</text>
+  <text x="108" y="65" fill="#60766e" font-family="monospace" font-size="12" letter-spacing="2">aiopcone.com</text>
+</svg>
