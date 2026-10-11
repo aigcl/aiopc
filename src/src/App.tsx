@@ -924,6 +924,28 @@ function Dashboard({ setPage }: { setPage: (p: PageId) => void }) {
           ))}
         </section>
       </div>
+      <section className="stage-entry-section" aria-label="按创业阶段开始">
+        <div className="section-title">
+          <div>
+            <span className="eyebrow">CHOOSE YOUR STAGE</span>
+            <h2>你现在处在哪一站？</h2>
+          </div>
+          <span className="stage-entry-note">先选阶段，再进入对应的资源与动作</span>
+        </div>
+        <div className="stage-entry-grid">
+          {[
+            ["我在观望", "还没有明确方向", "assistant", "01"],
+            ["我要起步", "有想法，准备做验证", "projects", "02"],
+            ["我在爬坡", "已经在交付和增长", "tools", "03"],
+          ].map(([title, desc, target, index]) => (
+            <button key={title} onClick={() => setPage(target as PageId)}>
+              <span>{index}</span>
+              <div><b>{title}</b><small>{desc}</small></div>
+              <ArrowRight size={16} />
+            </button>
+          ))}
+        </div>
+      </section>
       <section id="proof" className="quick-section">
         <div className="section-title">
           <div>
@@ -1032,6 +1054,11 @@ function Dashboard({ setPage }: { setPage: (p: PageId) => void }) {
           <div className="signal-list" aria-label="近期 OPC 信号">
             <article><span>DAILY BRIEF · AI</span><h3>Prefix Sliding：无需训练的推理提速思路</h3><p>把值得跟进的模型、工具和产品机会压缩成一条可执行线索。</p><a className="text-link" href="https://www.bestblogs.dev/article/300397f823" target="_blank" rel="noreferrer">查看来源 <ArrowRight size={14} /></a></article>
             <article><span>CITY EVENTS · COFFEE CHAT</span><h3>北京、上海、广州、杭州、深圳等城市持续开放交流</h3><p>优先参加离你最近的一场 Coffee Chat，再决定是否加入长期共学。</p><a className="text-link" href="https://www.opc.community/china/events" target="_blank" rel="noreferrer">查看活动 <ArrowRight size={14} /></a></article>
+          </div>
+          <div className="news-strip" aria-label="最新动态">
+            <span className="eyebrow">LATEST / OPC BRIEF</span>
+            <div><b>从一个想法到一套可交付系统</b><small>用工具、社区和真实项目，把今天的动作变成下一次复盘。</small></div>
+            <button className="text-link" onClick={() => setPage("tools")}>查看 AI 工具 <ArrowRight size={14} /></button>
           </div>
         </div>
         <aside className="join-path">

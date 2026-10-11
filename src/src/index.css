@@ -2378,6 +2378,7 @@ textarea:focus-visible {
   .hero-content > div { flex-wrap: wrap; }
 }
 .signal-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}.signal-list article{border-top:1px solid rgba(24,49,42,.18);padding-top:18px}.signal-list span{font-size:10px;letter-spacing:.16em;color:var(--accent);font-weight:700}.signal-list h3{margin:10px 0 8px;font-size:18px;line-height:1.35}.signal-list p{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.65}.signal-list .text-link{font-size:12px}@media(max-width:700px){.signal-list{grid-template-columns:1fr}}
+.stage-entry-section{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}.stage-entry-note{color:var(--muted);font-size:11px}.stage-entry-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.stage-entry-grid button{display:grid;grid-template-columns:32px 1fr 16px;align-items:center;gap:11px;text-align:left;padding:15px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--ink);box-shadow:0 8px 20px rgba(24,49,42,.04);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.stage-entry-grid button:hover{transform:translateY(-3px);border-color:#a9cfc0;box-shadow:0 14px 28px rgba(24,49,42,.1)}.stage-entry-grid button>span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--accent-dark);font:10px var(--mono)}.stage-entry-grid b,.stage-entry-grid small{display:block}.stage-entry-grid b{font-size:13px}.stage-entry-grid small{margin-top:4px;color:var(--muted);font-size:10px}.news-strip{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;margin-top:20px;padding:14px 16px;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.72)}.news-strip>div{display:grid;gap:4px}.news-strip b{font-size:12px}.news-strip small{color:var(--muted);font-size:10px}.news-strip .text-link{white-space:nowrap}
 
 /* Product Design finish pass: stronger hierarchy with the existing content intact. */
 .marketing-hero::before,
@@ -2428,6 +2429,20 @@ textarea:focus-visible {
 @media(max-width:1023px){.ai-tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.ai-tools-intro{display:block;padding:18px}.ai-tools-intro__steps{min-width:0;margin-top:17px}.ai-tools-grid{grid-template-columns:1fr}.ai-tools-note{display:block}.ai-tools-note .primary-btn{margin-top:15px}}
 @media(max-width:680px){.product-nav .nav-actions{display:flex;align-items:center;margin-left:auto}.product-nav .nav-actions>.login-nav,.product-nav .nav-actions>.register-nav{display:none}.product-nav .mobile-trigger{display:grid;margin-left:0}}
+
+@media(max-width:680px){
+  .page-content{padding:27px 16px 58px!important}
+  .page-head{gap:10px!important;margin-bottom:20px!important}
+  .page-head h1{font-size:clamp(30px,9.4vw,38px)!important;line-height:1.08}
+  .page-head p{font-size:12px;line-height:1.65}
+  .metric-row{grid-template-columns:1fr 1fr;gap:0;margin-bottom:12px}
+  .metric-row>div{padding:13px 12px}.metric-row b{font-size:22px}.metric-row span,.metric-row small{font-size:9px}
+  .dashboard-grid{grid-template-columns:1fr!important;gap:10px!important}
+  .work-panel{padding:16px!important}.work-panel h2{font-size:18px!important}.work-panel>p{font-size:11px!important}
+  .quick-grid{grid-template-columns:1fr 1fr!important;gap:8px!important}.quick-grid button{min-height:122px;padding:14px!important}.quick-grid button b{font-size:11px}.quick-grid button span{font-size:9px}
+  .section-title{align-items:flex-start!important;gap:8px;flex-direction:column}.section-title h2{font-size:21px!important}.stage-entry-note{font-size:10px}.stage-entry-grid{grid-template-columns:1fr;gap:8px}.stage-entry-grid button{padding:13px}.stage-entry-grid b{font-size:12px}.network-grid{grid-template-columns:1fr!important;gap:9px!important}.network-card{padding:17px!important}.network-card h3{font-size:16px!important}.network-card p{font-size:11px!important}.signals-feed,.join-path{padding:17px!important}.news-strip{grid-template-columns:1fr;gap:9px;margin-top:14px}.news-strip .text-link{justify-self:start}
+  .ai-tools-intro h2{font-size:20px}.ai-tools-intro p{font-size:10px}.ai-tools-intro__steps span{font-size:9px;padding:9px 8px}.ai-tools-toolbar{gap:9px}.ai-tools-categories{gap:5px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}.ai-tools-categories button{white-space:nowrap;padding:7px 10px}.ai-tool-card{padding:15px}.ai-tool-card h2{font-size:17px}.ai-tool-card p{min-height:0;font-size:11px}.ai-tool-card small{min-height:0}
+}
 
 /* Mobile finish: shorten the opening rhythm and keep the avatar visible without crowding the copy. */
 @media (max-width:680px) {
