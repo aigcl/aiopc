@@ -216,7 +216,7 @@ const communityData = [
     supports: ["AI 电商创业支持", "大模型应用交流", "AI 教育项目连接", "智慧云平台资源对接"],
     recommended: true,
     letter: "Z",
-    source: "https://www.opc.cn/opc-community/7979/",
+    source: "#opcchina-news",
   },
   {
     title: "香洲创港 OPC 社区",
@@ -228,7 +228,7 @@ const communityData = [
     supports: ["稳定办公载体", "AI 技术研发交流", "数字创业支持", "本地创业资源连接"],
     recommended: false,
     letter: "Z",
-    source: "https://www.opc.cn/opc-community/7977/",
+    source: "#opcchina-news",
   },
   {
     title: "梅华城市花园 OPC 创业港",
@@ -240,7 +240,7 @@ const communityData = [
     supports: ["低成本办公", "AI 技术研发团队入驻", "初创团队支持", "本地产业资源连接"],
     recommended: false,
     letter: "Z",
-    source: "https://www.opc.cn/opc-community/7975/",
+    source: "#opcchina-news",
   },
   {
     title: "中山粤港澳青年创新创业合作平台",
@@ -252,7 +252,7 @@ const communityData = [
     supports: ["湾区青年创业连接", "家居产业链资源", "创新创业合作", "项目资源对接"],
     recommended: false,
     letter: "Z",
-    source: "https://www.opc.cn/opc-community/7974/",
+    source: "#opcchina-news",
   },
   {
     title: "翠亨人工智能 OPC 社区",
@@ -265,17 +265,22 @@ const communityData = [
     supports: ["算力赋能", "全链条孵化", "低成本入驻", "深港澳创新资源对接"],
     recommended: true,
     letter: "Z",
-    source: "https://www.opc.cn/opc-community/7972/",
+    source: "#opcchina-news",
   },
 ];
 const alphabet = "BCDFGHJKLMNQRSTWXYZ".split("");
-const imageForCommunity = (x: (typeof communityData)[number]) =>
-  x.image ||
-  (x.city === "成都"
-    ? "./assets/images/community-chengdu.webp"
-    : x.city === "杭州"
-      ? "./assets/images/community-hangzhou.webp"
-      : "./assets/images/community-beijing.webp");
+const imageForCommunity = (x: (typeof communityData)[number]) => {
+  if (x.image) return x.image;
+  if (x.title.includes("元创岛")) return "./assets/images/yuanchuang-island.svg";
+  if (x.title.includes("模数")) return "./assets/images/moshu-opc.svg";
+  if (x.title.includes("O-Hub")) return "./assets/images/ohub-opc.svg";
+  if (x.title.includes("芯创社")) return "./assets/images/xinchuangshe.svg";
+  if (x.city === "成都") return "./assets/images/community-chengdu.webp";
+  if (x.city === "杭州") return "./assets/images/community-hangzhou.webp";
+  return "./assets/images/community-beijing.webp";
+};
+const communityImageFallback = (city: string) =>
+  city === "成都" ? "./assets/images/community-chengdu.webp" : city === "杭州" ? "./assets/images/community-hangzhou.webp" : "./assets/images/community-beijing.webp";
 function BrandMark({ small = false }: { small?: boolean }) {
   return (
     <span
@@ -680,36 +685,36 @@ function OpcChinaPortal({ openMap, returnHome }: { openMap: () => void; returnHo
       label: "OPC COMMUNITY · OPEN COLLABORATION",
       title: "让一个人的创造，连接更大的协作网络",
       desc: "聚焦 OPC、AI 智能体与开源共创，连接创业者、园区、高校和产业资源。",
-      href: "https://www.opcchina.ai/",
+      href: "#opcchina-news",
     },
     {
       image: "assets/images/workspace.webp",
       label: "POLICY · OPPORTUNITY",
       title: "跟进 OPC 创业政策与城市机会",
       desc: "从政策发布、项目征集到产业空间，持续整理一人公司相关动态。",
-      href: "https://www.opcchina.ai/?page_id=796",
+      href: "#opcchina-news?page_id=796",
     },
     {
       image: "assets/images/community-chengdu.webp",
       label: "SKILLS · AI AGENTS",
       title: "把 AI 技能变成可以交付的产品",
       desc: "发现工具教程、工作流实践与真实案例，让学习直接连接项目落地。",
-      href: "https://www.opcchina.ai/?page_id=155",
+      href: "#opcchina-news?page_id=155",
     },
   ];
   const articles = [
-    { category: "政策", title: "宁波市发布支持人工智能 OPC 创新创业政策", desc: "关注政策适用对象、申报条件与配套服务，具体内容以主管部门正式文件为准。", image: "assets/images/opcchina/policy-ningbo.jpg", href: "https://www.opcchina.ai/?p=4132", label: "政策解读" },
-    { category: "快讯", title: "全国首站！OPC 青创支持计划落地上城", desc: "围绕青年创业者的空间、服务与项目成长，了解计划发布与落地进展。", image: "assets/images/opcchina/policy.png", href: "https://www.opcchina.ai/?p=4142", label: "城市动态" },
-    { category: "政策", title: "《海南省支持人工智能 OPC 创新发展的若干措施》发布", desc: "汇总人工智能 OPC 创新支持方向，查看政策原文和正式执行口径。", image: "assets/images/opcchina/policy.png", href: "https://www.opcchina.ai/?p=4147", label: "政策速览" },
-    { category: "快讯", title: "首届“创梦杯”OPC 创新创业大赛结果公示", desc: "以 AI 智能体驱动创业探索，了解赛事进展、项目支持与后续安排。", image: "assets/images/opcchina/opc-logo.webp", href: "https://www.opcchina.ai/?p=4150", label: "赛事活动" },
-    { category: "Skills", title: "Watch Skill 使用教程：让 Codex 看懂视频和录屏", desc: "从安装到使用，掌握视频理解工作流的实践方法。", image: "assets/images/opcchina/interview.webp", href: "https://www.opcchina.ai/?p=4329", label: "AI 实战" },
-    { category: "Skills", title: "Skill Deck 使用教程：集中管理 AI 技能", desc: "把常用技能整理成可复用的工具箱，提升个人工作流的可维护性。", image: "assets/images/opcchina/interview.webp", href: "https://www.opcchina.ai/?p=4317", label: "工具教程" },
+    { category: "政策", title: "宁波市发布支持人工智能 OPC 创新创业政策", desc: "关注政策适用对象、申报条件与配套服务，具体内容以主管部门正式文件为准。", image: "assets/images/opcchina/policy-ningbo.jpg", href: "#opcchina-news?p=4132", label: "政策解读" },
+    { category: "快讯", title: "全国首站！OPC 青创支持计划落地上城", desc: "围绕青年创业者的空间、服务与项目成长，了解计划发布与落地进展。", image: "assets/images/opcchina/policy.png", href: "#opcchina-news?p=4142", label: "城市动态" },
+    { category: "政策", title: "《海南省支持人工智能 OPC 创新发展的若干措施》发布", desc: "汇总人工智能 OPC 创新支持方向，查看政策原文和正式执行口径。", image: "assets/images/opcchina/policy.png", href: "#opcchina-news?p=4147", label: "政策速览" },
+    { category: "快讯", title: "首届“创梦杯”OPC 创新创业大赛结果公示", desc: "以 AI 智能体驱动创业探索，了解赛事进展、项目支持与后续安排。", image: "assets/images/opcchina/opc-logo.webp", href: "#opcchina-news?p=4150", label: "赛事活动" },
+    { category: "Skills", title: "Watch Skill 使用教程：让 Codex 看懂视频和录屏", desc: "从安装到使用，掌握视频理解工作流的实践方法。", image: "assets/images/opcchina/interview.webp", href: "#opcchina-news?p=4329", label: "AI 实战" },
+    { category: "Skills", title: "Skill Deck 使用教程：集中管理 AI 技能", desc: "把常用技能整理成可复用的工具箱，提升个人工作流的可维护性。", image: "assets/images/opcchina/interview.webp", href: "#opcchina-news?p=4317", label: "工具教程" },
   ];
   const quickNews = [
-    ["政策", "宁波发布人工智能 OPC 征集令", "https://www.opcchina.ai/?p=4129"],
-    ["活动", "OPC 创新创业大赛网审结果公示", "https://www.opcchina.ai/?p=4150"],
-    ["城市", "OPC 青创支持计划落地上城", "https://www.opcchina.ai/?p=4142"],
-    ["政策", "海南省发布人工智能 OPC 支持措施", "https://www.opcchina.ai/?p=4147"],
+    ["政策", "宁波发布人工智能 OPC 征集令", "#opcchina-news?p=4129"],
+    ["活动", "OPC 创新创业大赛网审结果公示", "#opcchina-news?p=4150"],
+    ["城市", "OPC 青创支持计划落地上城", "#opcchina-news?p=4142"],
+    ["政策", "海南省发布人工智能 OPC 支持措施", "#opcchina-news?p=4147"],
   ];
   useEffect(() => {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -724,33 +729,33 @@ function OpcChinaPortal({ openMap, returnHome }: { openMap: () => void; returnHo
     <div className="opcchina-portal">
       <div className="opcchina-portal__masthead">
         <div className="opcchina-brand"><span>OPC</span><div><b>OPC中国</b><small>开源共创社区</small></div></div>
-        <div className="opcchina-portal__links"><button onClick={returnHome}>返回 AI OPC ONE</button><a href="https://www.opcchina.ai/" target="_blank" rel="noreferrer">官网原站 <ArrowRight size={13} /></a><button onClick={openMap}><MapPin size={14} />全国社区地图</button></div>
+        <div className="opcchina-portal__links"><button onClick={returnHome}>返回 AI OPC ONE</button><a href="#opcchina-news" target="_self" rel="noreferrer">官网原站 <ArrowRight size={13} /></a><button onClick={openMap}><MapPin size={14} />全国社区地图</button></div>
       </div>
       <nav className="opcchina-section-nav" aria-label="OPC资讯分类">
-        {["首页", "快讯", "政策", "Skills专题", "问答社区", "专栏"].map((item, index) => <a className={index === 0 ? "is-active" : ""} key={item} href={index === 2 ? "https://www.opcchina.ai/?p=4132" : index === 3 ? "https://www.opcchina.ai/?page_id=155" : "https://www.opcchina.ai/?page_id=796"} target="_blank" rel="noreferrer">{item}</a>)}
+        {["首页", "快讯", "政策", "Skills专题", "问答社区", "专栏"].map((item, index) => <a className={index === 0 ? "is-active" : ""} key={item} href={index === 2 ? "#opcchina-news?p=4132" : index === 3 ? "#opcchina-news?page_id=155" : "#opcchina-news?page_id=796"} target="_self" rel="noreferrer">{item}</a>)}
       </nav>
       <section className="opcchina-hero" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} aria-label="OPC中国精选内容">
         <img key={slides[slide].image} src={slides[slide].image} alt="OPC中国精选内容" onError={(event) => { event.currentTarget.style.opacity = "0"; }} />
         <div className="opcchina-hero__shade" />
-        <div className="opcchina-hero__copy"><span>{slides[slide].label}</span><h1>{slides[slide].title}</h1><p>{slides[slide].desc}</p><a href={slides[slide].href} target="_blank" rel="noreferrer">查看专题 <ArrowRight size={15} /></a></div>
+        <div className="opcchina-hero__copy"><span>{slides[slide].label}</span><h1>{slides[slide].title}</h1><p>{slides[slide].desc}</p><a href={slides[slide].href} target="_self" rel="noreferrer">查看专题 <ArrowRight size={15} /></a></div>
         <div className="opcchina-hero__controls"><button aria-label="上一张" onClick={() => setSlide((slide + slides.length - 1) % slides.length)}>‹</button>{slides.map((item, index) => <button key={item.label} aria-label={`第 ${index + 1} 张`} className={slide === index ? "is-active" : ""} onClick={() => setSlide(index)} />)}<button aria-label="下一张" onClick={() => setSlide((slide + 1) % slides.length)}>›</button></div>
       </section>
       <section className="opcchina-feature-grid" aria-label="精选专题">
-        <a className="opcchina-feature" href="https://www.opcchina.ai/?p=4132" target="_blank" rel="noreferrer"><img src="assets/images/opcchina/policy.webp" alt="" /><span>POLICY COLLECTION</span><b>OPC 政策合集</b><ArrowRight size={17} /></a>
-        <a className="opcchina-feature" href="https://www.opcchina.ai/?page_id=155" target="_blank" rel="noreferrer"><img src="assets/images/opcchina/interview.webp" alt="" /><span>PEOPLE & PRACTICE</span><b>OPC 专访与实战</b><ArrowRight size={17} /></a>
+        <a className="opcchina-feature" href="#opcchina-news?p=4132" target="_self" rel="noreferrer"><img src="assets/images/opcchina/policy.webp" alt="" /><span>POLICY COLLECTION</span><b>OPC 政策合集</b><ArrowRight size={17} /></a>
+        <a className="opcchina-feature" href="#opcchina-news?page_id=155" target="_self" rel="noreferrer"><img src="assets/images/opcchina/interview.webp" alt="" /><span>PEOPLE & PRACTICE</span><b>OPC 专访与实战</b><ArrowRight size={17} /></a>
         <button className="opcchina-feature opcchina-feature--map" onClick={openMap}><span>COMMUNITY ATLAS</span><b>浏览全国 OPC 社区</b><small>按城市查找空间与支持</small><ArrowRight size={17} /></button>
       </section>
-      <section className="opcchina-topic-head"><div><span className="eyebrow">SKILLS · AI AGENT · OPEN SOURCE</span><h2>Skills 专题</h2><p>聚焦 AI 智能体与 OPC 实战，把新工具用进真实工作流。</p></div><a href="https://www.opcchina.ai/?page_id=155" target="_blank" rel="noreferrer">更多专题 <ArrowRight size={14} /></a></section>
-      <div className="opcchina-topic-row"><a href="https://www.opcchina.ai/?p=4329" target="_blank" rel="noreferrer"><span>01 / WATCH</span><b>用 Codex 理解视频与录屏</b><small>视频理解 · 工作流</small></a><a href="https://www.opcchina.ai/?p=4317" target="_blank" rel="noreferrer"><span>02 / SKILL DECK</span><b>集中管理常用 AI 技能</b><small>技能资产 · 效率工具</small></a><a href="https://www.opcchina.ai/?p=4304" target="_blank" rel="noreferrer"><span>03 / REPOMIX</span><b>让 AI 更好理解代码仓库</b><small>开源工具 · 开发实践</small></a></div>
+      <section className="opcchina-topic-head"><div><span className="eyebrow">SKILLS · AI AGENT · OPEN SOURCE</span><h2>Skills 专题</h2><p>聚焦 AI 智能体与 OPC 实战，把新工具用进真实工作流。</p></div><a href="#opcchina-news?page_id=155" target="_self" rel="noreferrer">更多专题 <ArrowRight size={14} /></a></section>
+      <div className="opcchina-topic-row"><a href="#opcchina-news?p=4329" target="_self" rel="noreferrer"><span>01 / WATCH</span><b>用 Codex 理解视频与录屏</b><small>视频理解 · 工作流</small></a><a href="#opcchina-news?p=4317" target="_self" rel="noreferrer"><span>02 / SKILL DECK</span><b>集中管理常用 AI 技能</b><small>技能资产 · 效率工具</small></a><a href="#opcchina-news?p=4304" target="_self" rel="noreferrer"><span>03 / REPOMIX</span><b>让 AI 更好理解代码仓库</b><small>开源工具 · 开发实践</small></a></div>
       <section className="opcchina-feed-layout" id="opcchina-news">
         <div className="opcchina-feed-main"><div className="opcchina-feed-heading"><div><span className="eyebrow">LATEST · OPC CHINA</span><h2>社区动态</h2></div><label><Search size={15} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索政策、活动或教程" /></label></div>
           <div className="opcchina-feed-filters">{["全部", "快讯", "政策", "Skills"].map((item) => <button className={topic === item ? "is-active" : ""} key={item} onClick={() => setTopic(item)}>{item}</button>)}</div>
-          <div className="opcchina-article-grid">{filteredArticles.map((item) => <a className="opcchina-article" key={item.title} href={item.href} target="_blank" rel="noreferrer"><div className="opcchina-article__image"><img src={item.image} alt="" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} /><span>{item.label}</span></div><div className="opcchina-article__body"><small>{item.category} <i>·</i> OPC中国公开资讯</small><h3>{item.title}</h3><p>{item.desc}</p><span className="opcchina-article__read">阅读原文 <ArrowRight size={13} /></span></div></a>)}</div>
+          <div className="opcchina-article-grid">{filteredArticles.map((item) => <a className="opcchina-article" key={item.title} href={item.href} target="_self" rel="noreferrer"><div className="opcchina-article__image"><img src={item.image} alt="" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} /><span>{item.label}</span></div><div className="opcchina-article__body"><small>{item.category} <i>·</i> OPC中国公开资讯</small><h3>{item.title}</h3><p>{item.desc}</p><span className="opcchina-article__read">阅读原文 <ArrowRight size={13} /></span></div></a>)}</div>
           {!filteredArticles.length && <div className="opcchina-empty">没有找到匹配内容，试试其他关键词。</div>}
         </div>
-        <aside className="opcchina-sidebar"><section><div className="opcchina-side-title"><div><span className="eyebrow">NEWS FLASH</span><h2>快讯</h2></div><a href="https://www.opcchina.ai/?page_id=796" target="_blank" rel="noreferrer">更多 <ArrowRight size={12} /></a></div><div className="opcchina-flash-list">{quickNews.map(([tag, title, href], index) => <a href={href} target="_blank" rel="noreferrer" key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><small>{tag}</small><b>{title}</b></div><ArrowRight size={13} /></a>)}</div></section><section className="opcchina-sidebar-note"><span className="eyebrow">LOCAL RESOURCE</span><h3>把资讯连接到城市机会</h3><p>查看社区空间、算力、创业政策与本地服务，结合公开来源进一步核验。</p><button onClick={openMap}>打开社区地图 <ArrowRight size={14} /></button></section><p className="opcchina-source-note">内容标题与链接整理自 OPC中国公开页面。政策资格、时间和具体条件请以原文及主管部门正式公告为准。</p></aside>
+        <aside className="opcchina-sidebar"><section><div className="opcchina-side-title"><div><span className="eyebrow">NEWS FLASH</span><h2>快讯</h2></div><a href="#opcchina-news?page_id=796" target="_self" rel="noreferrer">更多 <ArrowRight size={12} /></a></div><div className="opcchina-flash-list">{quickNews.map(([tag, title, href], index) => <a href={href} target="_self" rel="noreferrer" key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><small>{tag}</small><b>{title}</b></div><ArrowRight size={13} /></a>)}</div></section><section className="opcchina-sidebar-note"><span className="eyebrow">LOCAL RESOURCE</span><h3>把资讯连接到城市机会</h3><p>查看社区空间、算力、创业政策与本地服务，结合公开来源进一步核验。</p><button onClick={openMap}>打开社区地图 <ArrowRight size={14} /></button></section><p className="opcchina-source-note">内容标题与链接整理自 OPC中国公开页面。政策资格、时间和具体条件请以原文及主管部门正式公告为准。</p></aside>
       </section>
-      <div className="opcchina-portal__footer"><span>OPC中国公开内容导航</span><a href="https://www.opcchina.ai/" target="_blank" rel="noreferrer">访问 OPCChina.ai <ArrowRight size={13} /></a></div>
+      <div className="opcchina-portal__footer"><span>OPC中国公开内容导航</span><a href="#opcchina-news" target="_self" rel="noreferrer">访问 OPCChina.ai <ArrowRight size={13} /></a></div>
     </div>
   );
 }
@@ -839,7 +844,7 @@ function CommunityDetail({
                 "该社区的公开介绍仍在补充中，建议申请前完成线下或电话核验。"}
             </p>
             {community.source && (
-              <a className="source-link" href={community.source} target="_blank" rel="noreferrer">
+              <a className="source-link" href={community.source} target="_self" rel="noreferrer">
                 查看 OPC.cn 原始公开资料 <ArrowRight size={13} />
               </a>
             )}
@@ -1180,7 +1185,7 @@ function Dashboard({ setPage }: { setPage: (p: PageId) => void }) {
             <span className="network-index">05 / LAUNCHPAD</span>
             <h3>看看同行者，正在创造什么。</h3>
             <p>浏览独立创作者的产品与项目，从案例中找到合作、验证和发布的下一步。</p>
-            <a className="text-link" href="https://www.opc.community/zh/launchpad" target="_blank" rel="noreferrer">浏览项目展台 <ArrowRight size={14} /></a>
+            <a className="text-link" href="https://www.opc.community/zh/launchpad" target="_self" rel="noreferrer">浏览项目展台 <ArrowRight size={14} /></a>
           </article>
           <article className="network-card">
             <span className="network-index">06 / JOIN</span>
@@ -1197,17 +1202,17 @@ function Dashboard({ setPage }: { setPage: (p: PageId) => void }) {
               <span className="eyebrow">WEEKLY SIGNALS</span>
               <h2>把变化，变成下一步。</h2>
             </div>
-            <a className="text-link" href="https://www.opc.community/china/news" target="_blank" rel="noreferrer">查看 OPC 资讯 <ArrowRight size={14} /></a>
+            <a className="text-link" href="https://www.opc.community/china/news" target="_self" rel="noreferrer">查看 OPC 资讯 <ArrowRight size={14} /></a>
           </div>
           <article className="signal-lead">
             <span>POLICY RADAR · 2025</span>
             <h3>人工智能+行动，正在给微型团队更多应用与创业场景。</h3>
             <p>关注智能原生企业、AI 应用落地与个体创业的公开政策信号；申报资格、资金和有效期须以主管部门公告为准。</p>
-            <a className="text-link" href="https://www.gov.cn/gongbao/2025/issue_12266/202509/content_7039598.html" target="_blank" rel="noreferrer">阅读官方原文 <ArrowRight size={14} /></a>
+            <a className="text-link" href="https://www.gov.cn/gongbao/2025/issue_12266/202509/content_7039598.html" target="_self" rel="noreferrer">阅读官方原文 <ArrowRight size={14} /></a>
           </article>
           <div className="signal-list" aria-label="近期 OPC 信号">
-            <article><span>DAILY BRIEF · AI</span><h3>Prefix Sliding：无需训练的推理提速思路</h3><p>把值得跟进的模型、工具和产品机会压缩成一条可执行线索。</p><a className="text-link" href="https://www.bestblogs.dev/article/300397f823" target="_blank" rel="noreferrer">查看来源 <ArrowRight size={14} /></a></article>
-            <article><span>CITY EVENTS · COFFEE CHAT</span><h3>北京、上海、广州、杭州、深圳等城市持续开放交流</h3><p>优先参加离你最近的一场 Coffee Chat，再决定是否加入长期共学。</p><a className="text-link" href="https://www.opc.community/china/events" target="_blank" rel="noreferrer">查看活动 <ArrowRight size={14} /></a></article>
+            <article><span>DAILY BRIEF · AI</span><h3>Prefix Sliding：无需训练的推理提速思路</h3><p>把值得跟进的模型、工具和产品机会压缩成一条可执行线索。</p><a className="text-link" href="https://www.bestblogs.dev/article/300397f823" target="_self" rel="noreferrer">查看来源 <ArrowRight size={14} /></a></article>
+            <article><span>CITY EVENTS · COFFEE CHAT</span><h3>北京、上海、广州、杭州、深圳等城市持续开放交流</h3><p>优先参加离你最近的一场 Coffee Chat，再决定是否加入长期共学。</p><a className="text-link" href="https://www.opc.community/china/events" target="_self" rel="noreferrer">查看活动 <ArrowRight size={14} /></a></article>
           </div>
           <div className="news-strip" aria-label="最新动态">
             <span className="eyebrow">LATEST / OPC BRIEF</span>
@@ -1235,6 +1240,19 @@ function Dashboard({ setPage }: { setPage: (p: PageId) => void }) {
       </section>
     </div>
   );
+}
+function AtlasBackdrop() {
+  const [active, setActive] = useState(0);
+  const images = [
+    "assets/images/community-hangzhou.webp",
+    "assets/images/community-chengdu.webp",
+    "assets/images/workspace.webp",
+  ];
+  useEffect(() => {
+    const timer = window.setInterval(() => setActive((value) => (value + 1) % images.length), 9000);
+    return () => window.clearInterval(timer);
+  }, []);
+  return <div className="atlas-head__backdrop" aria-hidden="true">{images.map((image, index) => <img key={image} src={image} alt="" className={index === active ? "is-active" : ""} />)}</div>;
 }
 function ResourcesPage() {
   const [q, setQ] = useState("");
@@ -1290,6 +1308,7 @@ function ResourcesPage() {
   return (
     <>
       <section className="atlas-head">
+        <AtlasBackdrop />
         <div>
           <span className="eyebrow">NATIONAL OPC COMMUNITY ATLAS</span>
           <h1>全国 OPC 社区地图</h1>
@@ -1310,18 +1329,7 @@ function ResourcesPage() {
             <span>座城市</span>
           </div>
           <em>真实入驻友好度参考</em>
-        </div>
-        <div className="atlas-community-rail" aria-label="精选 OPC 社区滚动图">
-          <div className="atlas-community-rail__track">
-            {[...communityData.slice(0, 8), ...communityData.slice(0, 8)].map((community, index) => (
-              <button className="atlas-community-slide" key={`${community.title}-${index}`} onClick={() => setSelected(community)}>
-                <img src={imageForCommunity(community)} alt="" />
-                <span><b>{community.city}</b>{community.title.replace(community.city, "").trim()}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+        </div></section>
       <section className="support-strip" aria-label="社区支持能力">
         {[
           [Home, "办公空间"],
@@ -1537,7 +1545,7 @@ function AiToolsPage() {
             <h2>{tool.name}</h2>
             <p>{tool.desc}</p>
             <small>{tool.use}</small>
-            <a href={tool.link} target="_blank" rel="noreferrer">{tool.label} <ArrowRight size={14} /></a>
+            <a href={tool.link} target="_self" rel="noreferrer">{tool.label} <ArrowRight size={14} /></a>
           </article>
         ))}
       </div>
@@ -1667,7 +1675,7 @@ function LearnPage() {
                 <span>来源 {String(i + 1).padStart(2, "0")} · {item.label}</span>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
-                <a className="secondary-btn" href={item.link} target="_blank" rel="noreferrer">打开学习入口</a>
+                <a className="secondary-btn" href={item.link} target="_self" rel="noreferrer">打开学习入口</a>
               </article>
             ))}
           </section>
@@ -1735,7 +1743,7 @@ function LearnPage() {
                 <h2>从工具学习，到一次真实交付</h2>
                 <p>优先选一门工具课程完成可演示作品，再进入项目验证。外部链接将在新窗口打开。</p>
               </div>
-              <a className="secondary-btn" href="https://github.com/awesome-selfhosted/awesome-selfhosted" target="_blank" rel="noreferrer">免费工具目录</a>
+              <a className="secondary-btn" href="https://github.com/awesome-selfhosted/awesome-selfhosted" target="_self" rel="noreferrer">免费工具目录</a>
             </div>
             <div className="tutorial-filters" aria-label="教程工具分类">
               {tutorialFilters.map((item) => (
@@ -1751,7 +1759,7 @@ function LearnPage() {
                     <span>{item.source}</span>
                     <h3>{item.title}</h3>
                     <p>{item.desc}</p>
-                    <a href={item.link} target="_blank" rel="noreferrer">开始学习 <span aria-hidden="true">↗</span></a>
+                    <a href={item.link} target="_self" rel="noreferrer">开始学习 <span aria-hidden="true">↗</span></a>
                   </div>
                 </article>;
               })}
@@ -2450,3 +2458,6 @@ export default function App() {
     </div>
   );
 }
+
+
+
