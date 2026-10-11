@@ -46,7 +46,7 @@ type User = { name: string; email: string };
 type Account = User & { password: string };
 const nav: { id: PageId; label: string; icon: any }[] = [
   { id: "home", label: "首页", icon: LayoutDashboard },
-  { id: "resources", label: "找资源", icon: Map },
+  { id: "resources", label: "OPC资讯", icon: Map },
   { id: "learn", label: "学技能", icon: GraduationCap },
   { id: "tools", label: "AI工具", icon: Sparkles },
   { id: "projects", label: "找项目", icon: BriefcaseBusiness },
@@ -1243,7 +1243,7 @@ function ResourcesPage() {
           [WalletCards, "资金支持"],
           [Building2, "安居保障"],
         ].map(([Icon, label]: any) => (
-          <button key={label} type="button" onClick={() => { setTab("支持详情"); document.getElementById("community-support-details")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} aria-label={`查看${label}详情`}>
+          <button key={label} type="button" onClick={() => document.getElementById("community-support-details")?.scrollIntoView({ behavior: "smooth", block: "start" })} aria-label={`查看${label}详情`}>
             <Icon size={17} />
             <span>{label}</span>
           </button>
