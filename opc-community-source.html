@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OPC社区_OPC成长社区</title>
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform">
+<link rel="shortcut icon" href="https://www.opc.cn/wp-content/uploads/2026/07/favicon-32x32-1.png">
+<script>
+(function () {
+    if (!window.JSON || typeof JSON.parse !== 'function' || JSON.parse.__opcUndefGuarded) { return; }
+    var orig = JSON.parse;
+    var guarded = function (text) {
+        // 仅拦截 hm.js 的唯一病态入参：decodeURIComponent(undefined) 得到的字符串 "undefined"。
+        // 返回 undefined 与「有 try/catch 那版 hm.js」行为等价，不产生任何错误对象。
+        if (text === 'undefined') { return undefined; }
+        return orig.apply(this, arguments);
+    };
+    guarded.__opcUndefGuarded = true;
+    try { JSON.parse = guarded; } catch (e) {}
+})();
+</script>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://www.opc.cn/opc-community/">
+<meta property="og:url" content="https://www.opc.cn/opc-community/">
+<meta property="og:site_name" content="OPC成长社区">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:type" content="object">
+<meta property="og:title" content="OPC社区  |">
+<meta property="fb:pages" content="">
+<meta property="fb:app_id" content="">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OPC社区  |">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='stylesheet-css' href='//www.opc.cn/wp-content/uploads/wpcom/style.6.23.1.1786156446.css?ver=6.23.1' media='all' />
+<link rel='stylesheet' id='font-awesome-css' href='https://www.opc.cn/wp-content/themes/justnews/themer/assets/css/font-awesome.css?ver=6.23.1' media='all' />
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='wpcom-member-css' href='https://www.opc.cn/wp-content/plugins/wpcom-member/css/style.css?ver=1.7.24' media='all' />
+<link rel='stylesheet' id='QAPress-css' href='https://www.opc.cn/wp-content/plugins/qapress/css/style.css?ver=4.11.1' media='all' />
+<style id="QAPress-inline-css">
+:root{--qa-color: #1471CA;--qa-hover: #0D62B3;}
+/*# sourceURL=QAPress-inline-css */
+</style>
+<link rel='stylesheet' id='opc-prototype-tokens-css' href='https://www.opc.cn/wp-content/themes/justnews/assets/css/tokens.css?ver=1786374973' media='all' />
+<link rel='stylesheet' id='opc-prototype-components-css' href='https://www.opc.cn/wp-content/themes/justnews/assets/css/components.css?ver=1786374973' media='all' />
+<link rel='stylesheet' id='opc-mod-community-css' href='https://www.opc.cn/wp-content/themes/justnews/assets/css/opc-community.css?ver=1786374973' media='all' />
+<link rel='stylesheet' id='opc-mod-news-css' href='https://www.opc.cn/wp-content/themes/justnews/assets/css/opc-news.css?ver=1786374973' media='all' />
+<link rel='stylesheet' id='opc-mod-header-css' href='https://www.opc.cn/wp-content/themes/justnews/assets/css/opc-header.css?ver=1786374973' media='all' />
+<link rel='stylesheet' id='opc-mod-native-css' href='https://www.opc.cn/wp-content/themes/justnews/assets/css/opc-native.css?ver=1786374973' media='all' />
+<script id="jquery-core-js-before">
+(function () {
+    var probe = /:jqfake\b/;
+    var d = document;
+    if (typeof d.querySelector !== 'function') { return; }
+    // 保存原生实现，供 after 脚本还原
+    window.__opcNativeQS = d.querySelector;
+    window.__opcNativeQSA = d.querySelectorAll;
+    // 预备一个空 NodeList（用不含 :jqfake 的合法选择器命中零元素）
+    var emptyList = window.__opcNativeQSA.call(d, ':not(*)');
+    d.querySelector = function (selector) {
+        if (typeof selector === 'string' && probe.test(selector)) {
+            // 返回 null：不抛错、不产生任何错误对象、不交给原生解析器 → 控制台绝对干净。
+            // jQuery 的 assert 探测得到 null → cssHas=false → :has() 走 Sizzle 遍历（其自带的安全回退）。
+            return null;
+        }
+        return window.__opcNativeQS.call(d, selector);
+    };
+    d.querySelectorAll = function (selector) {
+        if (typeof selector === 'string' && probe.test(selector)) {
+            return emptyList;
+        }
+        return window.__opcNativeQSA.call(d, selector);
+    };
+})();
+(function () {
+    var P = window.Element && window.Element.prototype;
+    if (!P || P.__opcMatchesGuarded) { return; }
+    // jQuery 扩展伪选择器（非标准 CSS，原生 matches/qSA 遇到必抛 SyntaxError）。
+    var rJq = /:(?:visible|hidden|selected|checked|enabled|disabled|input|text|password|radio|checkbox|file|image|reset|submit|button|header|animated|focusable|tabbable|even|odd|eq|gt|lt|first|last|parent|contains|has)\b/i;
+    var names = ['matches', 'webkitMatchesSelector', 'msMatchesSelector'];
+    var reentry = false; // 防 Sizzle 求值时再触发本守卫造成递归
+    function viaSizzle(elem, expr) {
+        try {
+            if (window.jQuery && window.jQuery.find) {
+                return window.jQuery.find(expr, elem.ownerDocument || document, null, [elem]).length > 0;
+            }
+        } catch (e) {}
+        return false;
+    }
+    for (var i = 0; i < names.length; i++) {
+        (function (name) {
+            var orig = P[name];
+            if (typeof orig !== 'function') { return; }
+            P[name] = function (expr) {
+                // 预判：含扩展伪选择器就绝不调用原生（原生必抛），直接走 Sizzle 伪类匹配器求值。
+                if (typeof expr === 'string' && rJq.test(expr) && !reentry) {
+                    reentry = true;
+                    try { return viaSizzle(this, expr); }
+                    finally { reentry = false; }
+                }
+                // 普通选择器（或已在回退中）走原生；任何意外也绝不外抛，保持控制台干净。
+                try { return orig.call(this, expr); }
+                catch (e) { return false; }
+            };
+        })(names[i]);
+    }
+    P.__opcMatchesGuarded = true;
+})();
+//# sourceURL=jquery-core-js-before
+</script>
+<script id="jquery-core-js" src="https://www.opc.cn/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-core-js-after">
+(function () {
+    if (window.__opcNativeQS) {
+        document.querySelector = window.__opcNativeQS;
+        document.querySelectorAll = window.__opcNativeQSA;
+        try { delete window.__opcNativeQS; delete window.__opcNativeQSA; }
+        catch (e) { window.__opcNativeQS = window.__opcNativeQSA = undefined; }
+    }
+})();
+(function () {
+    if (typeof window.jQuery === 'undefined') { return; }
+    var $ = window.jQuery;
+    if (typeof $.find !== 'function' || $.find.__opcFindGuarded) { return; }
+    var origFind = $.find;
+    if (typeof origFind.select !== 'function') { return; } // 无 select 回退能力则不介入
+    var rJq = /:(?:visible|hidden|selected|checked|enabled|disabled|input|text|password|radio|checkbox|file|image|reset|submit|button|header|animated|focusable|tabbable|even|odd|eq|gt|lt|first|last|parent|contains|has)\b/i;
+    var reentry = false;
+    var guardedFind = function (selector, context, results, seed) {
+        // 预判：含扩展伪选择器就绕开原生 qSA，直接用 Sizzle select()（getElementsByTagName 播种 + 伪类匹配器过滤）。
+        if (typeof selector === 'string' && rJq.test(selector) && !reentry) {
+            reentry = true;
+            try { return origFind.select(selector, context || document, results, seed); }
+            catch (e) { return results || []; } // 极端场景兜底：绝不外抛
+            finally { reentry = false; }
+        }
+        // 普通选择器走原生 find；万一逃逸也回退 select()，仍不外抛。
+        try {
+            return origFind(selector, context, results, seed);
+        } catch (e2) {
+            if (reentry || typeof selector !== 'string') { return results || []; }
+            reentry = true;
+            try { return origFind.select(selector, context || document, results, seed); }
+            catch (e3) { return results || []; }
+            finally { reentry = false; }
+        }
+    };
+    // 继承原 find 的附属属性（matches/matchesSelector/select/compile/contains/attr/isXML 等），
+    // 确保 jquery-migrate 的 oldFind 属性拷贝（migrate.js:270-272）与内部调用不受影响。
+    for (var k in origFind) { if (Object.prototype.hasOwnProperty.call(origFind, k)) { guardedFind[k] = origFind[k]; } }
+    guardedFind.__opcFindGuarded = true;
+    $.find = guardedFind;
+})();
+//# sourceURL=jquery-core-js-after
+</script>
+<script id="jquery-migrate-js" src="https://www.opc.cn/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<link rel="next" href="https://www.opc.cn/opc-community/page/2/"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.opc.cn/xmlrpc.php?rsd" />
+<link rel="icon" href="https://www.opc.cn/wp-content/uploads/2026/07/favicon-32x32-1.png" sizes="32x32" />
+<link rel="icon" href="https://www.opc.cn/wp-content/uploads/2026/07/favicon-32x32-1.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.opc.cn/wp-content/uploads/2026/07/favicon-32x32-1.png" />
+<meta name="msapplication-TileImage" content="https://www.opc.cn/wp-content/uploads/2026/07/favicon-32x32-1.png" />
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3bb6d28e885e22cf8b6edda7e9dc7197";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body class="archive post-type-archive post-type-archive-opc_community wp-theme-justnews opc-module-page lang-cn el-boxed header-fixed">
+<header class="header" aria-hidden="true" style="position:absolute;top:0;left:0;width:0;height:0;overflow:hidden;visibility:hidden;"></header>
+
+<div class="ph-header">
+  <div class="ph-header-inner">
+    <div class="ph-left">
+      <a href="https://www.opc.cn/" class="logo-mark">
+        <svg class="logo-icon" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="url(#opc-lg-h)"/>
+          <circle cx="14" cy="10.4" r="3.1" fill="#fff"/>
+          <path d="M7.7 20.4c0-3.4 2.82-5.7 6.3-5.7s6.3 2.3 6.3 5.7z" fill="#fff"/>
+          <rect x="8.3" y="21.3" width="11.4" height="1.7" rx=".85" fill="#fff" opacity=".6"/>
+          <defs><linearGradient id="opc-lg-h" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#134cff"/><stop offset="1" stop-color="#8337ff"/></linearGradient></defs>
+        </svg>
+        <span class="ph-logo">OPC</span>
+      </a>
+      <span class="ph-slogan">一人公司成长社区</span>
+    </div>
+    <div class="ph-nav">
+                                            <a class="ph-nav-link" href="https://www.opc.cn/opc-news/">OPC资讯</a>
+                                        <a class="ph-nav-link" href="https://www.opc.cn/opc-directory/">OPC名录</a>
+                                        <a class="ph-nav-link active" href="https://www.opc.cn/opc-community/">OPC社区</a>
+                                        <div class="ph-nav-item dropdown">
+              <button type="button" class="ph-nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                OPC创业                <svg class="ph-nav-caret" width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <ul class="dropdown-menu">
+                                  <li><a class="" href="https://www.opc.cn/opc-case/">成功案例</a></li>
+                                  <li><a class="" href="https://www.opc.cn/opc-product/">创意产品</a></li>
+                                  <li><a class="" href="https://www.opc.cn/opc-sop/">创业SOP</a></li>
+                                  <li><a class="" href="https://www.opc.cn/ai-tools/">AI工具</a></li>
+                                  <li><a class="" href="https://www.opc.cn/startup-institution/">创业机构</a></li>
+                              </ul>
+            </div>
+                                        <a class="ph-nav-link" href="https://www.opc.cn/opc-forum/">互助交流</a>
+                            </div>
+    <div class="ph-right">
+      <div class="ph-actions">
+                <button type="button" class="ph-dark-toggle" aria-label="切换暗色模式" title="切换暗色模式">
+          <svg class="ph-dark-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                      </svg>
+        </button>
+
+                <button type="button" class="ph-search-toggle" aria-label="搜索" title="搜索">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+        
+                  <a class="btn-outline" href="https://www.opc.cn/login/?redirect_to=%2Fopc-community%2F">登录/注册</a>
+              </div>
+      <button type="button" class="mobile-menu-btn" id="opcMobileMenuBtn" aria-label="菜单" aria-expanded="false" aria-controls="opcMobileMenu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="opcMobileMenu">
+    <div class="mobile-menu-inner">
+      <nav class="mobile-nav">
+                                            <a class="" href="https://www.opc.cn/opc-news/">OPC资讯</a>
+                                                <a class="" href="https://www.opc.cn/opc-directory/">OPC名录</a>
+                                                <a class="active" href="https://www.opc.cn/opc-community/">OPC社区</a>
+                                                <div class="mobile-nav-dropdown">
+                <button type="button" class="mobile-nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                  <span>OPC创业</span>
+                  <svg class="mobile-nav-caret" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="mobile-nav-dropdown-menu">
+                                      <a class="" href="https://www.opc.cn/opc-case/">成功案例</a>
+                                      <a class="" href="https://www.opc.cn/opc-product/">创意产品</a>
+                                      <a class="" href="https://www.opc.cn/opc-sop/">创业SOP</a>
+                                      <a class="" href="https://www.opc.cn/ai-tools/">AI工具</a>
+                                      <a class="" href="https://www.opc.cn/startup-institution/">创业机构</a>
+                                  </div>
+              </div>
+                                                <a class="" href="https://www.opc.cn/opc-forum/">互助交流</a>
+                                    </nav>
+      <div class="mobile-actions">
+                  <a class="btn-outline" href="https://www.opc.cn/login/?redirect_to=%2Fopc-community%2F">登录/注册</a>
+              </div>
+    </div>
+  </div>
+</div>
+
+<div class="ph-search-panel">
+  <form class="ph-search-form" action="https://www.opc.cn/" method="get" role="search">
+    <button type="button" class="ph-search-close" aria-label="关闭搜索">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <input type="text" name="s" class="ph-search-input" autocomplete="off" maxlength="100" placeholder="搜索内容..." value="">
+    <button type="submit" class="ph-search-submit" aria-label="提交搜索">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<div id="wrap">
+<div class="page-frame opc-arc opc-arc--comm opc-arc--community">
+    <main class="main opc-comm-main">
+
+        <div class="slider-wrap">
+    <div class="main-slider wpcom-slider swiper-container slider-full">
+        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">
+                    <a class="item" href="https://www.opc.cn/opc-community/7979/" rel="bookmark">
+                                                    <img class="item-img" src="https://www.opc.cn/wp-content/uploads/2026/08/2026082715183582.jpg" alt="珠海“AI+”OPC创客社区" />
+                                                <div class="item-info">
+                                                            <span class="comm-slider-city">
+                                    <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    其他城市                                </span>
+                                                        <h2 class="item-title">珠海“AI+”OPC创客社区</h2>
+                                                            <p class="item-desc">由珠海科技产业集团和珠海产业促进发展集团运营，面向AI电商、AI大模型、AI教育、智慧云平台方向的创业者。</p>
+                                                    </div>
+                    </a>
+                </li>
+                            <li class="swiper-slide">
+                    <a class="item" href="https://www.opc.cn/opc-community/7977/" rel="bookmark">
+                                                    <img class="item-img" src="https://www.opc.cn/wp-content/uploads/2026/08/1785234089795-94781750.jpg" alt="香洲创港OPC社区" />
+                                                <div class="item-info">
+                                                            <span class="comm-slider-city">
+                                    <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    其他城市                                </span>
+                                                        <h2 class="item-title">香洲创港OPC社区</h2>
+                                                            <p class="item-desc">适合专注AI技术研发或数字创业、需要稳定办公载体的OPC创业者。</p>
+                                                    </div>
+                    </a>
+                </li>
+                            <li class="swiper-slide">
+                    <a class="item" href="https://www.opc.cn/opc-community/7975/" rel="bookmark">
+                                                    <span class="comm-slide-ph" style="--ph-hue: 222" aria-hidden="true">
+                                梅                            </span>
+                                                <div class="item-info">
+                                                            <span class="comm-slider-city">
+                                    <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    其他城市                                </span>
+                                                        <h2 class="item-title">梅华城市花园OPC创业港</h2>
+                                                            <p class="item-desc">专攻AI技术研发类团队，大幅降低初创场地成本。</p>
+                                                    </div>
+                    </a>
+                </li>
+                            <li class="swiper-slide">
+                    <a class="item" href="https://www.opc.cn/opc-community/7974/" rel="bookmark">
+                                                    <img class="item-img" src="https://www.opc.cn/wp-content/uploads/2026/08/2341306.jpg" alt="中山粤港澳青年创新创业合作平台" />
+                                                <div class="item-info">
+                                                            <span class="comm-slider-city">
+                                    <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    其他城市                                </span>
+                                                        <h2 class="item-title">中山粤港澳青年创新创业合作平台</h2>
+                                                            <p class="item-desc">适合粤港澳大湾区创业者及希望进入家居产业链上下游资源的OPC轻创业者。</p>
+                                                    </div>
+                    </a>
+                </li>
+                            <li class="swiper-slide">
+                    <a class="item" href="https://www.opc.cn/opc-community/7972/" rel="bookmark">
+                                                    <img class="item-img" src="https://www.opc.cn/wp-content/uploads/2026/08/2026082715075324.jpeg" alt="翠亨人工智能OPC社区" />
+                                                <div class="item-info">
+                                                            <span class="comm-slider-city">
+                                    <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    其他城市                                </span>
+                                                        <h2 class="item-title">翠亨人工智能OPC社区</h2>
+                                                            <p class="item-desc">提供算力赋能、资源对接、全链条孵化、低成本拎脑入驻和全周期配套服务，深度链接深港澳创新资源。</p>
+                                                    </div>
+                    </a>
+                </li>
+                    </ul>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+
+                <div class="opc-comm-listhead">
+            <h2 class="result-summary">OPC社区<span class="rs-count">（共 637 个）</span></h2>
+
+            <div class="opc-comm-listhead-tools">
+                <div class="comm-filters">
+        <div class="comm-dd" data-dd="city">
+        <button type="button" class="comm-dd-btn" data-dd="city"
+                aria-expanded="false" aria-haspopup="listbox"
+                >
+            <span class="comm-dd-cur">城市</span>
+            <svg class="comm-dd-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+                    <div class="comm-dd-panel" role="listbox" aria-label="城市">
+                                                                                            <a class="comm-dd-opt is-sel"
+                       role="option" aria-selected="true"
+                       href="https://www.opc.cn/opc-community/">
+                        <span class="comm-dd-opt-name">全部城市</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=3467">
+                        <span class="comm-dd-opt-name">三亚</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=430">
+                        <span class="comm-dd-opt-name">上海</span>
+                                                    <span class="comm-dd-opt-n">13</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1686">
+                        <span class="comm-dd-opt-name">东莞</span>
+                                                    <span class="comm-dd-opt-n">2</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1687">
+                        <span class="comm-dd-opt-name">佛山</span>
+                                                    <span class="comm-dd-opt-n">12</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=845">
+                        <span class="comm-dd-opt-name">保定</span>
+                                                    <span class="comm-dd-opt-n">3</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=442">
+                        <span class="comm-dd-opt-name">其他城市</span>
+                                                    <span class="comm-dd-opt-n">64</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=429">
+                        <span class="comm-dd-opt-name">北京</span>
+                                                    <span class="comm-dd-opt-n">36</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=436">
+                        <span class="comm-dd-opt-name">南京</span>
+                                                    <span class="comm-dd-opt-n">21</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2373">
+                        <span class="comm-dd-opt-name">南宁</span>
+                                                    <span class="comm-dd-opt-n">12</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=439">
+                        <span class="comm-dd-opt-name">厦门</span>
+                                                    <span class="comm-dd-opt-n">4</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=4241">
+                        <span class="comm-dd-opt-name">台州</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=441">
+                        <span class="comm-dd-opt-name">合肥</span>
+                                                    <span class="comm-dd-opt-n">9</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1733">
+                        <span class="comm-dd-opt-name">哈尔滨</span>
+                                                    <span class="comm-dd-opt-n">2</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1685">
+                        <span class="comm-dd-opt-name">大同</span>
+                                                    <span class="comm-dd-opt-n">2</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1684">
+                        <span class="comm-dd-opt-name">大理</span>
+                                                    <span class="comm-dd-opt-n">1</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=875">
+                        <span class="comm-dd-opt-name">大连</span>
+                                                    <span class="comm-dd-opt-n">1</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2159">
+                        <span class="comm-dd-opt-name">天津</span>
+                                                    <span class="comm-dd-opt-n">3</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=844">
+                        <span class="comm-dd-opt-name">宁波</span>
+                                                    <span class="comm-dd-opt-n">9</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1221">
+                        <span class="comm-dd-opt-name">常州</span>
+                                                    <span class="comm-dd-opt-n">7</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1219">
+                        <span class="comm-dd-opt-name">常熟</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=433">
+                        <span class="comm-dd-opt-name">广州</span>
+                                                    <span class="comm-dd-opt-n">11</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=434">
+                        <span class="comm-dd-opt-name">成都</span>
+                                                    <span class="comm-dd-opt-n">23</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=3235">
+                        <span class="comm-dd-opt-name">扬州</span>
+                                                    <span class="comm-dd-opt-n">20</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2310">
+                        <span class="comm-dd-opt-name">无锡</span>
+                                                    <span class="comm-dd-opt-n">16</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2112">
+                        <span class="comm-dd-opt-name">昆山</span>
+                                                    <span class="comm-dd-opt-n">3</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=4218">
+                        <span class="comm-dd-opt-name">昆明</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=432">
+                        <span class="comm-dd-opt-name">杭州</span>
+                                                    <span class="comm-dd-opt-n">39</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=906">
+                        <span class="comm-dd-opt-name">株洲</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2238">
+                        <span class="comm-dd-opt-name">梅州</span>
+                                                    <span class="comm-dd-opt-n">8</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=437">
+                        <span class="comm-dd-opt-name">武汉</span>
+                                                    <span class="comm-dd-opt-n">57</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1540">
+                        <span class="comm-dd-opt-name">池州</span>
+                                                    <span class="comm-dd-opt-n">1</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2598">
+                        <span class="comm-dd-opt-name">沈阳</span>
+                                                    <span class="comm-dd-opt-n">5</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2109">
+                        <span class="comm-dd-opt-name">济南</span>
+                                                    <span class="comm-dd-opt-n">19</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1735">
+                        <span class="comm-dd-opt-name">海口</span>
+                                                    <span class="comm-dd-opt-n">6</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1640">
+                        <span class="comm-dd-opt-name">海外</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=833">
+                        <span class="comm-dd-opt-name">海外（远程运营，国内服务节点杭州）</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1077">
+                        <span class="comm-dd-opt-name">海外远程运营</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=431">
+                        <span class="comm-dd-opt-name">深圳</span>
+                                                    <span class="comm-dd-opt-n">21</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2976">
+                        <span class="comm-dd-opt-name">温州</span>
+                                                    <span class="comm-dd-opt-n">3</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1633">
+                        <span class="comm-dd-opt-name">滁州</span>
+                                                    <span class="comm-dd-opt-n">1</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=3313">
+                        <span class="comm-dd-opt-name">漳州</span>
+                                                    <span class="comm-dd-opt-n">2</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1535">
+                        <span class="comm-dd-opt-name">澄迈</span>
+                                                    <span class="comm-dd-opt-n">1</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2073">
+                        <span class="comm-dd-opt-name">珠海</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1688">
+                        <span class="comm-dd-opt-name">福州</span>
+                                                    <span class="comm-dd-opt-n">2</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=435">
+                        <span class="comm-dd-opt-name">苏州</span>
+                                                    <span class="comm-dd-opt-n">151</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=438">
+                        <span class="comm-dd-opt-name">西安</span>
+                                                    <span class="comm-dd-opt-n">3</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=1729">
+                        <span class="comm-dd-opt-name">贵阳</span>
+                                                    <span class="comm-dd-opt-n">2</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2237">
+                        <span class="comm-dd-opt-name">连云港</span>
+                                                    <span class="comm-dd-opt-n">3</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2099">
+                        <span class="comm-dd-opt-name">郑州</span>
+                                                    <span class="comm-dd-opt-n">5</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=912">
+                        <span class="comm-dd-opt-name">重庆</span>
+                                                    <span class="comm-dd-opt-n">9</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=3312">
+                        <span class="comm-dd-opt-name">银川</span>
+                                                    <span class="comm-dd-opt-n">1</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=4009">
+                        <span class="comm-dd-opt-name">长春</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=440">
+                        <span class="comm-dd-opt-name">长沙</span>
+                                                    <span class="comm-dd-opt-n">9</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=2470">
+                        <span class="comm-dd-opt-name">青岛</span>
+                                                    <span class="comm-dd-opt-n">15</span>
+                                            </a>
+                                                                            <a class="comm-dd-opt"
+                       role="option" aria-selected="false"
+                       href="https://www.opc.cn/opc-community/?opc_city_f=935">
+                        <span class="comm-dd-opt-name">香港</span>
+                                                    <span class="comm-dd-opt-n">0</span>
+                                            </a>
+                            </div>
+            </div>
+    </div>
+
+                <form class="opc-arc-search" method="get" action="https://www.opc.cn/opc-community/" role="search">
+                    <svg class="opc-arc-search-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+                    <input class="opc-arc-search-input" type="text" name="opc_q" value="" placeholder="搜索OPC社区名称、城市…" />
+                    <button class="opc-arc-search-send" type="submit" aria-label="搜索">
+                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg>
+                    </button>
+                </form>
+
+                <a class="opc-arc-submit-btn" href="https://www.opc.cn/submit/?type=opc_community">
+                    <span class="opc-arc-submit-plus" aria-hidden="true">+</span>提交OPC社区
+                </a>
+            </div>
+        </div>
+
+                            <ul class="post-loop post-loop-default">
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7979/" title="珠海“AI+”OPC创客社区" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082715183582-132x92.jpg" alt="珠海“AI+”OPC创客社区" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7979/" rel="bookmark" aria-label="珠海“AI+”OPC创客社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7979/" rel="bookmark">珠海“AI+”OPC创客社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">由珠海科技产业集团和珠海产业促进发展集团运营，面向AI电商、AI大模型、AI教育、智慧云平台方向的创业者。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=442"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>其他城市</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7977/" title="香洲创港OPC社区" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/1785234089795-94781750-132x92.jpg" alt="香洲创港OPC社区" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7977/" rel="bookmark" aria-label="香洲创港OPC社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7977/" rel="bookmark">香洲创港OPC社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">适合专注AI技术研发或数字创业、需要稳定办公载体的OPC创业者。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=442"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>其他城市</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7975/" title="梅华城市花园OPC创业港" rel="bookmark">
+                            <span class="comm-item-ph" style="--ph-hue: 222" aria-hidden="true">
+                    梅                </span>
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7975/" rel="bookmark" aria-label="梅华城市花园OPC创业港" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7975/" rel="bookmark">梅华城市花园OPC创业港</a>
+                    </h3>
+
+                    <div class="item-excerpt">专攻AI技术研发类团队，大幅降低初创场地成本。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=442"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>其他城市</a>
+                            
+                            <span class="item-meta-li comm-scale">
+                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                    AI应用/Agent 低空经济                </span>
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7974/" title="中山粤港澳青年创新创业合作平台" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2341306-132x92.jpg" alt="中山粤港澳青年创新创业合作平台" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7974/" rel="bookmark" aria-label="中山粤港澳青年创新创业合作平台" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7974/" rel="bookmark">中山粤港澳青年创新创业合作平台</a>
+                    </h3>
+
+                    <div class="item-excerpt">适合粤港澳大湾区创业者及希望进入家居产业链上下游资源的OPC轻创业者。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=442"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>其他城市</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7972/" title="翠亨人工智能OPC社区" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082715075324-132x92.jpeg" alt="翠亨人工智能OPC社区" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7972/" rel="bookmark" aria-label="翠亨人工智能OPC社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7972/" rel="bookmark">翠亨人工智能OPC社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">提供算力赋能、资源对接、全链条孵化、低成本拎脑入驻和全周期配套服务，深度链接深港澳创新资源。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=442"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>其他城市</a>
+                            
+                            <span class="item-meta-li comm-scale">
+                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                    33 个工位                </span>
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7970/" title="新天高清视听产业拍摄基地OPC社区" rel="bookmark">
+                            <span class="comm-item-ph" style="--ph-hue: 222" aria-hidden="true">
+                    新                </span>
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7970/" rel="bookmark" aria-label="新天高清视听产业拍摄基地OPC社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7970/" rel="bookmark">新天高清视听产业拍摄基地OPC社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">郑州高新区率先出台全市首个OPC专项政策，享受微短剧产业政策支持。适合从事微短剧制作、AIGC内容创作的OPC创业者。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=2099"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>郑州</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7969/" title="中原科技城OPC生态联盟" rel="bookmark">
+                            <picture><source srcset="https://www.opc.cn/wp-content/uploads/2026/08/18d8bc3eb13533fa828bfef1969fea1f4134960aed92-bkimg-processv_1rw_397rh_252maxl_795-132x92.webp" type="image/webp" /><img src="https://www.opc.cn/wp-content/uploads/2026/08/18d8bc3eb13533fa828bfef1969fea1f4134960aed92-bkimg-processv_1rw_397rh_252maxl_795-132x92.webp" alt="中原科技城OPC生态联盟" loading="lazy" /></picture>
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7969/" rel="bookmark" aria-label="中原科技城OPC生态联盟" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7969/" rel="bookmark">中原科技城OPC生态联盟</a>
+                    </h3>
+
+                    <div class="item-excerpt">由河南数字郑东信息科技有限公司与河南省人工智能行业协会联合运营，面向人工智能、OPC生态、数据要素方向的创业者。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=2099"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>郑州</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7967/" title="河南省国家大学科技园(西区)OPC社区" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714554610-132x92.jpg" alt="河南省国家大学科技园(西区)OPC社区" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7967/" rel="bookmark" aria-label="河南省国家大学科技园(西区)OPC社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7967/" rel="bookmark">河南省国家大学科技园(西区)OPC社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">依托河南省国家大学科技园（西区）创新创业资源。提供从孵化培育到发展壮大的全链条陪跑服务，构建政策+平台+社区三位一体产业生态。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=2099"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>郑州</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7965/" title="郑州高新·算立方OPC社区" rel="bookmark">
+                            <picture><source srcset="https://www.opc.cn/wp-content/uploads/2026/08/2026082714544250-132x92.webp" type="image/webp" /><img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714544250-132x92.webp" alt="郑州高新·算立方OPC社区" loading="lazy" /></picture>
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7965/" rel="bookmark" aria-label="郑州高新·算立方OPC社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7965/" rel="bookmark">郑州高新·算立方OPC社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">是郑州高新区首批授牌的四大AIGC+OPC社区之一，定位服务AIGC内容创作、AI技术开发与算力应用的超级个体创业主体。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=2099"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>郑州</a>
+                            
+                            <span class="item-meta-li comm-scale">
+                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                    100 个工位                </span>
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7963/" title="郑州航空港AI Partner·OPC产业社区" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714531562-132x92.jpg" alt="郑州航空港AI Partner·OPC产业社区" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7963/" rel="bookmark" aria-label="郑州航空港AI Partner·OPC产业社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7963/" rel="bookmark">郑州航空港AI Partner·OPC产业社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">社区以订单、算力、融资一次配齐为特色，为单人AI企业搭建专属发展平台，推出政策、订单、标准、算力和金融支持五大支柱服务。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=2099"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>郑州</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7961/" title="漳州AI+OPC数字文旅创业基地" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714384929-132x92.png" alt="漳州AI+OPC数字文旅创业基地" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7961/" rel="bookmark" aria-label="漳州AI+OPC数字文旅创业基地" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7961/" rel="bookmark">漳州AI+OPC数字文旅创业基地</a>
+                    </h3>
+
+                    <div class="item-excerpt">由龙文区人民政府联合福州大学国家大学科技园·漳州共建，面向AI+数字文旅、微短剧、文创内容创作方向的创业者。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=3313"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>漳州</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7959/" title="龙文区微视听创作中心" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714363452-132x92.png" alt="龙文区微视听创作中心" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7959/" rel="bookmark" aria-label="龙文区微视听创作中心" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7959/" rel="bookmark">龙文区微视听创作中心</a>
+                    </h3>
+
+                    <div class="item-excerpt">致力于让小团队也能产出大制作，为文旅内容注入AI创作活力。适合从事微短剧、AI视频创作及新媒体内容的OPC创业者。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=3313"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>漳州</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7957/" title="东渡人才港OPC社区" rel="bookmark">
+                            <picture><source srcset="https://www.opc.cn/wp-content/uploads/2026/08/2026082714313084-132x92.webp" type="image/webp" /><img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714313084-132x92.webp" alt="东渡人才港OPC社区" loading="lazy" /></picture>
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7957/" rel="bookmark" aria-label="东渡人才港OPC社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7957/" rel="bookmark">东渡人才港OPC社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">社区以“引才、育企、兴产”全链条生态体系为核心理念，集科研、创新、生活于一体。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=435"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>苏州</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7955/" title="滕州大数据产业园人工智能OPC社区" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714310764-132x92.jpg" alt="滕州大数据产业园人工智能OPC社区" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7955/" rel="bookmark" aria-label="滕州大数据产业园人工智能OPC社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7955/" rel="bookmark">滕州大数据产业园人工智能OPC社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">接入中国移动滕州智算中心发放算力券，解决AI创业算力成本。享受枣庄+滕州两级大数据扶持政策，重点应用项目最高100万元补贴。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=442"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>其他城市</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7953/" title="玉林・玉智OPC社区（玉林智谷" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714294417-132x92.png" alt="玉林・玉智OPC社区（玉林智谷" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7953/" rel="bookmark" aria-label="玉林・玉智OPC社区（玉林智谷" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7953/" rel="bookmark">玉林・玉智OPC社区（玉林智谷</a>
+                    </h3>
+
+                    <div class="item-excerpt">依托玉林「中国南方药都」的中草药产业优势，为AI医疗技术、传统医药现代化和大健康服务方向的创业者提供特色支持。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=442"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>其他城市</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7951/" title="永州市OPC潇湘AI极客社区" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714262067-132x92.jpg" alt="永州市OPC潇湘AI极客社区" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7951/" rel="bookmark" aria-label="永州市OPC潇湘AI极客社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7951/" rel="bookmark">永州市OPC潇湘AI极客社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">是专为以AI工具为基础的轻量化创业模式一人公司设立的社区。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=442"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>其他城市</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7949/" title="宁夏人工智能创新生态产业园" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714203515-132x92.png" alt="宁夏人工智能创新生态产业园" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7949/" rel="bookmark" aria-label="宁夏人工智能创新生态产业园" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7949/" rel="bookmark">宁夏人工智能创新生态产业园</a>
+                    </h3>
+
+                    <div class="item-excerpt">由银川经济技术开发区与银川市数据局政府引导+市场化运作，面向智能算力、数据、模型、人工智能应用、数字人方向的创业者。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=3312"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>银川</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7947/" title="宜数 OPC 创新社区" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714184924-132x92.jpg" alt="宜数 OPC 创新社区" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7947/" rel="bookmark" aria-label="宜数 OPC 创新社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7947/" rel="bookmark">宜数 OPC 创新社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">提供免费办公工位、免费云存储、免费算力等支持，对接省市级算力补贴券和金融产品，是宜昌AI开发者的新家园。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=442"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>其他城市</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7945/" title="初芯 OPC AI 影视社区" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082714174942-132x92.jpg" alt="初芯 OPC AI 影视社区" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7945/" rel="bookmark" aria-label="初芯 OPC AI 影视社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7945/" rel="bookmark">初芯 OPC AI 影视社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">聚焦AI+影视内容创作，依托分布式算力技术为创作者提供低成本高效率的创作工具与算力支持，是推动AI影视技术落地和生态建设的核心力量</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=442"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>其他城市</a>
+                            
+            
+                    </div>
+    </div>
+</li>
+                                    <li class="item opc-comm-item">
+    <div class="item-img">
+        <a class="item-img-inner" href="https://www.opc.cn/opc-community/7878/" title="启迪之星（扬州）高新智创OPC生态社区" rel="bookmark">
+                            <img src="https://www.opc.cn/wp-content/uploads/2026/08/2026082614093586-132x92.jpg" alt="启迪之星（扬州）高新智创OPC生态社区" loading="lazy" />
+                    </a>
+    </div>
+
+    <div class="item-content">
+        <a class="item-stretched-link" href="https://www.opc.cn/opc-community/7878/" rel="bookmark" aria-label="启迪之星（扬州）高新智创OPC生态社区" tabindex="-1"></a>
+
+        
+        <h3 class="item-title">
+            <a href="https://www.opc.cn/opc-community/7878/" rel="bookmark">启迪之星（扬州）高新智创OPC生态社区</a>
+                    </h3>
+
+                    <div class="item-excerpt">依托启迪控股20余年孵化器运营经验，社区构建了算法+算力+内容+产业场景四位一体的支持体系。</div>
+        
+        <div class="item-meta">
+                                                                <a class="item-meta-li comm-city" href="https://www.opc.cn/opc-community/?opc_city_f=3235"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>扬州</a>
+                            
+                            <span class="item-meta-li comm-scale">
+                    <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                    150 个工位                </span>
+            
+                    </div>
+    </div>
+</li>
+                            </ul>
+
+                            <div class="load-more-wrap opc-comm-load-more-wrap">
+                    <button type="button"
+                            class="wpcom-btn load-more j-comm-load-more"
+                            data-page="1"
+                            data-max-page="32"
+                            data-action="opc_community_load_more"
+                            data-ajax-url="https://www.opc.cn/wp-admin/admin-ajax.php">点击查看更多</button>
+                </div>
+                <noscript>
+                    <div class="pagination">
+	<nav class="navigation pagination" aria-label="文章分页">
+		<h2 class="screen-reader-text">文章分页</h2>
+		<div class="nav-links"><span aria-current="page" class="page-numbers current">1</span>
+<a class="page-numbers" href="https://www.opc.cn/opc-community/page/2/">2</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="https://www.opc.cn/opc-community/page/32/">32</a>
+<a class="next page-numbers" href="https://www.opc.cn/opc-community/page/2/">下一页</a></div>
+	</nav></div>
+                </noscript>
+                    
+    </main>
+</div>
+</div><!-- #wrap -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand-col">
+      <a href="https://www.opc.cn/opc-directory/" class="footer-brand">
+        <svg class="logo-icon" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="url(#opc-lg-f)"/>
+          <circle cx="14" cy="10.4" r="3.1" fill="#fff"/>
+          <path d="M7.7 20.4c0-3.4 2.82-5.7 6.3-5.7s6.3 2.3 6.3 5.7z" fill="#fff"/>
+          <rect x="8.3" y="21.3" width="11.4" height="1.7" rx=".85" fill="#fff" opacity=".6"/>
+          <defs><linearGradient id="opc-lg-f" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#134cff"/><stop offset="1" stop-color="#8337ff"/></linearGradient></defs>
+        </svg>
+        <span><b>OPC</b> 成长社区</span>
+      </a>
+            <p class="footer-tagline">AI时代，一人公司的成长平台。<br>让OPC创业更简单，让一人公司成长更快。</p>
+      <a class="footer-cta" href="https://www.opc.cn/partnership/">申请商务合作 或 合伙共创社区 →</a>
+    </div>
+        <div class="footer-col footer-partners-col">
+      <h4 class="footer-col-title">合作伙伴</h4>
+      <div class="footer-partners-wrap">
+                        <a href="https://www.deepseek.com" class="footer-partner-link" target="_blank" rel="noopener">
+                  DeepSeek                </a>
+                              <a href="https://www.doubao.com" class="footer-partner-link" target="_blank" rel="noopener">
+                  豆包                </a>
+                              <a href="https://www.z.ai" class="footer-partner-link" target="_blank" rel="noopener">
+                  智谱                </a>
+                              <a href="https://www.kimi.com" class="footer-partner-link" target="_blank" rel="noopener">
+                  KIMI                </a>
+                              <a href="https://www.chatgpt.com" class="footer-partner-link" target="_blank" rel="noopener">
+                  ChatGPT                </a>
+                              <a href="https://gemini.google.com" class="footer-partner-link" target="_blank" rel="noopener">
+                  Gemini                </a>
+                              <a href="https://www.claude.ai" class="footer-partner-link" target="_blank" rel="noopener">
+                  Claude                </a>
+                              <a href="https://www.workbuddy.cn" class="footer-partner-link" target="_blank" rel="noopener">
+                  WorkBuddy                </a>
+                              <a href="https://www.qianwen.com" class="footer-partner-link" target="_blank" rel="noopener">
+                  千问                </a>
+                    </div>
+    </div>
+            <div class="footer-col footer-contact">
+      <h4 class="footer-col-title">联系我们</h4>
+      <a class="footer-contact-item" href="mailto:hello@opc.cn">
+        <span class="footer-contact-ic" aria-hidden="true">✉</span>
+        <span>hello@opc.cn</span>
+      </a>
+            <div class="footer-contact-item footer-wechat" tabindex="0" role="button" aria-label="微信公众号 · OPC Community，悬停查看二维码">
+        <span class="footer-contact-ic" aria-hidden="true">◎</span>
+        <span>微信公众号 · OPC Community</span>
+        <div class="footer-qr-pop">
+          <img src="http://www.opc.cn/wp-content/uploads/2026/07/qrcode_for_gh_01499f2de928_258.jpg" alt="OPC Community 微信公众号二维码" width="120" height="120" loading="lazy">
+          <span class="footer-qr-cap">扫码关注公众号</span>
+        </div>
+      </div>
+          </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 OPC · 一人公司成长社区</span>
+        <span class="footer-beian">Copyright © 2026 OPC成长社区 版权所有 <a href="https://beian.miit.gov.cn" target="_blank" rel="nofollow noopener">粤ICP备2026084219号-3</a></span>
+        <span class="footer-meta">用心经营，持续成长</span>
+  </div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/justnews/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="main-js-extra">
+var _wpcom_js = {"webp":"?x-oss-process=image/format,webp","ajaxurl":"https://www.opc.cn/wp-admin/admin-ajax.php","theme_url":"https://www.opc.cn/wp-content/themes/justnews","slide_speed":"5000","is_admin":"0","lang":"zh_CN","js_lang":{"share_to":"\u5206\u4eab\u5230:","copy_done":"\u590d\u5236\u6210\u529f\uff01","copy_fail":"\u6d4f\u89c8\u5668\u6682\u4e0d\u652f\u6301\u62f7\u8d1d\u529f\u80fd","confirm":"\u786e\u5b9a","qrcode":"\u4e8c\u7ef4\u7801","page_loaded":"\u5df2\u7ecf\u5230\u5e95\u4e86","no_content":"\u6682\u65e0\u5185\u5bb9","load_failed":"\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","expand_more":"\u9605\u8bfb\u5269\u4f59 %s"},"user_card_height":"356","poster":{"notice":"\u8bf7\u300c\u70b9\u51fb\u4e0b\u8f7d\u300d\u6216\u300c\u957f\u6309\u4fdd\u5b58\u56fe\u7247\u300d\u540e\u5206\u4eab\u7ed9\u66f4\u591a\u597d\u53cb","generating":"\u6b63\u5728\u751f\u6210\u6d77\u62a5\u56fe\u7247...","failed":"\u6d77\u62a5\u56fe\u7247\u751f\u6210\u5931\u8d25"},"video_height":"484","fixed_sidebar":"1","dark_style":"0","font_url":"//www.opc.cn/wp-content/uploads/wpcom/fonts.f5a8b036905c9579.css","follow_btn":"\u003Ci class=\"wpcom-icon wi\"\u003E\u003Csvg aria-hidden=\"true\"\u003E\u003Cuse xlink:href=\"#wi-add\"\u003E\u003C/use\u003E\u003C/svg\u003E\u003C/i\u003E\u5173\u6ce8","followed_btn":"\u5df2\u5173\u6ce8","user_card":"1"};
+//# sourceURL=main-js-extra
+</script>
+<script id="main-js-before">
+(function () {
+    if (typeof window.CustomEvent !== 'function') { return; }
+    window.__opcNativeCE = window.CustomEvent;
+    function PatchedCustomEvent(type, params) {
+        var p = {};
+        if (params) { for (var k in params) { if (Object.prototype.hasOwnProperty.call(params, k)) { p[k] = params[k]; } } }
+        // 仅当调用方未显式指定 cancelable 时，默认置为 true（满足 polyfill 特性检测）
+        if (!params || !('cancelable' in params)) { p.cancelable = true; }
+        return new window.__opcNativeCE(type, p);
+    }
+    PatchedCustomEvent.prototype = window.__opcNativeCE.prototype;
+    window.CustomEvent = PatchedCustomEvent;
+})();
+//# sourceURL=main-js-before
+</script>
+<script id="main-js" src="https://www.opc.cn/wp-content/themes/justnews/js/main.js?ver=6.23.1"></script>
+<script id="main-js-after">
+(function () {
+    if (window.__opcNativeCE) {
+        window.CustomEvent = window.__opcNativeCE;
+        try { delete window.__opcNativeCE; }
+        catch (e) { window.__opcNativeCE = undefined; }
+    }
+})();
+//# sourceURL=main-js-after
+</script>
+<script id="wpcom-icons-js" src="https://www.opc.cn/wp-content/themes/justnews/themer/assets/js/icons-2.8.9.js?ver=2.8.9"></script>
+<script id="opc-prototype-nav-js" src="https://www.opc.cn/wp-content/themes/justnews/assets/js/nav.js?ver=1786374973"></script>
+<script id="opc-community-filter-js" src="https://www.opc.cn/wp-content/themes/justnews/assets/js/opc-community-filter.js?ver=1786374973"></script>
+<script id="opc-community-loadmore-js" src="https://www.opc.cn/wp-content/themes/justnews/assets/js/opc-community-loadmore.js?ver=1786374973"></script>
+<script id="wpcom-member-js-extra">
+var _wpmx_js = {"ajaxurl":"https://www.opc.cn/wp-admin/admin-ajax.php","plugin_url":"https://www.opc.cn/wp-content/plugins/wpcom-member/","ver":"1.7.24","max_upload_size":"52428800","wechat_follow":"1","wechat_follow_reply":"\u767b\u5f55","js_lang":{"login_desc":"\u60a8\u8fd8\u672a\u767b\u5f55\uff0c\u8bf7\u767b\u5f55\u540e\u518d\u8fdb\u884c\u76f8\u5173\u64cd\u4f5c\uff01","login_title":"\u8bf7\u767b\u5f55","login_btn":"\u767b\u5f55","reg_btn":"\u6ce8\u518c"},"login_url":"https://www.opc.cn/login/?redirect_to=%2Fopc-community%2F","register_url":"https://www.opc.cn/register/","_Captcha":{"title":"\u5b89\u5168\u9a8c\u8bc1","barText":"\u62d6\u52a8\u6ed1\u5757\u5b8c\u6210\u62fc\u56fe","loadingText":"\u62fc\u56fe\u52a0\u8f7d\u4e2d...","failedText":"\u8bf7\u518d\u8bd5\u4e00\u6b21"},"captcha_label":"\u70b9\u51fb\u8fdb\u884c\u4eba\u673a\u9a8c\u8bc1","captcha_verified":"\u9a8c\u8bc1\u6210\u529f","errors":{"require":"\u4e0d\u80fd\u4e3a\u7a7a","email":"\u8bf7\u8f93\u5165\u6b63\u786e\u7684\u7535\u5b50\u90ae\u7bb1","pls_enter":"\u8bf7\u8f93\u5165","password":"\u5bc6\u7801\u5fc5\u987b\u4e3a6~32\u4e2a\u5b57\u7b26","passcheck":"\u4e24\u6b21\u5bc6\u7801\u8f93\u5165\u4e0d\u4e00\u81f4","phone":"\u8bf7\u8f93\u5165\u6b63\u786e\u7684\u624b\u673a\u53f7\u7801","terms":"\u8bf7\u9605\u8bfb\u5e76\u540c\u610f\u6761\u6b3e","sms_code":"\u9a8c\u8bc1\u7801\u9519\u8bef","captcha_verify":"\u8bf7\u70b9\u51fb\u4e0b\u65b9\u7684\u4eba\u673a\u9a8c\u8bc1\u6309\u94ae\u8fdb\u884c\u9a8c\u8bc1","captcha_fail":"\u4eba\u673a\u9a8c\u8bc1\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5","nonce":"\u968f\u673a\u6570\u6821\u9a8c\u5931\u8d25","req_error":"\u8bf7\u6c42\u5931\u8d25"}};
+//# sourceURL=wpcom-member-js-extra
+</script>
+<script id="wpcom-member-js" src="https://www.opc.cn/wp-content/plugins/wpcom-member/js/index.js?ver=1.7.24"></script>
+<script id="QAPress-js-js-extra">
+var QAPress_js = {"ajaxurl":"https://www.opc.cn/wp-admin/admin-ajax.php","ajaxloading":"https://www.opc.cn/wp-content/plugins/qapress/images/loading.gif","max_upload_size":"2097152","compress_img_size":"400","lang":{"delete":"\u5220\u9664","nocomment":"\u6682\u65e0\u56de\u590d","nocomment2":"\u6682\u65e0\u8bc4\u8bba","addcomment":"\u6211\u6765\u56de\u590d","submit":"\u53d1\u5e03","loading":"\u6b63\u5728\u52a0\u8f7d...","error1":"\u53c2\u6570\u9519\u8bef\uff0c\u8bf7\u91cd\u8bd5","error2":"\u8bf7\u6c42\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","confirm":"\u5220\u9664\u64cd\u4f5c\u65e0\u6cd5\u6062\u590d\uff0c\u5e76\u5c06\u540c\u65f6\u5220\u9664\u5f53\u524d\u56de\u590d\u7684\u8bc4\u8bba\u4fe1\u606f\uff0c\u60a8\u786e\u5b9a\u8981\u5220\u9664\u5417\uff1f","confirm2":"\u5220\u9664\u64cd\u4f5c\u65e0\u6cd5\u6062\u590d\uff0c\u60a8\u786e\u5b9a\u8981\u5220\u9664\u5417\uff1f","confirm3":"\u5220\u9664\u64cd\u4f5c\u65e0\u6cd5\u6062\u590d\uff0c\u5e76\u5c06\u540c\u65f6\u5220\u9664\u5f53\u524d\u95ee\u9898\u7684\u56de\u590d\u8bc4\u8bba\u4fe1\u606f\uff0c\u60a8\u786e\u5b9a\u8981\u5220\u9664\u5417\uff1f","deleting":"\u6b63\u5728\u5220\u9664...","success":"\u64cd\u4f5c\u6210\u529f\uff01","denied":"\u65e0\u64cd\u4f5c\u6743\u9650\uff01","error3":"\u64cd\u4f5c\u5f02\u5e38\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","empty":"\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a","submitting":"\u6b63\u5728\u63d0\u4ea4...","success2":"\u63d0\u4ea4\u6210\u529f\uff01","ncomment":"0\u6761\u8bc4\u8bba","login":"\u62b1\u6b49\uff0c\u60a8\u9700\u8981\u767b\u5f55\u624d\u80fd\u8fdb\u884c\u56de\u590d","error4":"\u63d0\u4ea4\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","need_title":"\u8bf7\u8f93\u5165\u6807\u9898","need_cat":"\u8bf7\u9009\u62e9\u5206\u7c7b","need_content":"\u8bf7\u8f93\u5165\u5185\u5bb9","success3":"\u66f4\u65b0\u6210\u529f\uff01","success4":"\u53d1\u5e03\u6210\u529f\uff01","need_all":"\u6807\u9898\u3001\u5206\u7c7b\u548c\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a","length":"\u5185\u5bb9\u957f\u5ea6\u4e0d\u80fd\u5c11\u4e8e10\u4e2a\u5b57\u7b26","load_done":"\u56de\u590d\u5df2\u7ecf\u5168\u90e8\u52a0\u8f7d","load_fail":"\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","load_more":"\u70b9\u51fb\u52a0\u8f7d\u66f4\u591a","approve":"\u786e\u5b9a\u8981\u5c06\u5f53\u524d\u95ee\u9898\u8bbe\u7f6e\u4e3a\u5ba1\u6838\u901a\u8fc7\u5417\uff1f","end":"\u5df2\u7ecf\u5230\u5e95\u4e86","upload_fail":"\u56fe\u7247\u4e0a\u4f20\u51fa\u9519\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","file_types":"\u4ec5\u652f\u6301\u4e0a\u4f20jpg\u3001png\u3001gif\u683c\u5f0f\u7684\u56fe\u7247\u6587\u4ef6","file_size":"\u56fe\u7247\u5927\u5c0f\u4e0d\u80fd\u8d85\u8fc72M","uploading":"\u6b63\u5728\u4e0a\u4f20...","upload":"\u63d2\u5165\u56fe\u7247"}};
+//# sourceURL=QAPress-js-js-extra
+</script>
+<script id="QAPress-js-js" src="https://www.opc.cn/wp-content/plugins/qapress/js/qa.js?ver=4.11.1"></script>
+<script id="wp-embed-js" src="https://www.opc.cn/wp-content/themes/justnews/js/wp-embed.js?ver=6.23.1"></script>
+</body>
+</html>
+

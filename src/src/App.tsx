@@ -1224,6 +1224,16 @@ function ResourcesPage() {
           </div>
           <em>真实入驻友好度参考</em>
         </div>
+        <div className="atlas-community-rail" aria-label="精选 OPC 社区滚动图">
+          <div className="atlas-community-rail__track">
+            {[...communityData.slice(0, 8), ...communityData.slice(0, 8)].map((community, index) => (
+              <button className="atlas-community-slide" key={`${community.title}-${index}`} onClick={() => setSelected(community)}>
+                <img src={imageForCommunity(community)} alt="" />
+                <span><b>{community.city}</b>{community.title.replace(community.city, "").trim()}</span>
+              </button>
+            ))}
+          </div>
+        </div>
       </section>
       <section className="support-strip" aria-label="社区支持能力">
         {[
