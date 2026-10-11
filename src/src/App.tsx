@@ -788,7 +788,7 @@ function CommunityDetail({
         </section>
       )}
       {tab === "支持详情" && (
-        <section className="support-details">
+        <section className="support-details" id="community-support-details">
           {Object.entries(groups).map(([title, items]) => (
             <article key={title}>
               <h2>{title}</h2>
@@ -1243,10 +1243,10 @@ function ResourcesPage() {
           [WalletCards, "资金支持"],
           [Building2, "安居保障"],
         ].map(([Icon, label]: any) => (
-          <div key={label}>
+          <button key={label} type="button" onClick={() => { setTab("支持详情"); document.getElementById("community-support-details")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} aria-label={`查看${label}详情`}>
             <Icon size={17} />
             <span>{label}</span>
-          </div>
+          </button>
         ))}
       </section>
       <div className="filterbar">

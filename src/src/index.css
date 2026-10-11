@@ -1568,6 +1568,26 @@ textarea:focus-visible {
 .support-strip div:last-child {
   border: 0;
 }
+.support-strip button {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-width:0;
+  padding:16px;
+  border:0;
+  border-right:1px solid var(--line);
+  background:transparent;
+  color:var(--ink);
+  font:inherit;
+  font-size:11px;
+  cursor:pointer;
+  transition:background .2s ease,color .2s ease;
+}
+.support-strip button:last-child { border-right:0; }
+.support-strip button:hover,
+.support-strip button:focus-visible { background:#eef6f2; color:var(--accent-dark); outline:none; }
+.support-strip button svg { color:var(--accent-dark); }
 .support-strip svg {
   color: var(--accent-dark);
 }
