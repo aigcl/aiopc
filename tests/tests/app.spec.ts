@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 test("navigates all seven product pages", async ({ page }) => {
   const pages = [
     ["首页", "今天，从一个明确动作开始。"],
-    ["找资源", "全国 OPC 社区地图"],
+    ["社区地图", "全国 OPC 社区地图"],
     ["学技能", "学习的终点，是完成一次交付。"],
     ["找项目", "让能力进入真实项目。"],
     ["创业社区", "一个人创业，不等于独自前进。"],
@@ -22,7 +22,7 @@ test("navigates all seven product pages", async ({ page }) => {
 });
 
 test("filters resources and recovers from empty state", async ({ page }) => {
-  await page.getByRole("button", { name: "找资源", exact: true }).click();
+  await page.getByRole("button", { name: "社区地图", exact: true }).click();
   await expect(page.getByText("674")).toBeVisible();
   await expect(page.getByText("87")).toBeVisible();
   await expect(page.getByText("AI原点社区", { exact: true })).toBeVisible();
@@ -46,10 +46,29 @@ test("shows the AI OPC ONE brand and domain", async ({ page }) => {
   ).toBeVisible();
 });
 
+test("OPC China-inspired portal is navigable and responsive", async ({ page }) => {
+  await page.getByRole("button", { name: "OPC资讯", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "社区动态" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "快讯" })).toBeVisible();
+  await expect(page.locator(".product-app")).toHaveClass(/product-app--opcchina/);
+  await expect(page.locator(".product-nav")).toBeHidden();
+  await page.waitForTimeout(250);
+  await page.screenshot({ path: "test-results/opcchina-desktop.png", fullPage: true });
+  await page.getByRole("button", { name: "政策", exact: true }).click();
+  await expect(page.getByText("宁波市发布支持人工智能 OPC 创新创业政策")).toBeVisible();
+  await page.getByRole("button", { name: "下一张" }).click();
+  await expect(page.getByRole("heading", { name: "跟进 OPC 创业政策与城市机会" })).toBeVisible();
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1)).toBe(true);
+  await page.screenshot({ path: "test-results/opcchina-mobile.png", fullPage: true });
+  await page.getByRole("button", { name: "全国社区地图" }).click();
+  await expect(page.getByRole("heading", { name: "全国 OPC 社区地图" })).toBeVisible();
+});
+
 test("opens and returns from second and third level pages", async ({
   page,
 }) => {
-  await page.getByRole("button", { name: "找资源", exact: true }).click();
+  await page.getByRole("button", { name: "社区地图", exact: true }).click();
   await page
     .getByRole("button", { name: /查看社区资料/ })
     .first()
@@ -102,6 +121,6 @@ test("AI assistant responds and mobile has no overflow", async ({ page }) => {
   ).toBe(true);
   await page.getByRole("button", { name: "打开导航" }).click();
   await expect(
-    page.getByRole("button", { name: "找资源", exact: true }).last(),
+    page.getByRole("button", { name: "社区地图", exact: true }).last(),
   ).toBeVisible();
 });

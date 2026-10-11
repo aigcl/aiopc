@@ -8,7 +8,8 @@ test.beforeEach(async ({ page }) => {
 test("navigates all seven product pages", async ({ page }) => {
   const pages = [
     ["首页", "今天，从一个明确动作开始。"],
-    ["找资源", "找到此刻真正能用的资源。"],
+    ["OPC资讯", "社区动态"],
+    ["社区地图", "全国 OPC 社区地图"],
     ["学技能", "学习的终点，是完成一次交付。"],
     ["找项目", "让能力进入真实项目。"],
     ["创业社区", "一个人创业，不等于独自前进。"],
@@ -18,15 +19,18 @@ test("navigates all seven product pages", async ({ page }) => {
   for (const [nav, title] of pages) {
     await page.getByRole("button", { name: nav, exact: true }).click();
     await expect(page.getByText(title, { exact: true })).toBeVisible();
+    if (nav === "OPC资讯") {
+      await page.getByRole("button", { name: "返回 AI OPC ONE" }).click();
+    }
   }
 });
 
 test("filters resources and recovers from empty state", async ({ page }) => {
-  await page.getByRole("button", { name: "找资源", exact: true }).click();
+  await page.getByRole("button", { name: "社区地图", exact: true }).click();
   await page.getByLabel("搜索资源").fill("不存在的资源");
-  await expect(page.getByText("没有找到相关资源")).toBeVisible();
+  await expect(page.getByText("没有找到相关社区")).toBeVisible();
   await page.getByRole("button", { name: "重置筛选" }).click();
-  await expect(page.getByText("深圳南山 AI 创业社区")).toBeVisible();
+  await expect(page.getByText("AI原点社区", { exact: true })).toBeVisible();
 });
 
 test("registers, persists session, and logs out", async ({ page }) => {
@@ -52,5 +56,5 @@ test("AI assistant responds and mobile has no overflow", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1)).toBe(true);
   await page.getByRole("button", { name: "打开导航" }).click();
-  await expect(page.getByRole("button", { name: "找资源", exact: true }).last()).toBeVisible();
+  await expect(page.getByRole("button", { name: "社区地图", exact: true }).last()).toBeVisible();
 });
