@@ -203,6 +203,68 @@ const communityData = [
     recommended: false,
     letter: "C",
   },
+  {
+    title: "珠海“AI+”OPC创客社区",
+    city: "珠海",
+    district: "香洲区",
+    address: "珠海市香洲区（公开资料未披露详细地址）",
+    image: "./assets/images/opc-zhuhai-ai.jpg",
+    friendly: 4,
+    description: "由珠海科技产业集团和珠海产业促进发展集团运营，面向 AI 电商、AI 大模型、AI 教育与智慧云平台方向的创业者。",
+    supports: ["AI 电商创业支持", "大模型应用交流", "AI 教育项目连接", "智慧云平台资源对接"],
+    recommended: true,
+    letter: "Z",
+    source: "https://www.opc.cn/opc-community/7979/",
+  },
+  {
+    title: "香洲创港 OPC 社区",
+    city: "珠海",
+    district: "香洲区",
+    address: "珠海市香洲区（公开资料未披露详细地址）",
+    friendly: 3,
+    description: "面向 AI 技术研发和数字创业，适合需要稳定办公载体与创业连接的 OPC 创业者。",
+    supports: ["稳定办公载体", "AI 技术研发交流", "数字创业支持", "本地创业资源连接"],
+    recommended: false,
+    letter: "Z",
+    source: "https://www.opc.cn/opc-community/7977/",
+  },
+  {
+    title: "梅华城市花园 OPC 创业港",
+    city: "珠海",
+    district: "香洲区 · 梅华街道",
+    address: "珠海市香洲区梅华街道（公开资料未披露详细地址）",
+    friendly: 3,
+    description: "专注 AI 技术研发类团队，帮助初创团队降低早期办公和场地成本。",
+    supports: ["低成本办公", "AI 技术研发团队入驻", "初创团队支持", "本地产业资源连接"],
+    recommended: false,
+    letter: "Z",
+    source: "https://www.opc.cn/opc-community/7975/",
+  },
+  {
+    title: "中山粤港澳青年创新创业合作平台",
+    city: "中山",
+    district: "粤港澳大湾区",
+    address: "中山市（公开资料未披露详细地址）",
+    friendly: 3,
+    description: "面向粤港澳大湾区创业者，连接青年创新创业资源与家居产业链上下游机会。",
+    supports: ["湾区青年创业连接", "家居产业链资源", "创新创业合作", "项目资源对接"],
+    recommended: false,
+    letter: "Z",
+    source: "https://www.opc.cn/opc-community/7974/",
+  },
+  {
+    title: "翠亨人工智能 OPC 社区",
+    city: "中山",
+    district: "翠亨新区",
+    address: "中山市翠亨新区（公开资料未披露详细地址）",
+    image: "./assets/images/opc-cuiheng-ai.jpeg",
+    friendly: 4,
+    description: "提供算力赋能、资源对接、全链条孵化与低成本入驻服务，连接深港澳创新资源。",
+    supports: ["算力赋能", "全链条孵化", "低成本入驻", "深港澳创新资源对接"],
+    recommended: true,
+    letter: "Z",
+    source: "https://www.opc.cn/opc-community/7972/",
+  },
 ];
 const alphabet = "BCDFGHJKLMNQRSTWXYZ".split("");
 const imageForCommunity = (x: (typeof communityData)[number]) =>
@@ -689,6 +751,11 @@ function CommunityDetail({
               {community.description ||
                 "该社区的公开介绍仍在补充中，建议申请前完成线下或电话核验。"}
             </p>
+            {community.source && (
+              <a className="source-link" href={community.source} target="_blank" rel="noreferrer">
+                查看 OPC.cn 原始公开资料 <ArrowRight size={13} />
+              </a>
+            )}
             <h2>适合谁</h2>
             <div className="detail-features">
               {[
@@ -1096,6 +1163,7 @@ function ResourcesPage() {
     (x) =>
       (letter === "全部" || x.letter === letter) &&
       (!recommended || x.recommended) &&
+      (city === "全国" || x.city === city) &&
       `${x.title}${x.city}${x.district}`
         .toLowerCase()
         .includes(q.toLowerCase()),
@@ -1242,7 +1310,7 @@ function ResourcesPage() {
           <span className="eyebrow">VERIFIED PUBLIC SAMPLE</span>
           <h2>{recommended ? "推荐社区" : "社区名录"}</h2>
         </div>
-        <span>显示 {list.length} 条已核实公开样本</span>
+        <span>显示 {list.length} 条公开样本 · 数据来源：OPC.cn 社区目录与公开资料</span>
       </div>
       {list.length ? (
         <div className="community-grid">
