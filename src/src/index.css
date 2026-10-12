@@ -1,7 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 :root {
-  font-family: Inter, "Microsoft YaHei", sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
   color: #18312a;
   background: #f4f7f5;
   --ink: #18312a;
@@ -11,7 +10,7 @@
   --panel: #fff;
   --accent: #37d99a;
   --accent-dark: #0f5e43;
-  --mono: "DM Mono", monospace;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   font-synthesis: none;
 }
 * {
@@ -2621,5 +2620,151 @@ textarea:focus-visible {
     left: 6px;
     font-size: 9px;
   }
+}
+
+/* AI navigation system: a restrained midnight glass treatment for the global shell. */
+.product-nav {
+  --nav-bg: rgba(7, 19, 31, .94);
+  --nav-panel: rgba(11, 29, 43, .96);
+  --nav-text: #dbeaf4;
+  --nav-muted: #91aabb;
+  --nav-cyan: #63f2c0;
+  --nav-blue: #48d9ff;
+  position: sticky;
+  isolation: isolate;
+  height: 70px;
+  padding-inline: clamp(18px, 4vw, 56px);
+  gap: clamp(18px, 3vw, 38px);
+  background: linear-gradient(102deg, rgba(7,19,31,.98), rgba(9,28,43,.94) 52%, rgba(8,23,38,.97));
+  border-bottom: 1px solid rgba(99,242,192,.2);
+  box-shadow: 0 12px 30px rgba(3,12,20,.2), inset 0 -1px 0 rgba(72,217,255,.08);
+  backdrop-filter: blur(18px) saturate(120%);
+}
+.product-nav::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(circle at 28% -40%, rgba(72,217,255,.18), transparent 36%), radial-gradient(circle at 84% 120%, rgba(99,242,192,.12), transparent 34%);
+  content: "";
+  pointer-events: none;
+}
+.product-nav::after {
+  position: absolute;
+  right: clamp(18px, 4vw, 56px);
+  bottom: -1px;
+  left: clamp(18px, 4vw, 56px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99,242,192,.42), rgba(72,217,255,.34), transparent);
+  content: "";
+  pointer-events: none;
+}
+.product-logo {
+  color: var(--nav-text);
+  position: relative;
+  z-index: 1;
+}
+.product-logo > .brand-mark {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(99,242,192,.52);
+  border-radius: 8px;
+  background: linear-gradient(145deg, #102f42, #0b1b2a);
+  color: var(--nav-cyan);
+  box-shadow: 0 0 0 3px rgba(99,242,192,.06), 0 5px 18px rgba(72,217,255,.14);
+}
+.product-logo b { color: #f2f8fb; letter-spacing: .02em; }
+.product-nav > nav { position: relative; z-index: 1; gap: 4px; }
+.product-nav > nav button {
+  position: relative;
+  min-height: 38px;
+  padding: 9px 13px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--nav-muted);
+  transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.product-nav > nav button:hover {
+  color: #ecfbff;
+  border-color: rgba(72,217,255,.22);
+  background: rgba(72,217,255,.08);
+  transform: translateY(-1px);
+}
+.product-nav > nav button.active {
+  color: #eafff8;
+  border-color: rgba(99,242,192,.3);
+  background: linear-gradient(135deg, rgba(99,242,192,.16), rgba(72,217,255,.1));
+  box-shadow: inset 0 0 14px rgba(99,242,192,.05), 0 5px 14px rgba(3,16,27,.16);
+}
+.product-nav > nav button.active::after {
+  right: 12px;
+  bottom: 4px;
+  left: 12px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--nav-cyan), var(--nav-blue));
+  box-shadow: 0 0 8px rgba(99,242,192,.65);
+  opacity: 1;
+}
+.nav-actions { position: relative; z-index: 1; gap: 8px; }
+.login-nav, .register-nav, .user-btn { height: 38px; border-radius: 8px; }
+.login-nav {
+  padding-inline: 12px;
+  color: var(--nav-text);
+}
+.login-nav:hover { color: var(--nav-cyan); background: rgba(99,242,192,.08); }
+.register-nav {
+  padding-inline: 15px;
+  border: 1px solid rgba(99,242,192,.48);
+  background: linear-gradient(135deg, #2ecf9b, #25a9d1);
+  color: #04151d;
+  box-shadow: 0 5px 16px rgba(44,208,170,.18);
+}
+.register-nav:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.user-btn {
+  border: 1px solid rgba(99,242,192,.24);
+  background: rgba(72,217,255,.1);
+  color: var(--nav-text);
+}
+.user-btn > span { background: linear-gradient(135deg, var(--nav-cyan), var(--nav-blue)); color: #07202b; }
+.account-menu {
+  top: 48px;
+  border-color: rgba(99,242,192,.24);
+  border-radius: 10px;
+  background: var(--nav-panel);
+  box-shadow: 0 20px 50px rgba(2,10,18,.42);
+}
+.account-menu small { color: var(--nav-muted); }
+.account-menu button { border-color: rgba(145,170,187,.16); color: var(--nav-text); }
+.account-menu button:hover { background: rgba(72,217,255,.1); color: var(--nav-cyan); }
+.mobile-trigger {
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(99,242,192,.3);
+  border-radius: 8px;
+  background: rgba(72,217,255,.1);
+  color: var(--nav-cyan);
+}
+.mobile-trigger:hover { background: rgba(99,242,192,.16); }
+.mobile-menu {
+  top: 70px;
+  padding: 12px 18px 16px;
+  border-bottom: 1px solid rgba(99,242,192,.22);
+  background: linear-gradient(150deg, rgba(7,19,31,.98), rgba(11,29,43,.98));
+  box-shadow: 0 18px 38px rgba(2,10,18,.4);
+  backdrop-filter: blur(18px);
+}
+.mobile-menu button {
+  border-color: rgba(145,170,187,.16);
+  color: var(--nav-text);
+}
+.mobile-menu button:hover, .mobile-menu button.active {
+  color: var(--nav-cyan);
+  background: rgba(72,217,255,.08);
+}
+@media (max-width: 680px) {
+  .product-nav { height: 62px; padding-inline: 14px; }
+  .product-nav::after { right: 14px; left: 14px; }
+  .mobile-menu { top: 62px; }
+  .product-logo > .brand-mark { width: 30px; height: 30px; }
+  .product-logo b { font-size: 12px; }
 }
 
