@@ -27,7 +27,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site
-          cp index.html _site/index.html
+          cp index.html assistant.html community.html map.html mine.html news.html projects.html skills.html tools.html _site/
           touch _site/.nojekyll
           cp -R assets _site/assets
 
