@@ -88,7 +88,11 @@ test("original homepage content and carousel adapt across narrow viewports", asy
     await page.setViewportSize({ width, height: 840 });
     await expect(page.getByRole("heading", { name: "Skills 专题" })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1), `homepage overflows at ${width}px`).toBe(true);
-    expect(await page.locator(".opc-home-carousel").evaluate((element) => element.getBoundingClientRect().width > 0)).toBe(true);
+    expect(await page.locator(".opc-home-carousel").evaluate((element) => {
+      const image = element.querySelector("img");
+      const rect = element.getBoundingClientRect();
+      return rect.width > 0 && rect.height > 0 && image?.complete === true && image.naturalWidth > 0;
+    })).toBe(true);
   }
 });
 
