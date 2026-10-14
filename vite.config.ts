@@ -4,5 +4,10 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   base: "./",
   plugins: [react(), tailwindcss()],
-  build: { rollupOptions: { input: "src/build.html" } },
+  server: {
+    watch: { ignored: ["**/data/**", "**/test-results/**", "**/backups/**", "**/server/**"] },
+    proxy: {
+      "/api": "http://127.0.0.1:8787",
+    },
+  },
 });

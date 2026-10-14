@@ -18,3 +18,9 @@ backups/
 !index.html
 !CNAME
 !design-qa.md
+!public/
+!public/media/
+!public/media/**
+
+data/*.sqlite
+data/*.sqlite-*

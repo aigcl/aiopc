@@ -1,5 +1,7 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import HomePage from "../platform/HomePage";
+import { opcChinaSkillTutorials } from "../platform/opcchinaCatalog";
 import {
   ArrowRight,
   Bot,
@@ -40,11 +42,19 @@ type PageId =
   | "learn"
   | "tools"
   | "projects"
+  | "talent"
   | "community"
   | "assistant"
   | "profile";
-type User = { name: string; email: string };
-type Account = User & { password: string };
+type User = { name: string; email: string; role?: string };
+const pageFromLocation = (): PageId => {
+  const aliases: Record<string, PageId> = { "opcchina-news": "opcnews", news: "opcnews", map: "resources", skills: "learn", mine: "profile", dashboard: "home" };
+  const hash = location.hash.slice(1).split('?')[0];
+  const file = location.pathname.split('/').pop()?.replace('.html', '') || '';
+  const raw = hash || file;
+  const page = aliases[raw] || raw;
+  return ["home","opcnews","resources","learn","tools","projects","talent","community","assistant","profile"].includes(page) ? page as PageId : "home";
+};
 const nav: { id: PageId; label: string; icon: any }[] = [
   { id: "home", label: "首页", icon: LayoutDashboard },
   { id: "opcnews", label: "OPC资讯", icon: BookOpen },
@@ -52,6 +62,7 @@ const nav: { id: PageId; label: string; icon: any }[] = [
   { id: "learn", label: "学技能", icon: GraduationCap },
   { id: "tools", label: "AI工具", icon: Sparkles },
   { id: "projects", label: "找项目", icon: BriefcaseBusiness },
+  { id: "talent", label: "人才机会", icon: Handshake },
   { id: "community", label: "创业社区", icon: Users },
   { id: "assistant", label: "AI助手", icon: Bot },
   { id: "profile", label: "我的OPC", icon: CircleUserRound },
@@ -391,6 +402,29 @@ const projectData = [
     desc: "共创选题模型、内容模板和每周数据复盘机制。",
   },
 ];
+const runtimeEnv = (import.meta as ImportMeta & { env?: { DEV?: boolean; VITE_API_BASE_URL?: string } }).env;
+const API_BASE = runtimeEnv?.VITE_API_BASE_URL || "/api";
+// GitHub Pages is a static host. Only probe the session endpoint in local development
+// or when a deployment explicitly provides an API origin; this keeps a static build
+// from logging noisy 404/502 requests while preserving the local SQLite flow.
+const API_ENABLED = runtimeEnv?.DEV === true || Boolean(runtimeEnv?.VITE_API_BASE_URL);
+type ApiResult<T = any> = { ok: boolean; unavailable?: boolean; status?: number; data?: T; message?: string };
+
+async function apiRequest<T = any>(path: string, init: RequestInit = {}): Promise<ApiResult<T>> {
+  try {
+    const response = await fetch(`${API_BASE}${path}`, {
+      ...init,
+      credentials: "include",
+      headers: { "Content-Type": "application/json", ...(init.headers || {}) },
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) return { ok: false, status: response.status, message: data.message || "请求未完成" };
+    return { ok: true, status: response.status, data };
+  } catch {
+    return { ok: false, unavailable: true, message: "服务暂时不可用" };
+  }
+}
+
 function AuthModal({
   mode,
   setMode,
@@ -406,29 +440,42 @@ function AuthModal({
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [confirm, setConfirm] = useState("");
+  const [role, setRole] = useState("founder");
+  const [accepted, setAccepted] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [serviceReady, setServiceReady] = useState<boolean | null>(null);
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
-  const submit = (e: FormEvent) => {
+  useEffect(() => {
+    let active = true;
+    apiRequest("/health").then((result) => { if (active) setServiceReady(result.ok); });
+    return () => { active = false; };
+  }, []);
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
     setError("");
-    const accounts: Account[] = JSON.parse(
-      localStorage.getItem("opc_accounts") || "[]",
-    );
+    if (mode === "register" && !accepted) return setError("请先阅读并同意隐私政策与用户协议");
+    setBusy(true);
+    const normalizedEmail = email.trim().toLowerCase();
     if (mode === "register") {
-      if (name.trim().length < 2) return setError("姓名至少需要 2 个字符");
-      if (!/^\S+@\S+\.\S+$/.test(email)) return setError("请输入有效邮箱");
-      if (pwd.length < 8) return setError("密码至少需要 8 位");
-      if (pwd !== confirm) return setError("两次密码输入不一致");
-      if (accounts.some((a) => a.email === email))
-        return setError("该邮箱已经注册");
-      const a = { name: name.trim(), email, password: pwd };
-      localStorage.setItem("opc_accounts", JSON.stringify([...accounts, a]));
-      success({ name: a.name, email: a.email });
-    } else {
-      const a = accounts.find((a) => a.email === email && a.password === pwd);
-      if (!a) return setError("邮箱或密码不正确");
-      success({ name: a.name, email: a.email });
+      if (name.trim().length < 2) { setBusy(false); return setError("姓名至少需要 2 个字符"); }
+      if (!/^\S+@\S+\.\S+$/.test(normalizedEmail)) { setBusy(false); return setError("请输入有效邮箱"); }
+      if (pwd.length < 10) { setBusy(false); return setError("密码至少需要 10 位"); }
+      if (pwd !== confirm) { setBusy(false); return setError("两次密码输入不一致"); }
     }
+    const result = await apiRequest<{ user: User }>(mode === "register" ? "/auth/register" : "/auth/login", {
+      method: "POST",
+      body: JSON.stringify(mode === "register"
+        ? { name: name.trim(), email: normalizedEmail, password: pwd, role }
+        : { email: normalizedEmail, password: pwd }),
+    });
+    if (result.ok && result.data?.user) {
+      setBusy(false);
+      success(result.data.user);
+      return;
+    }
+    setBusy(false);
+    setError(result.unavailable || result.status === 404 ? "注册登录服务尚未连接。请先启用平台 API，当前网页不会保存账户。" : result.message || "账户校验未通过");
   };
   return (
     <div
@@ -461,9 +508,9 @@ function AuthModal({
         <form onSubmit={submit}>
           {mode === "register" && (
             <label>
-              姓名
+              称呼
               <input
-                aria-label="姓名"
+                 aria-label="称呼"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="你的称呼"
@@ -480,6 +527,17 @@ function AuthModal({
               placeholder="name@example.com"
             />
           </label>
+          {mode === "register" && (
+            <label>
+              平台身份
+              <select aria-label="平台身份" value={role} onChange={(event) => setRole(event.target.value)}>
+                <option value="founder">OPC 创业者</option>
+                <option value="project_owner">项目方</option>
+                <option value="talent">人才/服务提供者</option>
+                <option value="institution">园区/公共服务机构</option>
+              </select>
+            </label>
+          )}
           <label>
             密码
             <div className="password">
@@ -488,7 +546,8 @@ function AuthModal({
                 type={show ? "text" : "password"}
                 value={pwd}
                 onChange={(e) => setPwd(e.target.value)}
-                placeholder="至少 8 位"
+                minLength={10}
+                placeholder="至少 10 位"
               />
               <button
                 type="button"
@@ -511,21 +570,27 @@ function AuthModal({
               />
             </label>
           )}
+          {mode === "register" && (
+            <label className="consent-check">
+              <input type="checkbox" checked={accepted} onChange={(event) => setAccepted(event.target.checked)} />
+              <span>我已阅读并同意 <a href="/terms.html" target="_blank" rel="noreferrer">用户协议</a>与<a href="/privacy.html" target="_blank" rel="noreferrer">隐私政策</a>。我承诺不发布违法、虚假或侵权信息。</span>
+            </label>
+          )}
           {error && (
             <div className="form-error" role="alert">
               {error}
             </div>
           )}
-          <button className="primary-btn full" type="submit">
+          <button className="primary-btn full" type="submit" disabled={busy || serviceReady === false}>
             {mode === "login" ? (
               <>
                 <LogIn size={16} />
-                进入系统
+                {busy ? "正在验证…" : "进入系统"}
               </>
             ) : (
               <>
                 <UserPlus size={16} />
-                创建账户
+                {busy ? "正在创建…" : "创建账户"}
               </>
             )}
           </button>
@@ -538,7 +603,7 @@ function AuthModal({
         </button>
         <div className="security-note">
           <ShieldCheck size={14} />
-          本地演示认证，请勿使用真实常用密码。
+          {serviceReady === false ? "当前未连接账户服务；注册与登录暂不可用。" : "账户仅由服务端处理；密码不会保存在浏览器本地存储。"}
         </div>
       </motion.div>
     </div>
@@ -581,13 +646,14 @@ function MarketingHero({ openApp }: { openApp: () => void }) {
     };
   }, []);
   return (
-    <section className="marketing-hero">
+    <section className="marketing-hero" aria-label="AI OPC ONE 首屏">
       <video
         ref={video}
         muted
         playsInline
         preload="auto"
-        src="assets/hero-source.mp4"
+        loop
+        src="assets/hero-space-warp.mp4"
       />
       <div className="hero-shade" />
       <div className="hero-content">
@@ -603,7 +669,7 @@ function MarketingHero({ openApp }: { openApp: () => void }) {
         <p>连接一人公司、超级个体与 AI 创作者，从一个想法，到一个产品，再到一家公司。</p>
         <div>
           <button className="primary-btn" onClick={openApp}>
-            启动我的 OPC <ArrowRight size={17} />
+            进入 AI OPC 平台 <ArrowRight size={17} />
           </button>
           <button
             className="ghost-btn"
@@ -613,7 +679,7 @@ function MarketingHero({ openApp }: { openApp: () => void }) {
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            了解系统
+            查看平台能力
           </button>
         </div>
       </div>
@@ -1185,7 +1251,7 @@ function Dashboard({ setPage }: { setPage: (p: PageId) => void }) {
             <span className="network-index">05 / LAUNCHPAD</span>
             <h3>看看同行者，正在创造什么。</h3>
             <p>浏览独立创作者的产品与项目，从案例中找到合作、验证和发布的下一步。</p>
-            <a className="text-link" href="https://www.opc.community/zh/launchpad" target="_self" rel="noreferrer">浏览项目展台 <ArrowRight size={14} /></a>
+            <button className="text-link" onClick={() => setPage("projects")}>浏览项目展台 <ArrowRight size={14} /></button>
           </article>
           <article className="network-card">
             <span className="network-index">06 / JOIN</span>
@@ -1202,17 +1268,17 @@ function Dashboard({ setPage }: { setPage: (p: PageId) => void }) {
               <span className="eyebrow">WEEKLY SIGNALS</span>
               <h2>把变化，变成下一步。</h2>
             </div>
-            <a className="text-link" href="https://www.opc.community/china/news" target="_self" rel="noreferrer">查看 OPC 资讯 <ArrowRight size={14} /></a>
+            <button className="text-link" onClick={() => setPage("opcnews")}>查看 OPC 资讯 <ArrowRight size={14} /></button>
           </div>
           <article className="signal-lead">
             <span>POLICY RADAR · 2025</span>
             <h3>人工智能+行动，正在给微型团队更多应用与创业场景。</h3>
             <p>关注智能原生企业、AI 应用落地与个体创业的公开政策信号；申报资格、资金和有效期须以主管部门公告为准。</p>
-            <a className="text-link" href="https://www.gov.cn/gongbao/2025/issue_12266/202509/content_7039598.html" target="_self" rel="noreferrer">阅读官方原文 <ArrowRight size={14} /></a>
+            <a className="text-link" href="https://www.gov.cn/gongbao/2025/issue_12266/202509/content_7039598.html" target="_blank" rel="noreferrer">阅读官方原文 <ArrowRight size={14} /></a>
           </article>
           <div className="signal-list" aria-label="近期 OPC 信号">
-            <article><span>DAILY BRIEF · AI</span><h3>Prefix Sliding：无需训练的推理提速思路</h3><p>把值得跟进的模型、工具和产品机会压缩成一条可执行线索。</p><a className="text-link" href="https://www.bestblogs.dev/article/300397f823" target="_self" rel="noreferrer">查看来源 <ArrowRight size={14} /></a></article>
-            <article><span>CITY EVENTS · COFFEE CHAT</span><h3>北京、上海、广州、杭州、深圳等城市持续开放交流</h3><p>优先参加离你最近的一场 Coffee Chat，再决定是否加入长期共学。</p><a className="text-link" href="https://www.opc.community/china/events" target="_self" rel="noreferrer">查看活动 <ArrowRight size={14} /></a></article>
+            <article><span>DAILY BRIEF · AI</span><h3>Prefix Sliding：无需训练的推理提速思路</h3><p>把值得跟进的模型、工具和产品机会压缩成一条可执行线索。</p><button className="text-link" onClick={() => setPage("opcnews")}>查看平台整理 <ArrowRight size={14} /></button></article>
+            <article><span>CITY EVENTS · COFFEE CHAT</span><h3>北京、上海、广州、杭州、深圳等城市持续开放交流</h3><p>优先参加离你最近的一场 Coffee Chat，再决定是否加入长期共学。</p><button className="text-link" onClick={() => setPage("community")}>查看活动 <ArrowRight size={14} /></button></article>
           </div>
           <div className="news-strip" aria-label="最新动态">
             <span className="eyebrow">LATEST / OPC BRIEF</span>
@@ -1244,9 +1310,9 @@ function Dashboard({ setPage }: { setPage: (p: PageId) => void }) {
 function AtlasBackdrop() {
   const [active, setActive] = useState(0);
   const images = [
-    "assets/images/community-hangzhou.webp",
-    "assets/images/community-chengdu.webp",
-    "assets/images/workspace.webp",
+    "media/nasa-central-asia.jpg",
+    "media/nasa-asia-storms.jpg",
+    "media/coworking-berlin.jpg",
   ];
   useEffect(() => {
     const timer = window.setInterval(() => setActive((value) => (value + 1) % images.length), 9000);
@@ -1287,8 +1353,13 @@ function ResourcesPage() {
       return;
     }
     navigator.geolocation.getCurrentPosition(
-      () => {
-        setCity("北京");
+      (position) => {
+        // Browser coordinates are intentionally not sent to our server. Use a
+        // coarse local mapping only; this keeps location optional and avoids
+        // retaining precise location data.
+        const { latitude, longitude } = position.coords;
+        const nearest = latitude > 39 ? "北京" : longitude > 118 ? "上海" : latitude > 30 ? "杭州" : "深圳";
+        setCity(nearest);
         setLocationNote("已读取当前位置附近的城市资源。你可随时手动切换城市。");
         setLocating(false);
       },
@@ -1492,6 +1563,7 @@ function ResourcesPage() {
 function AiToolsPage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("全部");
+  const [selectedTool, setSelectedTool] = useState<any>(null);
   const tools = [
     { name: "ChatGPT", category: "研究与写作", tone: "chat", desc: "拆解需求、生成方案、整理资料并协助完成日常交付。", use: "适合：研究、文案、方案、客户沟通", link: "https://chatgpt.com/", label: "开始使用" },
     { name: "OpenAI API", category: "开发与集成", tone: "api", desc: "把模型能力接入你的网站、工作流或内部工具，形成可交付产品。", use: "适合：AI 应用、自动化、产品原型", link: "https://platform.openai.com/", label: "查看平台" },
@@ -1507,6 +1579,14 @@ function AiToolsPage() {
     const text = `${tool.name}${tool.category}${tool.desc}${tool.use}`.toLowerCase();
     return (category === "全部" || tool.category === category) && text.includes(query.toLowerCase());
   });
+  if (selectedTool) return (
+    <DetailShell back={() => setSelectedTool(null)} eyebrow="AI TOOL BRIEF" title={selectedTool.name} image="./assets/images/workspace.webp" meta={`${selectedTool.category} · 平台收录工具说明`}>
+      <div className="detail-grid ai-tool-detail">
+        <section><h2>这个工具解决什么问题</h2><p>{selectedTool.desc}</p><h2>适合的 OPC 场景</h2><p>{selectedTool.use}。建议先用一个真实任务做小规模验证，记录输入、输出、成本、人工复核与可复用模板。</p><h2>使用前检查</h2><div className="detail-features"><div><Check size={15} />确认服务条款与数据处理范围</div><div><Check size={15} />不要上传客户隐私、密钥或未授权素材</div><div><Check size={15} />保留人工审核和结果验收记录</div></div></section>
+        <aside><h3>官方入口</h3><p>平台只整理公开资料，账号、价格和服务可用性以工具官方页面为准。</p><a className="primary-btn" href={selectedTool.link} target="_blank" rel="noreferrer">打开官方入口 <ArrowRight size={14} /></a><small>外部链接会在新标签页打开，不会替换 AI OPC 平台。</small></aside>
+      </div>
+    </DetailShell>
+  );
   return (
     <>
       <PageHeader
@@ -1545,11 +1625,32 @@ function AiToolsPage() {
             <h2>{tool.name}</h2>
             <p>{tool.desc}</p>
             <small>{tool.use}</small>
-            <a href={tool.link} target="_self" rel="noreferrer">{tool.label} <ArrowRight size={14} /></a>
+            <button className="tool-open" onClick={() => setSelectedTool(tool)}>{tool.label === "开始使用" ? "查看工具说明" : "查看工具说明"} <ArrowRight size={14} /></button>
           </article>
         ))}
       </div>
       {!visible.length && <div className="empty-state ai-tools-empty"><Search /><h3>没有找到匹配工具</h3><p>换一个关键词，或切换工具分类。</p><button className="secondary-btn" onClick={() => { setQuery(""); setCategory("全部"); }}>重置筛选</button></div>}
+      <section className="opcchina-skills-collection" aria-labelledby="opcchina-skills-title">
+        <div className="opcchina-skills-collection__head">
+          <div>
+            <span className="eyebrow">OPC CHINA · TRANSFORMED INDEX</span>
+            <h2 id="opcchina-skills-title">Skills 实战索引</h2>
+            <p>把公开教程拆成“问题 → 结果 → 适用场景”，内容为 AI OPC 的原创摘要，来源和原文编号可追溯。</p>
+          </div>
+          <span className="opcchina-skills-collection__source">来源：OPC中国公开目录 · 仅作信息整理</span>
+        </div>
+        <div className="opcchina-skills-grid">
+          {opcChinaSkillTutorials.map((tutorial, index) => (
+            <article className={`opcchina-skill-card opcchina-skill-card--${tutorial.tone}`} key={tutorial.name}>
+              <div className="opcchina-skill-card__top"><span>{String(index + 1).padStart(2, "0")}</span><small>{tutorial.category}</small></div>
+              <h3>{tutorial.name}</h3>
+              <p>{tutorial.problem}</p>
+              <span>{tutorial.outcome}</span>
+              <a className="text-link" href={tutorial.sourceUrl}>查看来源索引 <ArrowRight size={13} /></a>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="ai-tools-note">
         <div><span className="eyebrow">DELIVERY RULE</span><h2>工具不是终点，成果才是。</h2><p>每次使用至少留下一个可复用结果：工作流、模板、样品、链接或客户反馈。</p></div>
         <button className="primary-btn" onClick={() => setCategory("自动化")}>先看自动化工具 <ArrowRight size={14} /></button>
@@ -1776,7 +1877,14 @@ function ProjectsPage() {
   const [published, setPublished] = useState(false);
   const [selected, setSelected] = useState<any>(null);
   const [draft, setDraft] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const submitListing = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const result = await apiRequest("/listings", { method: "POST", body: JSON.stringify({ kind: "project", title: data.get("title"), body: data.get("body"), budget: data.get("budget") }) });
+    if (result.ok) { setDraft(false); setPublished(true); setError(""); }
+    else setError(result.message || "发布失败，请先登录并检查 API 服务。");
+  };
   if (selected)
     return (
       <DetailShell
@@ -1834,20 +1942,16 @@ function ProjectsPage() {
       {draft && (
         <form
           className="inline-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            setDraft(false);
-            setPublished(true);
-          }}
+          onSubmit={submitListing}
         >
           <h2>发布项目需求</h2>
           <label>
             项目名称
-            <input required placeholder="例如：AI 内容生产流程搭建" />
+            <input name="title" required placeholder="例如：AI 内容生产流程搭建" />
           </label>
           <label>
             预算范围
-            <select defaultValue="">
+            <select name="budget" defaultValue="">
               <option value="" disabled>
                 请选择预算
               </option>
@@ -1859,7 +1963,7 @@ function ProjectsPage() {
           </label>
           <label className="wide">
             目标与验收
-            <textarea
+            <textarea name="body"
               required
               placeholder="描述需要解决的问题、交付物和验收方式"
             />
@@ -1872,14 +1976,15 @@ function ProjectsPage() {
             >
               取消
             </button>
-            <button className="primary-btn">保存项目草稿</button>
+            <button className="primary-btn">提交审核</button>
           </div>
+          {error && <div className="form-error" role="alert">{error}</div>}
         </form>
       )}
       {published && (
         <div className="notice-success">
           <Check size={16} />
-          项目草稿已创建，请完善需求、预算和验收标准。
+          项目已提交审核。审核通过后才会公开展示。
         </div>
       )}
       <div className="tabs">
@@ -1912,6 +2017,75 @@ function ProjectsPage() {
           </article>
         ))}
       </div>
+    </>
+  );
+}
+function TalentPage() {
+  const [tab, setTab] = useState("找人才");
+  const [query, setQuery] = useState("");
+  const [showDemand, setShowDemand] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const talents = [
+    { name: "林一 · AI 自动化顾问", city: "杭州", tags: ["n8n", "Dify", "企业流程"], intro: "帮助小团队把重复流程整理成可交付的自动化方案。", status: "可接新项目" },
+    { name: "周然 · AI 视觉创作者", city: "成都", tags: ["ComfyUI", "短视频", "品牌视觉"], intro: "专注产品视觉、短视频素材和品牌内容的批量生产。", status: "本周可沟通" },
+    { name: "陈墨 · 独立开发者", city: "北京", tags: ["React", "API", "MVP"], intro: "从需求梳理到上线交付，适合验证期产品和内部工具。", status: "接受联合开发" },
+    { name: "李想 · OPC 内容增长", city: "深圳", tags: ["小红书", "视频号", "增长"], intro: "为专业服务者搭建内容选题、复盘和线索承接闭环。", status: "可远程协作" },
+  ];
+  const demands = [
+    { title: "园区 AI 政策问答原型", owner: "园区服务方", city: "宁波", tag: "AI 应用", budget: "¥10k–30k" },
+    { title: "一人公司品牌内容月度共创", owner: "创业者", city: "上海", tag: "内容增长", budget: "¥3k–10k" },
+    { title: "电商客服知识库搭建", owner: "项目方", city: "广州", tag: "知识库", budget: "¥8k–15k" },
+  ];
+  const visibleTalents = talents.filter((item) => `${item.name}${item.city}${item.tags.join("")}`.toLowerCase().includes(query.toLowerCase()));
+  const submitDemand = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const result = await apiRequest("/listings", { method: "POST", body: JSON.stringify({ kind: "demand", title: data.get("title"), body: data.get("body"), budget: data.get("budget") }) });
+    if (result.ok) { setShowDemand(false); setSubmitted(true); setError(""); }
+    else setError(result.message || "提交失败，请先登录并检查 API 服务。");
+  };
+  return (
+    <>
+      <PageHeader
+        eyebrow="TALENT & DEMAND NETWORK"
+        title="让项目找到合适的人，也让能力被看见。"
+        desc="面向 OPC 创业者、项目方、服务者与园区机构的公开供需入口。平台只做信息撮合与审核，不承诺项目收益或合作结果。"
+        action={<button className="primary-btn" onClick={() => setShowDemand(true)}>发布人才需求 <ArrowRight size={14} /></button>}
+      />
+      {showDemand && (
+        <form className="inline-form talent-demand-form" onSubmit={submitDemand}>
+          <div className="panel-title"><div><span className="eyebrow">MODERATION QUEUE</span><h2>发布人才需求</h2></div><ShieldCheck size={19} /></div>
+          <p>提交后会进入人工审核队列，公开展示前会检查联系方式、预算描述和知识产权风险。</p>
+          <label>需求标题<input name="title" required placeholder="例如：寻找 Dify 知识库搭建伙伴" /></label>
+          <label>合作预算<select name="budget" defaultValue=""><option value="" disabled>请选择预算范围</option><option>¥3k 以下</option><option>¥3k–10k</option><option>¥10k–30k</option><option>面议</option></select></label>
+          <label className="wide">交付目标与要求<textarea name="body" required placeholder="描述项目目标、周期、交付物和合作方式，不要填写身份证、银行卡等敏感信息。" /></label>
+          <div className="form-actions"><button type="button" className="secondary-btn" onClick={() => setShowDemand(false)}>取消</button><button className="primary-btn">提交审核</button></div>
+          {error && <div className="form-error" role="alert">{error}</div>}
+        </form>
+      )}
+      {submitted && <div className="notice-success"><Check size={16} />需求已保存为待审核草稿，审核通过后才会公开展示。</div>}
+      <div className="tabs talent-tabs" aria-label="人才与需求切换">
+        {["找人才", "找需求", "我的发布说明"].map((item) => <button key={item} className={tab === item ? "active" : ""} onClick={() => setTab(item)}>{item}</button>)}
+      </div>
+      {tab === "我的发布说明" && (
+        <section className="talent-trust-panel">
+          <span className="eyebrow">PUBLIC PLATFORM RULES</span>
+          <h2>让公开合作更可靠</h2>
+          <div className="talent-trust-grid">
+            <div><ShieldCheck size={18} /><b>先审核，再公开</b><p>项目、人才和机构资料会标注来源与审核状态。</p></div>
+            <div><Users size={18} /><b>最小化收集</b><p>公开页不展示身份证、手机号、银行卡和未授权联系方式。</p></div>
+            <div><Handshake size={18} /><b>合作留痕</b><p>建议使用里程碑、验收标准和书面协议确认合作边界。</p></div>
+          </div>
+        </section>
+      )}
+      {tab === "找人才" && (
+        <>
+          <div className="talent-toolbar"><label><Search size={16} /><input aria-label="搜索人才" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索技能、城市或服务方向" /></label><span>{visibleTalents.length} 位公开人才</span></div>
+          <div className="talent-grid">{visibleTalents.map((item) => <article className="talent-card" key={item.name}><div className="talent-card__avatar">{item.name.slice(0, 1)}</div><div className="talent-card__meta"><span>{item.city} · {item.status}</span><h3>{item.name}</h3><p>{item.intro}</p><div className="tag-row">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div><button className="secondary-btn" onClick={() => setSubmitted(true)}>发起沟通 <ArrowRight size={13} /></button></article>)}</div>
+        </>
+      )}
+      {tab === "找需求" && <div className="demand-grid">{demands.map((item) => <article className="demand-card" key={item.title}><span className="eyebrow">{item.tag} · {item.city}</span><h3>{item.title}</h3><p>{item.owner}正在寻找可共同交付的 OPC 人才或小团队。</p><strong>{item.budget}</strong><button className="text-link" onClick={() => setSubmitted(true)}>查看合作说明 <ArrowRight size={13} /></button></article>)}</div>}
     </>
   );
 }
@@ -2311,34 +2485,45 @@ function ProfilePage({
   );
 }
 export default function App() {
-  const [page, setPage] = useState<PageId>("home");
+  const [page, setPage] = useState<PageId>(pageFromLocation);
   const [mobile, setMobile] = useState(false);
   const [auth, setAuth] = useState<"login" | "register" | null>(null);
   const [user, setUser] = useState<User | null>(null);
   const [account, setAccount] = useState(false);
-  const [showMarketing, setShowMarketing] = useState(true);
+  const [showMarketing, setShowMarketing] = useState(false);
   useEffect(() => {
-    const s = localStorage.getItem("opc_session");
-    if (s) setUser(JSON.parse(s));
+    const sync = () => { setPage(pageFromLocation()); setMobile(false); window.scrollTo({ top: 0, behavior: "instant" }); };
+    addEventListener("hashchange", sync);
+    addEventListener("popstate", sync);
+    return () => {
+      removeEventListener("hashchange", sync);
+      removeEventListener("popstate", sync);
+    };
+  }, []);
+  useEffect(() => {
+    if (!API_ENABLED) return;
+    apiRequest<{ user: User | null }>("/auth/me").then((result) => {
+      if (result.ok && result.data?.user) setUser(result.data.user);
+    });
   }, []);
   const complete = (u: User) => {
     setUser(u);
-    localStorage.setItem("opc_session", JSON.stringify(u));
     setAuth(null);
   };
-  const logout = () => {
+  const logout = async () => {
+    await apiRequest("/auth/logout", { method: "POST" });
     setUser(null);
     setAccount(false);
-    localStorage.removeItem("opc_session");
   };
   const change = (id: PageId) => {
+    history.pushState(null, "", `#${id}`);
     setPage(id);
     setMobile(false);
     setShowMarketing(false);
     scrollTo({ top: 0 });
   };
   return (
-    <div className={`product-app${page === "opcnews" ? " product-app--opcchina" : ""}`}>
+    <div className={`product-app public-platform${page === "home" ? " public-platform--home" : ""}`}>
       {showMarketing && (
         <MarketingHero
           openApp={() => {
@@ -2348,17 +2533,23 @@ export default function App() {
         />
       )}
       <header className="product-nav">
-        <button className="product-logo" onClick={() => change("home")}>
+        <button
+          className="product-logo"
+          aria-label="AI OPC ONE，一人公司 · AI成长社区"
+          title="AI OPC ONE，一人公司 · AI成长社区"
+          onClick={() => change("home")}
+        >
           <BrandMark small />
           <span className="brand-word">
             <b>AI OPC ONE</b>
-            <small>aiopcone.com</small>
+            <small>一人公司 · AI成长社区</small>
           </span>
         </button>
-        <nav>
+        <nav aria-label="主导航">
           {nav.map((n) => (
             <button
               className={page === n.id ? "active" : ""}
+              aria-current={page === n.id ? "page" : undefined}
               onClick={() => change(n.id)}
               key={n.id}
             >
@@ -2370,7 +2561,9 @@ export default function App() {
         <div className="nav-actions">
           <button
             className="mobile-trigger"
-            aria-label="打开导航"
+            aria-label={mobile ? "关闭导航" : "打开导航"}
+            aria-expanded={mobile}
+            aria-controls="mobile-navigation"
             onClick={() => setMobile(!mobile)}
           >
             {mobile ? <X /> : <Menu />}
@@ -2409,9 +2602,9 @@ export default function App() {
         </div>
       </header>
       {mobile && (
-        <div className="mobile-menu">
+        <div className="mobile-menu" id="mobile-navigation" role="navigation" aria-label="手机导航">
           {nav.map((n) => (
-            <button onClick={() => change(n.id)} key={n.id}>
+            <button className={page === n.id ? "active" : ""} aria-current={page === n.id ? "page" : undefined} onClick={() => change(n.id)} key={n.id}>
               <n.icon size={17} />
               {n.label}
             </button>
@@ -2436,12 +2629,13 @@ export default function App() {
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.2 }}
           >
-            {page === "home" && <Dashboard setPage={change} />}{" "}
+            {page === "home" && <HomePage navigate={change} register={() => user ? change("profile") : setAuth("register")} />}{" "}
             {page === "opcnews" && <OpcChinaPortal openMap={() => change("resources")} returnHome={() => change("home")} />}
             {page === "resources" && <ResourcesPage />}
             {page === "learn" && <LearnPage />}
             {page === "tools" && <AiToolsPage />}
             {page === "projects" && <ProjectsPage />}
+            {page === "talent" && <TalentPage />}
             {page === "community" && <CommunityPage />}
             {page === "assistant" && <AssistantPage />}
             {page === "profile" && (
@@ -2452,12 +2646,9 @@ export default function App() {
       </div>
       <footer className="product-footer">
         <b>AI OPC ONE · aiopcone.com</b>
-        <span>资源 · 技能 · 项目 · 创业者网络</span>
-        <small>本地产品原型</small>
+        <span>连接独立创造者与公共资源 · 独立平台，非政府官方网站</span>
+        <div className="footer-links"><a href="./privacy.html">隐私政策</a><a href="./terms.html">用户协议</a><a href="./disclaimer.html">免责声明</a><a href="./content-policy.html">内容规则</a><a href="./assets-license.html">素材来源</a></div>
       </footer>
     </div>
   );
 }
-
-
-

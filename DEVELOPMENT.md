@@ -1,14 +1,14 @@
 # OPC Growth OS 开发文档
 
-> 面向 AI OPC 一人公司的资源、技能、项目与行动管理原型。当前版本为本地前端演示，不包含生产数据库或服务端 API。
+> 面向政府公共服务、OPC 创业者、项目方与人才需求方的 AI OPC 公共平台。当前仓库包含可运行的 React 前端、本地 SQLite API 原型和 GitHub Pages 静态发布流程。
 
 ## 1. 技术概览
 
 - **框架**：React 18+、TypeScript、Vite
 - **交互与动画**：`motion/react`、原生 `requestAnimationFrame`/CSS 动画
 - **图标**：`lucide-react`
-- **样式**：`src/src/index.css`（Tailwind Vite 插件已配置）
-- **数据**：演示数据写在 `src/src/App.tsx`；登录账户和会话使用浏览器 `localStorage`
+- **样式**：`src/src/index.css` + `src/platform/platform.css`（Tailwind Vite 插件已配置）
+- **数据**：公开演示数据写在 `src/src/App.tsx`；注册、会话、项目/人才/需求发布由 `server/server.mjs` 提供 SQLite API，API 不可用时不会在浏览器保存账户
 - **构建产物**：项目根目录的 `index.html` 与 `assets/`
 
 ## 2. 目录结构
@@ -16,12 +16,22 @@
 ```text
 网站/
 ├─ src/
-│  ├─ App.tsx              # 页面组件、导航、演示数据与交互逻辑
-│  ├─ index.css             # 全局设计令牌、布局、响应式样式
-│  ├─ main.tsx              # React 挂载入口
-│  └─ build.html            # Vite 构建入口模板
+│  ├─ src/App.tsx           # 页面组件、导航、演示数据与交互逻辑
+│  ├─ src/index.css         # 全局设计令牌、布局、响应式样式
+│  ├─ platform/HomePage.tsx # AI OPC 公共平台首页
+│  ├─ platform/platform.css # 首页与 H5 响应式视觉层
+│  └─ main.tsx              # Vite React 挂载入口
 ├─ assets/                  # 构建后的 JS/CSS、视频与社区图片
-├─ index.html               # 可直接由静态服务器访问的同步产物
+├─ index.html               # Vite 单页入口；GitHub Pages 构建时复制为各页面入口
+├─ server/server.mjs        # 本地 SQLite API
+├─ data/opc.sqlite          # 本地运行生成，禁止提交真实数据
+├─ privacy.html             # 隐私政策
+├─ terms.html               # 用户协议
+├─ disclaimer.html          # 免责声明
+├─ content-policy.html      # 内容审核与举报规则
+├─ assets-license.html      # 图片、视频与字体来源说明
+├─ public/media/             # 首页与社区页使用的本地素材
+├─ docs/OPCCHINA-ANALYSIS.md # OPCChina.ai 页面拆解与接入方案
 ├─ tests/                   # Playwright 检查
 ├─ vite.config.ts           # Vite 配置，base 为相对路径
 └─ package.json             # 脚本与依赖
@@ -46,6 +56,9 @@ npm install
 
 ```powershell
 Set-Location 'D:\codex\网站'
+npm run api
+
+# 另开一个 PowerShell 窗口
 npm run dev -- --host 127.0.0.1 --port 4178
 ```
 
@@ -60,7 +73,7 @@ Set-Location 'D:\codex\网站'
 npm run build
 ```
 
-构建会先执行 TypeScript 检查，再由 Vite 生成 `assets/` 和入口产物。完成后重新启动静态服务器即可预览：
+构建会先执行 TypeScript 检查，再由 Vite 生成 `dist/`。GitHub Pages 工作流会把构建入口、根目录素材和法律页面统一复制到 `_site/`，不再发布旧版静态 HTML。
 
 ```powershell
 python -m http.server 4178 --bind 127.0.0.1 --directory 'D:\codex\网站'
@@ -76,15 +89,12 @@ python -m http.server 4178 --bind 127.0.0.1 --directory 'D:\codex\网站'
 | 找资源 | `找资源` | 关键词搜索、资源类型筛选、空状态重置 |
 | 学技能 | `学技能` | 技能分、课程进度、继续学习入口 |
 | 找项目 | `找项目` | 推荐/最新/远程/结果分成标签，发布项目草稿提示 |
+| 人才机会 | `人才机会` | 人才目录、项目需求、发布审核说明 |
 | 创业社区 | `创业社区` | 动态流、项目展示、资源交流、城市活跃榜 |
 | AI 助手 | `AI助手` | 城市/阶段上下文、快捷提示、本地规则生成行动计划、保存计划 |
 | 我的 OPC | `我的OPC` | 登录后显示个人能力、收藏与行动计划 |
 
-首页首屏还包含：
-
-- AI 人形视频层（桌面端根据鼠标横向位置调整视频时间，移动端自动播放）
-- 右下角 OPC 场所横向图片滚动条
-- 视频声音开关与背景层脚本（由根目录 `index.html` 的同步增强层挂载）
+首页首屏包含角色入口、社区地图、AI 工具、项目/人才入口、注册 CTA 和本地授权素材。移动端使用折叠导航、单列卡片和安全区域适配，不依赖横向滚动。
 
 ## 7. 本地演示数据
 
@@ -98,20 +108,30 @@ python -m http.server 4178 --bind 127.0.0.1 --directory 'D:\codex\网站'
 
 ## 8. 登录演示说明
 
-当前认证仅用于原型演示：
+本地 API 模式使用 SQLite 与服务端会话：
+
+- `npm run api` 启动 `127.0.0.1:8787`
+- `users` 保存邮箱、密码哈希、角色和状态
+- `listings` 保存项目、人才和需求，默认 `pending_review`
+- `reports` 预留举报处理记录
+- API 不可用时，前端会提示服务未连接并停止注册/登录；不要填写常用密码
+
+AI 助手保存的计划：`localStorage.opc_copilot_plan`
+
+生产环境必须把 SQLite 换成托管 PostgreSQL/MySQL，使用 Argon2id/bcrypt、HTTPS、CSRF 防护、刷新令牌轮换、RBAC、限流、审计日志、备份恢复和内容审核后台；不要把真实密码写入本地存储。
+
+旧版浏览器演示字段：
 
 - 账户：`localStorage.opc_accounts`
 - 当前会话：`localStorage.opc_session`
-- AI 助手保存的计划：`localStorage.opc_copilot_plan`
-
-生产环境必须改为服务端认证、密码哈希、过期会话和权限校验；不要把真实密码写入本地存储。
+- 旧字段仅用于迁移检查，不再作为账户存储或认证来源
 
 ## 9. 资源与媒体
 
-社区滚动图位于 `assets/`，命名格式为 `community-*.webp`。新增图片时：
+首页素材位于 `public/media/`，构建后输出到 `dist/media/`；历史社区素材仍位于 `assets/`。新增图片时：
 
 1. 使用 WebP/AVIF，桌面图片宽度建议不低于 900px；
-2. 在 `index.html` 或组件中使用相对路径 `./assets/...`；
+2. 在组件中使用相对路径 `./media/...` 或 `./assets/...`；
 3. 补充有意义的 `alt` 文本；
 4. 用浏览器 Network 面板确认返回状态为 200。
 
@@ -140,7 +160,7 @@ npm test
 
 ### 页面打不开或空白
 
-确认 PowerShell 当前目录是 `D:\codex\网站`，并通过 `http://127.0.0.1:4178/index.html` 访问，而不是 `file://`。若端口已占用，换用 4179，并同步修改访问地址。
+确认 PowerShell 当前目录是 `D:\codex\网站`，先启动 `npm run api`，再启动 Vite，并通过 `http://127.0.0.1:4178/index.html` 访问，而不是 `file://`。若端口已占用，换用空闲端口，并同步修改访问地址。
 
 ### 修改没有生效
 
@@ -163,4 +183,4 @@ location.reload();
 
 ## 12. 发布前边界
 
-这是前端原型。接入真实用户、项目、政策或支付数据前，需要补齐服务端 API、数据库、鉴权、日志、隐私政策、内容审核和备份恢复机制。
+正式运营前，需要补齐 ICP/公安备案等适用事项、运营主体与联系方式、正式隐私政策和用户协议审核、内容审核与举报工单、版权/授权留档、数据保存期限、删除请求流程、第三方 AI 数据处理协议及备份恢复演练。平台不得冒充政府官方，政策和 AI 输出必须标注来源与“仅供参考”。

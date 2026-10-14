@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+    <title>OPC中国 - OPC开源共创社区！</title>
+    <meta name="description" content="OPC开源共创社区！">
+<meta property="og:type" content="webpage">
+<meta property="og:url" content="https://www.opcchina.ai/">
+<meta property="og:site_name" content="OPC中国">
+<meta property="og:title" content="OPC中国 - OPC开源共创社区！">
+<meta property="og:image" content="https://www.opcchina.ai/wp-content/uploads/2026/06/opcchinabanner1.png">
+<meta property="og:description" content="OPC开源共创社区！">
+<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform">
+<link rel="shortcut icon" href="https://www.opcchina.ai/wp-content/uploads/2026/06/cropped-ScreenShot_2026-06-02_205008_135.png">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='stylesheet-css' href='//www.opcchina.ai/wp-content/uploads/wpcom/style.6.23.1.1781146108.css?ver=6.23.1' media='all' />
+<link rel='stylesheet' id='material-icons-css' href='https://www.opcchina.ai/wp-content/themes/justnews/themer/assets/css/material-icons.css?ver=6.23.1' media='all' />
+<link rel='stylesheet' id='remixicon-css' href='https://www.opcchina.ai/wp-content/themes/justnews/themer/assets/css/remixicon.css?ver=4.9.1' media='all' />
+<link rel='stylesheet' id='font-awesome-css' href='https://www.opcchina.ai/wp-content/themes/justnews/themer/assets/css/font-awesome.css?ver=6.23.1' media='all' />
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<style id="md-style-inline-css">
+ .gfm-task-list { border: 1px solid transparent; list-style-type: none; } .gfm-task-list input { margin-right: 10px !important; } .copy-button { cursor: pointer; border: 0; font-size: 12px; text-transform: uppercase; font-weight: 500; padding: 3px 6px 3px 6px; background-color: rgba(255, 255, 255, 0.6); position: absolute; overflow: hidden; top: 5px; right: 5px; border-radius: 3px; } .copy-button:before { content: ""; display: inline-block; width: 16px; height: 16px; margin-right: 3px; background-size: contain; background-image: url("data:image/svg+xml,%3Csvg version=\'1.1\' xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\' x=\'0px\' y=\'0px\' width=\'16px\' height=\'16px\' viewBox=\'888 888 16 16\' enable-background=\'new 888 888 16 16\' xml:space=\'preserve\'%3E %3Cpath fill=\'%23333333\' d=\'M903.143,891.429c0.238,0,0.44,0.083,0.607,0.25c0.167,0.167,0.25,0.369,0.25,0.607v10.857 c0,0.238-0.083,0.44-0.25,0.607s-0.369,0.25-0.607,0.25h-8.571c-0.238,0-0.44-0.083-0.607-0.25s-0.25-0.369-0.25-0.607v-2.571 h-4.857c-0.238,0-0.44-0.083-0.607-0.25s-0.25-0.369-0.25-0.607v-6c0-0.238,0.06-0.5,0.179-0.786s0.262-0.512,0.428-0.679 l3.643-3.643c0.167-0.167,0.393-0.309,0.679-0.428s0.547-0.179,0.786-0.179h3.714c0.238,0,0.44,0.083,0.607,0.25 c0.166,0.167,0.25,0.369,0.25,0.607v2.929c0.404-0.238,0.785-0.357,1.143-0.357H903.143z M898.286,893.331l-2.67,2.669h2.67V893.331 z M892.571,889.902l-2.669,2.669h2.669V889.902z M894.321,895.679l2.821-2.822v-3.714h-3.428v3.714c0,0.238-0.083,0.441-0.25,0.607 s-0.369,0.25-0.607,0.25h-3.714v5.714h4.571v-2.286c0-0.238,0.06-0.5,0.179-0.786C894.012,896.071,894.155,895.845,894.321,895.679z M902.857,902.857v-10.286h-3.429v3.714c0,0.238-0.083,0.441-0.25,0.607c-0.167,0.167-0.369,0.25-0.607,0.25h-3.714v5.715H902.857z\' /%3E %3C/svg%3E"); background-repeat: no-repeat; position: relative; top: 3px; } pre { position: relative; } pre:hover .copy-button { background-color: rgba(255, 255, 255, 0.9); } 
+/*# sourceURL=md-style-inline-css */
+</style>
+<link rel='stylesheet' id='wpcom-member-css' href='https://www.opcchina.ai/wp-content/plugins/wpcom-member/css/style.css?ver=1.7.27' media='all' />
+<link rel='stylesheet' id='QAPress-css' href='https://www.opcchina.ai/wp-content/plugins/qapress/css/style.css?ver=4.11.1' media='all' />
+<style id="QAPress-inline-css">
+:root{--qa-color: #1471CA;--qa-hover: #0D62B3;}
+/*# sourceURL=QAPress-inline-css */
+</style>
+<script id="jquery-core-js" src="https://www.opcchina.ai/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://www.opcchina.ai/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.opcchina.ai/xmlrpc.php?rsd" />
+<link rel="icon" href="https://www.opcchina.ai/wp-content/uploads/2026/06/cropped-ScreenShot_2026-06-02_205008_135-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.opcchina.ai/wp-content/uploads/2026/06/cropped-ScreenShot_2026-06-02_205008_135-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.opcchina.ai/wp-content/uploads/2026/06/cropped-ScreenShot_2026-06-02_205008_135-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.opcchina.ai/wp-content/uploads/2026/06/cropped-ScreenShot_2026-06-02_205008_135-270x270.png" />
+</head>
+<body class="home blog wp-theme-justnews lang-cn header-fixed">
+<header class="header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation">
+                <span class="icon-bar icon-bar-1"></span>
+                <span class="icon-bar icon-bar-2"></span>
+                <span class="icon-bar icon-bar-3"></span>
+            </button>
+                        <h1 class="logo">
+                <a href="https://www.opcchina.ai/" rel="home">
+                    <img src="https://www.opcchina.ai/wp-content/uploads/2026/06/OPC中国-主LOGO-9.png" alt="OPC中国" width="2024" height="476" decoding="async" fetchpriority="high">                </a>
+            </h1>
+        </div>
+        <div class="collapse navbar-collapse mobile-style-0">
+            <nav class="primary-menu"><ul id="menu-justnews-menu" class="nav navbar-nav wpcom-adv-menu"><li class="menu-item active"><a href="/">首页</a></li>
+<li class="menu-item menu-item-style menu-item-style-3 dropdown"><a href="#" class="dropdown-toggle">文章分类</a>
+<ul class="dropdown-menu menu-item-wrap menu-item-col-5">
+	<li class="menu-item menu-item-has-image"><a href="https://www.opcchina.ai/?cat=5"><img class="menu-item-image" src="https://www.opcchina.ai/wp-content/uploads/2026/06/toa-heftiba-BP3XOsSPlGA-unsplash.jpg" alt="Gemini" decoding="async" loading="lazy">Gemini</a></li>
+	<li class="menu-item menu-item-has-image"><a href="https://www.opcchina.ai/?cat=6"><img class="menu-item-image" src="https://www.opcchina.ai/wp-content/uploads/2026/06/ux-indonesia-WCID2JWoxwE-unsplash.jpg" alt="Claude" decoding="async" loading="lazy">Claude</a></li>
+	<li class="menu-item menu-item-has-image"><a href="https://www.opcchina.ai/?cat=4"><img class="menu-item-image" src="https://www.opcchina.ai/wp-content/uploads/2026/06/lala-azizli-8IJ5xNTv1QM-unsplash.jpg" alt="ChatGPT" decoding="async" loading="lazy">ChatGPT</a></li>
+	<li class="menu-item menu-item-has-image"><a href="https://www.opcchina.ai/?cat=7"><img class="menu-item-image" src="https://www.opcchina.ai/wp-content/uploads/2026/06/patrick-perkins-ETRPjvb0KM0-unsplash.jpg" alt="即梦AI" decoding="async" loading="lazy">即梦AI</a></li>
+	<li class="menu-item menu-item-has-image"><a href="https://www.opcchina.ai/?page_id=155"><img class="menu-item-image" src="https://www.opcchina.ai/wp-content/uploads/2026/06/karl-solano-6YvCw0v7LXM-unsplash.jpg" alt="Skills专题" decoding="async" loading="lazy">Skills专题</a></li>
+</ul>
+</li>
+<li class="menu-item"><a href="https://www.opcchina.ai/?page_id=155">Skills专题</a></li>
+<li class="menu-item"><a href="https://www.opcchina.ai/?page_id=4074">问答社区</a></li>
+<li class="menu-item"><a href="https://www.opcchina.ai/?page_id=796">快讯</a></li>
+<li class="menu-item"><a href="https://www.opcchina.ai/?page_id=4028">专栏作家</a></li>
+<li class="menu-item dropdown"><a href="#" class="dropdown-toggle">更多页面</a>
+<ul class="dropdown-menu menu-item-wrap menu-item-col-3">
+	<li class="menu-item"><a href="https://www.opcchina.ai/?page_id=1879">网址导航</a></li>
+	<li class="menu-item"><a href="https://www.opcchina.ai/?page_id=1876">标签归档</a></li>
+	<li class="menu-item"><a href="https://www.opcchina.ai/?page_id=4024">全宽页面</a></li>
+</ul>
+</li>
+</ul></nav>            <div class="navbar-action">
+                <div class="navbar-search-icon j-navbar-search"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-search"></use></svg></i></div><form class="navbar-search" action="https://www.opcchina.ai/" method="get" role="search"><div class="navbar-search-inner"><i class="wpcom-icon wi navbar-search-close"><svg aria-hidden="true"><use xlink:href="#wi-close"></use></svg></i><input type="text" name="s" class="navbar-search-input" autocomplete="off" maxlength="100" placeholder="输入关键词搜索..." value=""><button class="navbar-search-btn" type="submit" aria-label="搜索"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-search"></use></svg></i></button></div></form>                    <div id="j-user-wrap">
+                        <a class="login" href="/?modal-type=login">登录</a>
+                        <a class="login register" href="https://www.opcchina.ai/?page_id=12&modal-type=register">注册</a>
+                    </div>
+                                            <a class="wpcom-btn btn-primary btn-xs publish" href="https://www.opcchina.ai/?page_id=29">
+                            投稿                        </a>
+                                </div>
+        </div>
+    </div><!-- /.container -->
+</header>
+
+<div id="wrap">    <div class="wrap container">
+        <main class="main">
+                            <section class="slider-wrap">
+                    <div class="main-slider wpcom-slider swiper-container">
+                        <ul class="swiper-wrapper">
+                                                            <li class="swiper-slide">
+                                                                            <img src="https://file.liyuechun.com/opcchinabanner1.png" alt="" decoding="async" fetchpriority="high">                                                                                                            </li>
+                                                            <li class="swiper-slide">
+                                                                            <img src="https://file.liyuechun.com/opcchinabanner2.png" alt="" decoding="async" loading="lazy">                                                                                                            </li>
+                                                            <li class="swiper-slide">
+                                                                            <img src="https://file.liyuechun.com/opcchinabanner3.png" alt="" decoding="async" loading="lazy">                                                                                                            </li>
+                                                    </ul>
+                        <div class="swiper-pagination"></div><div class="swiper-button-prev"></div><div class="swiper-button-next"></div>
+                    </div>
+
+                                            <ul class="feature-post">
+                                                            <li>
+                                                                            <img src="https://file.liyuechun.com/OPCzhengfuzhengce.png" alt="OPC政策合集" decoding="async" fetchpriority="high">
+                                                                                    <span>OPC政策合集</span>
+                                                                                                            </li>
+                                                            <li>
+                                                                            <img src="https://file.liyuechun.com/OPCzhuanfangheji.png" alt="OPC专访合集" decoding="async" fetchpriority="high">
+                                                                                    <span>OPC专访合集</span>
+                                                                                                            </li>
+                                                    </ul>
+                                    </section>
+                                                    <section class="sec-panel topic-recommend">
+                                            <div class="sec-panel-head">
+                            <h2><span>Skills专题</span> <small>聚焦AIGC与AI智能体实战，打造“智能体+技能”核心生产力。</small> <a href="https://www.opcchina.ai/?page_id=155" target="_blank" class="more">更多专题</a></h2>
+                        </div>
+                                        <div class="sec-panel-body">
+                        <ul class="list topic-list topic-list-2 topic-col-4">
+                                                            <li class="topic">
+                                    <a class="topic-wrap" href="https://www.opcchina.ai/?special=jimeng-ai" target="_blank">
+                                        <div class="cover-container">
+                                            <img src="//www.opcchina.ai/wp-content/uploads/2026/06/jimengaibg2.png" alt="Skills专题 - 即梦AI" width="400" height="250" decoding="async" loading="lazy">                                        </div>
+                                        <span>即梦AI</span>
+                                    </a>
+                                </li>
+                                                            <li class="topic">
+                                    <a class="topic-wrap" href="https://www.opcchina.ai/?special=claude" target="_blank">
+                                        <div class="cover-container">
+                                            <img src="//www.opcchina.ai/wp-content/uploads/2026/06/claudebg.png" alt="Skills专题 - Claude" width="400" height="250" decoding="async" loading="lazy">                                        </div>
+                                        <span>Claude</span>
+                                    </a>
+                                </li>
+                                                            <li class="topic">
+                                    <a class="topic-wrap" href="https://www.opcchina.ai/?special=gemini" target="_blank">
+                                        <div class="cover-container">
+                                            <img src="//www.opcchina.ai/wp-content/uploads/2026/06/geminibg.png" alt="Skills专题 - Gemini" width="400" height="250" decoding="async" loading="lazy">                                        </div>
+                                        <span>Gemini</span>
+                                    </a>
+                                </li>
+                                                            <li class="topic">
+                                    <a class="topic-wrap" href="https://www.opcchina.ai/?special=chatgpt" target="_blank">
+                                        <div class="cover-container">
+                                            <img src="//www.opcchina.ai/wp-content/uploads/2026/06/chatgptbackgrpud.png" alt="Skills专题 - ChatGPT" width="400" height="250" decoding="async" loading="lazy">                                        </div>
+                                        <span>ChatGPT</span>
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                </section>
+                                                <section class="sec-panel main-list">
+                                    <div class="sec-panel-head">
+                        <ul class="list tabs j-newslist">
+                            <li class="tab active"><a data-id="0" href="javascript:;">最新文章</a><i class="tab-underscore"></i></li>
+                                                            <li class="tab"><a data-id="4" href="javascript:;">ChatGPT</a></li>
+                                                            <li class="tab"><a data-id="5" href="javascript:;">Gemini</a></li>
+                                                            <li class="tab"><a data-id="6" href="javascript:;">Claude</a></li>
+                                                            <li class="tab"><a data-id="7" href="javascript:;">即梦AI</a></li>
+                                                            <li class="tab"><a data-id="102" href="javascript:;">OPC政策合集</a></li>
+                                                    </ul>
+                    </div>
+                                <div class="tab-wrap active">
+                    <ul class="post-loop post-loop-default">
+                                                    <li class="item">
+        <div class="item-img">
+        <a class="item-img-inner" href="https://www.opcchina.ai/?p=4329" title="Watch Skill 使用教程：让 Codex 看懂视频和录屏" target="_blank" rel="bookmark">
+            <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081903254550-480x300.png" class="attachment-default size-default wp-post-image" alt="Watch Skill 使用教程：让 Codex 看懂视频和录屏" decoding="async" loading="lazy" />        </a>
+                <a class="item-category" href="https://www.opcchina.ai/?cat=6" target="_blank">Claude</a>
+            </div>
+        <div class="item-content">
+                <h3 class="item-title">
+            <a href="https://www.opcchina.ai/?p=4329" target="_blank" rel="bookmark">
+                                 Watch Skill 使用教程：让 Codex 看懂视频和录屏            </a>
+        </h3>
+        <div class="item-excerpt">
+            <p>Watch Skill 是一个视频理解和自我验证工具，可以把视频、录屏或浏览器画面处理成带时间点的证据。它不只是生成转写，还会保留关键画面、时间线、OCR 和可搜索内容，让 Codex 能回答“哪一刻发生了什么”，并给出可以回看的依据。</p>
+<p>使用时，先从官方仓库安装 Watch Skill 引擎，再用 npx skills add 把它接入 Codex。处理隐私内容时，可以优先使用本地 Whisper 和本地 Ollama。单个视频可以直接提问，多个视频可以用 watch-skill batch 建立视频库，再用 library ask 搜索。</p>
+<p>如果要做网页测试或演示验收，可以用 loop 持续观察浏览器，并按照指定标准记录通过或失败的证据。需要交付时，还可以用 viewer 导出 HTML 报告。</p>
+<p>最稳妥的流程是：先提具体问题，再让 Watch Skill 返回时间点和证据，点击时间点回看确认，最后把证据交给 Codex 执行动作。原视频、证据报告和处理结果</p>
+        </div>
+        <div class="item-meta">
+                        <div class="item-meta-li author">
+                                <a data-user="11" target="_blank" href="https://www.opcchina.ai/?page_id=4025&user=11" class="avatar j-user-card">
+                    <img alt='是非我的头像' src='//www.opcchina.ai/wp-content/uploads/2018/07/f9352ad8b4a1ce8c616fe60de409e340.jpg' class='avatar avatar-60 photo' height='60' width='60' loading='lazy' decoding='async'/>                    <span>是非我</span>
+                </a>
+            </div>
+                                    <span class="item-meta-li date">2026年8月19日</span>
+            <div class="item-meta-right">
+                <span class="item-meta-li views" title="阅读数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-eye"></use></svg></i>578</span><a class="item-meta-li comments" href="https://www.opcchina.ai/?p=4329#comments" target="_blank" title="评论数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-comment"></use></svg></i>0</a><span class="item-meta-li stars" title="收藏数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-star"></use></svg></i>0</span><span class="item-meta-li likes" title="点赞数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-thumb-up"></use></svg></i>0</span>            </div>
+        </div>
+    </div>
+</li>
+                                                    <li class="item">
+        <div class="item-img">
+        <a class="item-img-inner" href="https://www.opcchina.ai/?p=4317" title="Skill Deck 使用教程：把散落的 AI 技能集中管理" target="_blank" rel="bookmark">
+            <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081903144032-480x300.png" class="attachment-default size-default wp-post-image" alt="Skill Deck 使用教程：把散落的 AI 技能集中管理" decoding="async" loading="lazy" />        </a>
+                <a class="item-category" href="https://www.opcchina.ai/?cat=6" target="_blank">Claude</a>
+            </div>
+        <div class="item-content">
+                <h3 class="item-title">
+            <a href="https://www.opcchina.ai/?p=4317" target="_blank" rel="bookmark">
+                                 Skill Deck 使用教程：把散落的 AI 技能集中管理            </a>
+        </h3>
+        <div class="item-excerpt">
+            <p>如果你在电脑里同时使用 Codex、Claude、Cursor 等编程助手，技能文件很容易散落在不同文件夹里。Skill Deck 可以扫描这些本地技能，把它们整理成一个可以搜索、筛选、查看和检查的目录。 本文以 Windows 为例，演示从安装 Skill Deck，到扫描本地技能、搜索技能、检查来源、保存快照，再交给 Codex 使用的完整流程。 一、S…</p>
+        </div>
+        <div class="item-meta">
+                        <div class="item-meta-li author">
+                                <a data-user="11" target="_blank" href="https://www.opcchina.ai/?page_id=4025&user=11" class="avatar j-user-card">
+                    <img alt='是非我的头像' src='//www.opcchina.ai/wp-content/uploads/2018/07/f9352ad8b4a1ce8c616fe60de409e340.jpg' class='avatar avatar-60 photo' height='60' width='60' loading='lazy' decoding='async'/>                    <span>是非我</span>
+                </a>
+            </div>
+                                    <span class="item-meta-li date">2026年8月19日</span>
+            <div class="item-meta-right">
+                <span class="item-meta-li views" title="阅读数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-eye"></use></svg></i>267</span><a class="item-meta-li comments" href="https://www.opcchina.ai/?p=4317#comments" target="_blank" title="评论数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-comment"></use></svg></i>0</a><span class="item-meta-li stars" title="收藏数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-star"></use></svg></i>0</span><span class="item-meta-li likes" title="点赞数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-thumb-up"></use></svg></i>0</span>            </div>
+        </div>
+    </div>
+</li>
+                                                    <li class="item">
+        <div class="item-img">
+        <a class="item-img-inner" href="https://www.opcchina.ai/?p=4304" title="Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件" target="_blank" rel="bookmark">
+            <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081807132089-480x300.png" class="attachment-default size-default wp-post-image" alt="Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件" decoding="async" loading="lazy" />        </a>
+                <a class="item-category" href="https://www.opcchina.ai/?cat=6" target="_blank">Claude</a>
+            </div>
+        <div class="item-content">
+                <h3 class="item-title">
+            <a href="https://www.opcchina.ai/?p=4304" target="_blank" rel="bookmark">
+                                 Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件            </a>
+        </h3>
+        <div class="item-excerpt">
+            <p>Repomix 可以把代码仓库整理成适合人工智能阅读的单个文件，并支持远程仓库、文件筛选、格式选择、压缩、配置和安全检查。分享前要确认输出文件中没有密钥、令牌、密码等敏感信息。</p>
+        </div>
+        <div class="item-meta">
+                        <div class="item-meta-li author">
+                                <a data-user="11" target="_blank" href="https://www.opcchina.ai/?page_id=4025&user=11" class="avatar j-user-card">
+                    <img alt='是非我的头像' src='//www.opcchina.ai/wp-content/uploads/2018/07/f9352ad8b4a1ce8c616fe60de409e340.jpg' class='avatar avatar-60 photo' height='60' width='60' loading='lazy' decoding='async'/>                    <span>是非我</span>
+                </a>
+            </div>
+                                    <span class="item-meta-li date">2026年8月18日</span>
+            <div class="item-meta-right">
+                <span class="item-meta-li views" title="阅读数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-eye"></use></svg></i>271</span><a class="item-meta-li comments" href="https://www.opcchina.ai/?p=4304#comments" target="_blank" title="评论数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-comment"></use></svg></i>0</a><span class="item-meta-li stars" title="收藏数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-star"></use></svg></i>0</span><span class="item-meta-li likes" title="点赞数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-thumb-up"></use></svg></i>0</span>            </div>
+        </div>
+    </div>
+</li>
+                                                    <li class="item">
+        <div class="item-img">
+        <a class="item-img-inner" href="https://www.opcchina.ai/?p=4289" title="OpenMagic 使用教程：直接选中网页，让人工智能修改源码" target="_blank" rel="bookmark">
+            <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081802174077-480x300.png" class="attachment-default size-default wp-post-image" alt="OpenMagic 使用教程：直接选中网页，让人工智能修改源码" decoding="async" loading="lazy" />        </a>
+                <a class="item-category" href="https://www.opcchina.ai/?cat=6" target="_blank">Claude</a>
+            </div>
+        <div class="item-content">
+                <h3 class="item-title">
+            <a href="https://www.opcchina.ai/?p=4289" target="_blank" rel="bookmark">
+                                 OpenMagic 使用教程：直接选中网页，让人工智能修改源码            </a>
+        </h3>
+        <div class="item-excerpt">
+            <p>使用人工智能编程工具修改网页时，经常需要花很多时间描述自己想改的位置。 例如，我们想修改网页上的一个按钮，可能要先说明它位于哪个区域、旁边有什么内容、现在是什么颜色。页面稍微复杂一些，人工智能就可能找错组件或者改错文件。 OpenMagic 提供了另一种操作方式。它会在本地网页上加入一个悬浮工具栏。我们可以直接选中按钮、标题和卡片等网页元素，用文字说明修改要…</p>
+        </div>
+        <div class="item-meta">
+                        <div class="item-meta-li author">
+                                <a data-user="11" target="_blank" href="https://www.opcchina.ai/?page_id=4025&user=11" class="avatar j-user-card">
+                    <img alt='是非我的头像' src='//www.opcchina.ai/wp-content/uploads/2018/07/f9352ad8b4a1ce8c616fe60de409e340.jpg' class='avatar avatar-60 photo' height='60' width='60' loading='lazy' decoding='async'/>                    <span>是非我</span>
+                </a>
+            </div>
+                                    <span class="item-meta-li date">2026年8月18日</span>
+            <div class="item-meta-right">
+                <span class="item-meta-li views" title="阅读数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-eye"></use></svg></i>253</span><a class="item-meta-li comments" href="https://www.opcchina.ai/?p=4289#comments" target="_blank" title="评论数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-comment"></use></svg></i>0</a><span class="item-meta-li stars" title="收藏数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-star"></use></svg></i>0</span><span class="item-meta-li likes" title="点赞数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-thumb-up"></use></svg></i>0</span>            </div>
+        </div>
+    </div>
+</li>
+                                                    <li class="item">
+        <div class="item-img">
+        <a class="item-img-inner" href="https://www.opcchina.ai/?p=4275" title="Plannotator 使用教程：在 Codex 执行前，先把计划审清楚" target="_blank" rel="bookmark">
+            <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081706130074-480x300.png" class="attachment-default size-default wp-post-image" alt="Plannotator 使用教程：在 Codex 执行前，先把计划审清楚" decoding="async" loading="lazy" />        </a>
+                <a class="item-category" href="https://www.opcchina.ai/?cat=6" target="_blank">Claude</a>
+            </div>
+        <div class="item-content">
+                <h3 class="item-title">
+            <a href="https://www.opcchina.ai/?p=4275" target="_blank" rel="bookmark">
+                                 Plannotator 使用教程：在 Codex 执行前，先把计划审清楚            </a>
+        </h3>
+        <div class="item-excerpt">
+            <p>Codex 生成复杂任务计划后，如果只在对话框里从头阅读，很容易漏掉范围错误、缺少测试或步骤不合理等问题。本教程将演示如何在 Windows 上安装并使用 Plannotator，把 Codex 的计划放进本地浏览器审阅界面，逐段添加批注、标记删除并退回修改；计划确认无误后，再让 Codex 开始执行，并继续检查最终的代码改动。</p>
+        </div>
+        <div class="item-meta">
+                        <div class="item-meta-li author">
+                                <a data-user="11" target="_blank" href="https://www.opcchina.ai/?page_id=4025&user=11" class="avatar j-user-card">
+                    <img alt='是非我的头像' src='//www.opcchina.ai/wp-content/uploads/2018/07/f9352ad8b4a1ce8c616fe60de409e340.jpg' class='avatar avatar-60 photo' height='60' width='60' loading='lazy' decoding='async'/>                    <span>是非我</span>
+                </a>
+            </div>
+                                    <span class="item-meta-li date">2026年8月17日</span>
+            <div class="item-meta-right">
+                <span class="item-meta-li views" title="阅读数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-eye"></use></svg></i>359</span><a class="item-meta-li comments" href="https://www.opcchina.ai/?p=4275#comments" target="_blank" title="评论数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-comment"></use></svg></i>0</a><span class="item-meta-li stars" title="收藏数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-star"></use></svg></i>0</span><span class="item-meta-li likes" title="点赞数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-thumb-up"></use></svg></i>0</span>            </div>
+        </div>
+    </div>
+</li>
+                                                    <li class="item">
+        <div class="item-img">
+        <a class="item-img-inner" href="https://www.opcchina.ai/?p=4256" title="BrowserSkill 使用教程：让 Codex 操作你已登录的真实浏览器" target="_blank" rel="bookmark">
+            <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081703384198-480x300.png" class="attachment-default size-default wp-post-image" alt="BrowserSkill 使用教程：让 Codex 操作你已登录的真实浏览器" decoding="async" loading="lazy" />        </a>
+                <a class="item-category" href="https://www.opcchina.ai/?cat=6" target="_blank">Claude</a>
+            </div>
+        <div class="item-content">
+                <h3 class="item-title">
+            <a href="https://www.opcchina.ai/?p=4256" target="_blank" rel="bookmark">
+                                 BrowserSkill 使用教程：让 Codex 操作你已登录的真实浏览器            </a>
+        </h3>
+        <div class="item-excerpt">
+            <p>BrowserSkill 可以让 Codex 操作你已经登录的 Chrome 或 Edge，并在独立窗口中完成网页浏览、点击、输入和测试，不影响当前工作。本文将演示如何安装 BrowserSkill、连接浏览器扩展、启动操作会话，以及观察页面、借用标签和请求人工接管，帮助你安全地完成真实网页自动化任务。</p>
+        </div>
+        <div class="item-meta">
+                        <div class="item-meta-li author">
+                                <a data-user="11" target="_blank" href="https://www.opcchina.ai/?page_id=4025&user=11" class="avatar j-user-card">
+                    <img alt='是非我的头像' src='//www.opcchina.ai/wp-content/uploads/2018/07/f9352ad8b4a1ce8c616fe60de409e340.jpg' class='avatar avatar-60 photo' height='60' width='60' loading='lazy' decoding='async'/>                    <span>是非我</span>
+                </a>
+            </div>
+                                    <span class="item-meta-li date">2026年8月17日</span>
+            <div class="item-meta-right">
+                <span class="item-meta-li views" title="阅读数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-eye"></use></svg></i>656</span><a class="item-meta-li comments" href="https://www.opcchina.ai/?p=4256#comments" target="_blank" title="评论数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-comment"></use></svg></i>0</a><span class="item-meta-li stars" title="收藏数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-star"></use></svg></i>0</span><span class="item-meta-li likes" title="点赞数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-thumb-up"></use></svg></i>0</span>            </div>
+        </div>
+    </div>
+</li>
+                                                    <li class="item">
+        <div class="item-img">
+        <a class="item-img-inner" href="https://www.opcchina.ai/?p=4247" title="网页滚动视频使用教程：让 Codex 把网页自动录成 MP4" target="_blank" rel="bookmark">
+            <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081403450377-480x300.png" class="attachment-default size-default wp-post-image" alt="网页滚动视频使用教程：让 Codex 把网页自动录成 MP4" decoding="async" loading="lazy" />        </a>
+                <a class="item-category" href="https://www.opcchina.ai/?cat=6" target="_blank">Claude</a>
+            </div>
+        <div class="item-content">
+                <h3 class="item-title">
+            <a href="https://www.opcchina.ai/?p=4247" target="_blank" rel="bookmark">
+                                 网页滚动视频使用教程：让 Codex 把网页自动录成 MP4            </a>
+        </h3>
+        <div class="item-excerpt">
+            <p>网页滚动视频 Skill 可以把网页录制过程变成一套可复用的视频流程。你只需要用中文告诉 Codex 要打开哪个网页、如何停顿、滚动、点击和高亮，Codex 就会自动生成动作脚本，控制浏览器逐帧采集画面，并导出平稳的 MP4 视频。</p>
+<p>本文将从安装 Skill、检查运行环境、描述镜头，到生成视频、调整节奏和检查成片，完整演示如何把网页自动制作成专业的演示视频。</p>
+        </div>
+        <div class="item-meta">
+                        <div class="item-meta-li author">
+                                <a data-user="11" target="_blank" href="https://www.opcchina.ai/?page_id=4025&user=11" class="avatar j-user-card">
+                    <img alt='是非我的头像' src='//www.opcchina.ai/wp-content/uploads/2018/07/f9352ad8b4a1ce8c616fe60de409e340.jpg' class='avatar avatar-60 photo' height='60' width='60' loading='lazy' decoding='async'/>                    <span>是非我</span>
+                </a>
+            </div>
+                                    <span class="item-meta-li date">2026年8月14日</span>
+            <div class="item-meta-right">
+                <span class="item-meta-li views" title="阅读数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-eye"></use></svg></i>411</span><a class="item-meta-li comments" href="https://www.opcchina.ai/?p=4247#comments" target="_blank" title="评论数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-comment"></use></svg></i>0</a><span class="item-meta-li stars" title="收藏数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-star"></use></svg></i>0</span><span class="item-meta-li likes" title="点赞数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-thumb-up"></use></svg></i>0</span>            </div>
+        </div>
+    </div>
+</li>
+                                                    <li class="item">
+        <div class="item-img">
+        <a class="item-img-inner" href="https://www.opcchina.ai/?p=4237" title="不到两分钟！我靠一个Skill把短视频拆解做成了一门生意" target="_blank" rel="bookmark">
+            <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/fbc3ddc2-b851-4a2a-9404-94fef39f94b4-480x300.png" class="attachment-default size-default wp-post-image" alt="不到两分钟！我靠一个Skill把短视频拆解做成了一门生意" decoding="async" loading="lazy" />        </a>
+                <a class="item-category" href="https://www.opcchina.ai/?cat=6" target="_blank">Claude</a>
+            </div>
+        <div class="item-content">
+                <h3 class="item-title">
+            <a href="https://www.opcchina.ai/?p=4237" target="_blank" rel="bookmark">
+                                 不到两分钟！我靠一个Skill把短视频拆解做成了一门生意            </a>
+        </h3>
+        <div class="item-excerpt">
+            <p>先问你一个问题—— 你有没有过这种经历？ 刷到一条爆款视频，点赞10万+，评论区全是“讲得太好了”。你翻来覆去看了三遍，感觉确实挺厉害，但让你说具体厉害在哪，你憋了半天只能冒出一句——“就是……感觉挺牛的。” 轮到自己拍视频的时候，更痛苦。脚本写完了，自己读了两遍，觉得逻辑没问题、观点也挺好，信心满满地发了出去。 结果呢？播放量卡在500就不动了。评论区零条…</p>
+        </div>
+        <div class="item-meta">
+                        <div class="item-meta-li author">
+                                <a data-user="9" target="_blank" href="https://www.opcchina.ai/?page_id=4025&user=9" class="avatar j-user-card">
+                    <img alt='OPC刘嘉欣的头像' src='//www.opcchina.ai/wp-content/uploads/member/avatars/cce2e2d7fbdea1af.1781661213.png' class='avatar avatar-60 photo' height='60' width='60' loading='lazy' decoding='async'/>                    <span>OPC刘嘉欣</span>
+                </a>
+            </div>
+                                    <span class="item-meta-li date">2026年8月14日</span>
+            <div class="item-meta-right">
+                <span class="item-meta-li views" title="阅读数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-eye"></use></svg></i>396</span><a class="item-meta-li comments" href="https://www.opcchina.ai/?p=4237#comments" target="_blank" title="评论数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-comment"></use></svg></i>0</a><span class="item-meta-li stars" title="收藏数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-star"></use></svg></i>0</span><span class="item-meta-li likes" title="点赞数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-thumb-up"></use></svg></i>1</span>            </div>
+        </div>
+    </div>
+</li>
+                                                    <li class="item">
+        <div class="item-img">
+        <a class="item-img-inner" href="https://www.opcchina.ai/?p=4234" title="只有一张 PPT 截图？用 Codex 把它还原成可编辑文件" target="_blank" rel="bookmark">
+            <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081401553452-480x300.png" class="attachment-default size-default wp-post-image" alt="只有一张 PPT 截图？用 Codex 把它还原成可编辑文件" decoding="async" loading="lazy" />        </a>
+                <a class="item-category" href="https://www.opcchina.ai/?cat=6" target="_blank">Claude</a>
+            </div>
+        <div class="item-content">
+                <h3 class="item-title">
+            <a href="https://www.opcchina.ai/?p=4234" target="_blank" rel="bookmark">
+                                 只有一张 PPT 截图？用 Codex 把它还原成可编辑文件            </a>
+        </h3>
+        <div class="item-excerpt">
+            <p>只有一张 PPT 截图，也能还原成可编辑的 PowerPoint。本教程将演示如何使用 Image to Editable PPT Skill，自动拆解图片中的文字、图标与图形，并重新生成可单独修改的 PPT 页面，省去手动临摹和重新排版的时间。</p>
+        </div>
+        <div class="item-meta">
+                        <div class="item-meta-li author">
+                                <a data-user="11" target="_blank" href="https://www.opcchina.ai/?page_id=4025&user=11" class="avatar j-user-card">
+                    <img alt='是非我的头像' src='//www.opcchina.ai/wp-content/uploads/2018/07/f9352ad8b4a1ce8c616fe60de409e340.jpg' class='avatar avatar-60 photo' height='60' width='60' loading='lazy' decoding='async'/>                    <span>是非我</span>
+                </a>
+            </div>
+                                    <span class="item-meta-li date">2026年8月14日</span>
+            <div class="item-meta-right">
+                <span class="item-meta-li views" title="阅读数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-eye"></use></svg></i>560</span><a class="item-meta-li comments" href="https://www.opcchina.ai/?p=4234#comments" target="_blank" title="评论数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-comment"></use></svg></i>0</a><span class="item-meta-li stars" title="收藏数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-star"></use></svg></i>0</span><span class="item-meta-li likes" title="点赞数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-thumb-up"></use></svg></i>0</span>            </div>
+        </div>
+    </div>
+</li>
+                                                    <li class="item">
+        <div class="item-img">
+        <a class="item-img-inner" href="https://www.opcchina.ai/?p=4221" title="口播停顿太多？用 Auto-Editor Skill 让 Codex 自动完成第一遍粗剪" target="_blank" rel="bookmark">
+            <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081308573040-480x300.png" class="attachment-default size-default wp-post-image" alt="口播停顿太多？用 Auto-Editor Skill 让 Codex 自动完成第一遍粗剪" decoding="async" loading="lazy" />        </a>
+                <a class="item-category" href="https://www.opcchina.ai/?cat=6" target="_blank">Claude</a>
+            </div>
+        <div class="item-content">
+                <h3 class="item-title">
+            <a href="https://www.opcchina.ai/?p=4221" target="_blank" rel="bookmark">
+                                 口播停顿太多？用 Auto-Editor Skill 让 Codex 自动完成第一遍粗剪            </a>
+        </h3>
+        <div class="item-excerpt">
+            <p>录完口播，还在手动寻找在手动寻找停顿、逐段删除空白？本教程将介绍如何在 Codex停顿、逐段删除空白？本教程将介绍 中如何在 Codex 中安装并使用 Auto-Editor Skill：放入口播原片，说清剪辑要求，即可自动识别静安装并使用 Auto-Editor Skill：放入口播原片，说清剪辑要求，即可自动识别静音、预览音、预览删除删除结果并生成粗剪版，还能通过余量和声音阈值调整剪结果并生成粗剪版，还能通过辑力度，适合工具教程、知识口播和课程视频的第一遍粗剪。</p>
+        </div>
+        <div class="item-meta">
+                        <div class="item-meta-li author">
+                                <a data-user="11" target="_blank" href="https://www.opcchina.ai/?page_id=4025&user=11" class="avatar j-user-card">
+                    <img alt='是非我的头像' src='//www.opcchina.ai/wp-content/uploads/2018/07/f9352ad8b4a1ce8c616fe60de409e340.jpg' class='avatar avatar-60 photo' height='60' width='60' loading='lazy' decoding='async'/>                    <span>是非我</span>
+                </a>
+            </div>
+                                    <span class="item-meta-li date">2026年8月13日</span>
+            <div class="item-meta-right">
+                <span class="item-meta-li views" title="阅读数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-eye"></use></svg></i>450</span><a class="item-meta-li comments" href="https://www.opcchina.ai/?p=4221#comments" target="_blank" title="评论数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-comment"></use></svg></i>0</a><span class="item-meta-li stars" title="收藏数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-star"></use></svg></i>0</span><span class="item-meta-li likes" title="点赞数"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-thumb-up"></use></svg></i>0</span>            </div>
+        </div>
+    </div>
+</li>
+                                            </ul>
+                                            <div class="load-more-wrap">
+                            <div class="wpcom-btn load-more j-load-more" data-exclude="">点击查看更多</div>
+                        </div>
+                                    </div>
+
+                                    <div class="tab-wrap"><ul class="post-loop post-loop-default"></ul></div>
+                                    <div class="tab-wrap"><ul class="post-loop post-loop-default"></ul></div>
+                                    <div class="tab-wrap"><ul class="post-loop post-loop-default"></ul></div>
+                                    <div class="tab-wrap"><ul class="post-loop post-loop-default"></ul></div>
+                                    <div class="tab-wrap"><ul class="post-loop post-loop-default"></ul></div>
+                            </section>
+        </main>
+            <aside class="sidebar">
+        <div class="widget widget_image_myimg">                <img src="https://file.liyuechun.com/bca1305d-cfda-4965-984d-d2f3f885166e.png" alt="" width="1145" height="1374" decoding="async" loading="lazy">            </div><div class="widget widget_qapress_new"><a class="q-btn-new" href="https://www.opcchina.ai/?page_id=4072">发布新帖</a></div><div class="widget widget_kuaixun"><h3 class="widget-title">快讯<a class="widget-title-more" href="https://www.opcchina.ai/?page_id=796" target="_blank">更多<i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-arrow-right"></use></svg></i></a></h3>            <ul class="widget-kx-list">
+                            <li class="kx-item" data-id="">
+                    <a class="kx-title" href="javascript:;"></a>
+                    <div class="kx-meta clearfix" data-url="https://www.opcchina.ai/?kuaixun=4157">
+                        <span class="kx-time">2026年6月14日</span>
+                        <div class="kx-share">
+                            <span>分享到: </span>
+                                                            <a class="share-icon wechat" target="_blank" data-share="wechat" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-wechat"></use></svg></i>                                </a>
+                                                            <a class="share-icon weibo" target="_blank" data-share="weibo" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-weibo"></use></svg></i>                                </a>
+                                                            <a class="share-icon qq" target="_blank" data-share="qq" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-qq"></use></svg></i>                                </a>
+                                                            <a class="share-icon qzone" target="_blank" data-share="qzone" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-qzone"></use></svg></i>                                </a>
+                                                        <span class="share-icon copy"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-copy"></use></svg></i></span>
+                        </div>
+                    </div>
+                    <div class="kx-content">
+                        <p>6月14日，由OPC中国与海南师范大学国家大学科技园联合主办的首届“创梦杯”OPC创新创业大赛颁奖仪式圆满举行。</p>
+<p>本次大赛以“AI智能体驱动，OPC创业新未来”为主题，聚焦AI智能体、一人公司、创新创业等前沿方向，面向高校青年与社会创业者征集优质项目，鼓励参赛者借助AI智能体，探索从“个人能力”到“项目落地”、从“创意想法”到“商业闭环”的创业新路径。</p>
+<p>颁奖现场，多个优秀项目依次揭晓。其中，特等奖奖金10万元，一等奖奖金3万元，二等奖奖金1万元，三等奖奖金4000元。奖金的设置不仅体现了大赛对优秀OPC创业项目的认可，也展现了OPC中国与海南师范大学国家大学科技园对AI时代创新创业人才和项目孵化的支持。</p>
+<p>作为本次大赛联合主办方，OPC中国将持续发挥品牌与生态优势，联合高校、园区、企业和产业资源，推动OPC创新创业人才培养、项目孵化与产业落地，帮助更多年轻人和创业者借助AI智能体，打造属于自己的“一人公司”。</p>
+<p>未来，OPC中国将继续以赛事为牵引、以孵化为抓手、以生态为支撑，助力更多OPC创业项目从校园走向市场、从个人走向产业，为AI时代创新创业注入新动能。</p>
+                                                    <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/06/2026061412073363-480x300.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="口播停顿太多？用 Auto-Editor Skill 让 Codex 自动完成第一遍粗剪" decoding="async" loading="lazy" />                                            </div>
+                </li>
+                            <li class="kx-item" data-id="">
+                    <a class="kx-title" href="javascript:;">由OPC中国联合主办的首届“创梦杯”OPC 创新创业大赛网审结果公示</a>
+                    <div class="kx-meta clearfix" data-url="https://www.opcchina.ai/?kuaixun=%e7%94%b1opc%e4%b8%ad%e5%9b%bd%e8%81%94%e5%90%88%e4%b8%bb%e5%8a%9e%e7%9a%84%e9%a6%96%e5%b1%8a%e5%88%9b%e6%a2%a6%e6%9d%afopc-%e5%88%9b%e6%96%b0%e5%88%9b%e4%b8%9a%e5%a4%a7%e8%b5%9b">
+                        <span class="kx-time">2026年6月13日</span>
+                        <div class="kx-share">
+                            <span>分享到: </span>
+                                                            <a class="share-icon wechat" target="_blank" data-share="wechat" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-wechat"></use></svg></i>                                </a>
+                                                            <a class="share-icon weibo" target="_blank" data-share="weibo" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-weibo"></use></svg></i>                                </a>
+                                                            <a class="share-icon qq" target="_blank" data-share="qq" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-qq"></use></svg></i>                                </a>
+                                                            <a class="share-icon qzone" target="_blank" data-share="qzone" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-qzone"></use></svg></i>                                </a>
+                                                        <span class="share-icon copy"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-copy"></use></svg></i></span>
+                        </div>
+                    </div>
+                    <div class="kx-content">
+                        <p>首届“创梦杯”OPC创新创业大赛网审结果6月13日正式公示。本届大赛由海口国家高新区、海南师范大学国家大学科技园、OPC中国共同主办，海南师范大学科技园管理有限公司、海口国家高新区孵化器运营管理有限公司、海南具身智能体教育科技有限公司承办，并获海南省教育厅、科学技术厅、人力资源和社会保障厅等多家单位支持。<br />
+大赛自启动以来反响热烈，共收到有效报名项目169个。经专家网络评审，从学生组、社会组两个赛道中各评选出30个晋级项目，合计60个项目晋级线下路演环节。晋级项目涵盖AI医疗、跨境电商、智能制造、文旅非遗、健康养老、教育科研等多个领域，充分展现了海南自贸港背景下创新创业的蓬勃活力与多元方向。<br />
+组委会特别说明，网络评审打分仅代表专家综合意见，未进入路演的项目同样优秀，比赛中没有“失败者”。对有意入驻OPC中国创梦空间孵化的项目，将提供创业扶持资金、技术对接、办公场地、政策申报及投融资对接等一站式支持。后续工作人员将于6月12日至13日联系晋级项目负责人，对接路演相关事宜。</p>
+                                            </div>
+                </li>
+                            <li class="kx-item" data-id="">
+                    <a class="kx-title" href="javascript:;">【快讯】浙江财经大学授牌杭州具身智能体教育科技有限公司“大学生校外实践教学基地”</a>
+                    <div class="kx-meta clearfix" data-url="https://www.opcchina.ai/?kuaixun=%e3%80%90%e5%bf%ab%e8%ae%af%e3%80%91%e6%b5%99%e6%b1%9f%e8%b4%a2%e7%bb%8f%e5%a4%a7%e5%ad%a6%e6%8e%88%e7%89%8c%e6%9d%ad%e5%b7%9e%e5%85%b7%e8%ba%ab%e6%99%ba%e8%83%bd%e4%bd%93%e6%95%99%e8%82%b2%e7%a7%91">
+                        <span class="kx-time">2026年6月10日</span>
+                        <div class="kx-share">
+                            <span>分享到: </span>
+                                                            <a class="share-icon wechat" target="_blank" data-share="wechat" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-wechat"></use></svg></i>                                </a>
+                                                            <a class="share-icon weibo" target="_blank" data-share="weibo" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-weibo"></use></svg></i>                                </a>
+                                                            <a class="share-icon qq" target="_blank" data-share="qq" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-qq"></use></svg></i>                                </a>
+                                                            <a class="share-icon qzone" target="_blank" data-share="qzone" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-qzone"></use></svg></i>                                </a>
+                                                        <span class="share-icon copy"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-copy"></use></svg></i></span>
+                        </div>
+                    </div>
+                    <div class="kx-content">
+                        <p>6月10日下午，浙江财经大学副校长、党委委员申屠莉为杭州具身智能体教育科技有限公司授牌“大学生校外实践教学基地”。浙江财经大学党委书记魏江在现场强调：“校企合作不再是形式主义，双向奔赴才有意义。”</p>
+<p>此次授牌标志着双方在产教融合、实践教学、AI智能体人才培养等方面迈出重要一步。未来，杭州具身智能体教育科技有限公司将以AI智能体等前沿科技为纽带，推动产业一线技术走进高校课堂，助力高校学生在真实产业场景中提升实践能力、创新能力与就业竞争力。</p>
+<p>产教融合向“新”而行，校企携手双向奔赴。<br />
+我们将与浙江财经大学共同探索“财经智慧+硬核科技”的协同育人新模式，把课堂和专业建在浙江大地上，共筑AI智能体实践教学新生态，赋能新质生产力发展！🤝🏫</p>
+                                                    <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/06/IMG_8179-scaled-480x300.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="口播停顿太多？用 Auto-Editor Skill 让 Codex 自动完成第一遍粗剪" decoding="async" loading="lazy" />                                            </div>
+                </li>
+                            <li class="kx-item" data-id="">
+                    <a class="kx-title" href="javascript:;">【快讯】湖北师范大学招生与就业工作处姜少平处长一行莅临智能体来了考察交流</a>
+                    <div class="kx-meta clearfix" data-url="https://www.opcchina.ai/?kuaixun=%e3%80%90%e5%bf%ab%e8%ae%af%e3%80%91%e6%b9%96%e5%8c%97%e5%b8%88%e8%8c%83%e5%a4%a7%e5%ad%a6%e6%8b%9b%e7%94%9f%e4%b8%8e%e5%b0%b1%e4%b8%9a%e5%b7%a5%e4%bd%9c%e5%a4%84%e5%a7%9c%e5%b0%91%e5%b9%b3%e5%a4%84">
+                        <span class="kx-time">2026年6月10日</span>
+                        <div class="kx-share">
+                            <span>分享到: </span>
+                                                            <a class="share-icon wechat" target="_blank" data-share="wechat" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-wechat"></use></svg></i>                                </a>
+                                                            <a class="share-icon weibo" target="_blank" data-share="weibo" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-weibo"></use></svg></i>                                </a>
+                                                            <a class="share-icon qq" target="_blank" data-share="qq" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-qq"></use></svg></i>                                </a>
+                                                            <a class="share-icon qzone" target="_blank" data-share="qzone" data-share-callback="kx_share" rel="noopener">
+                                    <i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-qzone"></use></svg></i>                                </a>
+                                                        <span class="share-icon copy"><i class="wpcom-icon wi"><svg aria-hidden="true"><use xlink:href="#wi-copy"></use></svg></i></span>
+                        </div>
+                    </div>
+                    <div class="kx-content">
+                        <p>6月10日，湖北师范大学招生与就业工作处姜少平处长一行五位领导莅临智能体来了，围绕共建OPC产业学院、共育AI智能体应用型人才等方向开展深入交流。</p>
+<p>双方就“把产业一线技术带进校园、让高校优质人才对接产业需求”达成高度共识。未来，智能体来了将持续发挥AI智能体产业教育与项目实战优势，与高校携手推进产教融合、校企协同育人，共同打造面向人工智能时代的人才培养新模式。</p>
+<p>产教携手，双向赋能。<br />
+共建OPC产业学院，共育AI智能体人才，一起做大智能体人才蓄水池！💪</p>
+                                                    <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/06/f8e07dcb22f7ade15885b22eb34240-480x300.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="口播停顿太多？用 Auto-Editor Skill 让 Codex 自动完成第一遍粗剪" decoding="async" loading="lazy" />                                            </div>
+                </li>
+            </ul></div><div class="widget widget_post_tabs">
+        <div class="post-tabs-hd">
+                        <div class="post-tabs-hd-inner post-tabs-4">
+                                        <div class="post-tabs-item j-post-tab active">
+                            <i class="wpcom-icon ri-fire-fill"></i>热门                        </div>
+                                        <div class="post-tabs-item j-post-tab">
+                            <i class="wpcom-icon ri-chat-1-fill"></i>热评                        </div>
+                                        <div class="post-tabs-item j-post-tab">
+                            <i class="wpcom-icon ri-time-fill"></i>最新                        </div>
+                                        <div class="post-tabs-item j-post-tab">
+                            <i class="wpcom-icon ri-shuffle-fill"></i>随机                        </div>
+                            </div>
+        </div>
+                        <ul class="post-tabs-list j-post-tab-wrap active">
+                            <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4134" title="图解《宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见》">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/06/6c8c4865176c44b99f7fac987fc5e1f1-480x300.jpg" class="attachment-default size-default wp-post-image" alt="图解《宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见》" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4134" title="图解《宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见》">图解《宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见》</a></p>
+                <p class="item-date">2026年5月6日</p>
+            </div>
+        </li>
+        <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4150" title="由OPC中国联合主办的首届“创梦杯”OPC 创新创业大赛网审结果公示">由OPC中国联合主办的首届“创梦杯”OPC 创新创业大赛网审结果公示</a></p>
+                <p class="item-date">2026年6月13日</p>
+            </div>
+        </li>
+        <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4129" title="宁波发布“人工智能OPC”征集令">宁波发布“人工智能OPC”征集令</a></p>
+                <p class="item-date">2026年4月20日</p>
+            </div>
+        </li>
+        <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4132" title="宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见（甬政办发〔2026〕7号）">宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见（甬政办发〔2026〕7号）</a></p>
+                <p class="item-date">2026年5月12日</p>
+            </div>
+        </li>
+        <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4147" title="《海南省支持人工智能OPC创新发展的若干措施》发布">《海南省支持人工智能OPC创新发展的若干措施》发布</a></p>
+                <p class="item-date">2026年5月20日</p>
+            </div>
+        </li>
+        <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4145" title="全省首推OPC区级专项政策！上城召开打造“OPC创业第一城”新闻发布会">全省首推OPC区级专项政策！上城召开打造“OPC创业第一城”新闻发布会</a></p>
+                <p class="item-date">2026年3月11日</p>
+            </div>
+        </li>
+                </ul>
+                        <ul class="post-tabs-list j-post-tab-wrap">
+                            <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4145" title="全省首推OPC区级专项政策！上城召开打造“OPC创业第一城”新闻发布会">全省首推OPC区级专项政策！上城召开打造“OPC创业第一城”新闻发布会</a></p>
+                <p class="item-date">2026年3月11日</p>
+            </div>
+        </li>
+        <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4129" title="宁波发布“人工智能OPC”征集令">宁波发布“人工智能OPC”征集令</a></p>
+                <p class="item-date">2026年4月20日</p>
+            </div>
+        </li>
+        <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4142" title="全国首站！OPC青创支持计划落地上城">全国首站！OPC青创支持计划落地上城</a></p>
+                <p class="item-date">2026年4月27日</p>
+            </div>
+        </li>
+        <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4134" title="图解《宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见》">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/06/6c8c4865176c44b99f7fac987fc5e1f1-480x300.jpg" class="attachment-default size-default wp-post-image" alt="图解《宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见》" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4134" title="图解《宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见》">图解《宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见》</a></p>
+                <p class="item-date">2026年5月6日</p>
+            </div>
+        </li>
+        <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4132" title="宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见（甬政办发〔2026〕7号）">宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见（甬政办发〔2026〕7号）</a></p>
+                <p class="item-date">2026年5月12日</p>
+            </div>
+        </li>
+        <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4147" title="《海南省支持人工智能OPC创新发展的若干措施》发布">《海南省支持人工智能OPC创新发展的若干措施》发布</a></p>
+                <p class="item-date">2026年5月20日</p>
+            </div>
+        </li>
+                </ul>
+                        <ul class="post-tabs-list j-post-tab-wrap">
+                            <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4329" title="Watch Skill 使用教程：让 Codex 看懂视频和录屏">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081903254550-480x300.png" class="attachment-default size-default wp-post-image" alt="Watch Skill 使用教程：让 Codex 看懂视频和录屏" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4329" title="Watch Skill 使用教程：让 Codex 看懂视频和录屏">Watch Skill 使用教程：让 Codex 看懂视频和录屏</a></p>
+                <p class="item-date">2026年8月19日</p>
+            </div>
+        </li>
+        <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4317" title="Skill Deck 使用教程：把散落的 AI 技能集中管理">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081903144032-480x300.png" class="attachment-default size-default wp-post-image" alt="Skill Deck 使用教程：把散落的 AI 技能集中管理" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4317" title="Skill Deck 使用教程：把散落的 AI 技能集中管理">Skill Deck 使用教程：把散落的 AI 技能集中管理</a></p>
+                <p class="item-date">2026年8月19日</p>
+            </div>
+        </li>
+        <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4304" title="Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081807132089-480x300.png" class="attachment-default size-default wp-post-image" alt="Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4304" title="Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件">Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件</a></p>
+                <p class="item-date">2026年8月18日</p>
+            </div>
+        </li>
+        <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4289" title="OpenMagic 使用教程：直接选中网页，让人工智能修改源码">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081802174077-480x300.png" class="attachment-default size-default wp-post-image" alt="OpenMagic 使用教程：直接选中网页，让人工智能修改源码" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4289" title="OpenMagic 使用教程：直接选中网页，让人工智能修改源码">OpenMagic 使用教程：直接选中网页，让人工智能修改源码</a></p>
+                <p class="item-date">2026年8月18日</p>
+            </div>
+        </li>
+        <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4275" title="Plannotator 使用教程：在 Codex 执行前，先把计划审清楚">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081706130074-480x300.png" class="attachment-default size-default wp-post-image" alt="Plannotator 使用教程：在 Codex 执行前，先把计划审清楚" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4275" title="Plannotator 使用教程：在 Codex 执行前，先把计划审清楚">Plannotator 使用教程：在 Codex 执行前，先把计划审清楚</a></p>
+                <p class="item-date">2026年8月17日</p>
+            </div>
+        </li>
+        <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4256" title="BrowserSkill 使用教程：让 Codex 操作你已登录的真实浏览器">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081703384198-480x300.png" class="attachment-default size-default wp-post-image" alt="BrowserSkill 使用教程：让 Codex 操作你已登录的真实浏览器" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4256" title="BrowserSkill 使用教程：让 Codex 操作你已登录的真实浏览器">BrowserSkill 使用教程：让 Codex 操作你已登录的真实浏览器</a></p>
+                <p class="item-date">2026年8月17日</p>
+            </div>
+        </li>
+                </ul>
+                        <ul class="post-tabs-list j-post-tab-wrap">
+                            <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4147" title="《海南省支持人工智能OPC创新发展的若干措施》发布">《海南省支持人工智能OPC创新发展的若干措施》发布</a></p>
+                <p class="item-date">2026年5月20日</p>
+            </div>
+        </li>
+        <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4221" title="口播停顿太多？用 Auto-Editor Skill 让 Codex 自动完成第一遍粗剪">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081308573040-480x300.png" class="attachment-default size-default wp-post-image" alt="口播停顿太多？用 Auto-Editor Skill 让 Codex 自动完成第一遍粗剪" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4221" title="口播停顿太多？用 Auto-Editor Skill 让 Codex 自动完成第一遍粗剪">口播停顿太多？用 Auto-Editor Skill 让 Codex 自动完成第一遍粗剪</a></p>
+                <p class="item-date">2026年8月13日</p>
+            </div>
+        </li>
+        <li class="item">
+                        <div class="item-content item-no-thumb">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4132" title="宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见（甬政办发〔2026〕7号）">宁波市人民政府办公厅关于支持人工智能OPC创新创业发展的若干意见（甬政办发〔2026〕7号）</a></p>
+                <p class="item-date">2026年5月12日</p>
+            </div>
+        </li>
+        <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4304" title="Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081807132089-480x300.png" class="attachment-default size-default wp-post-image" alt="Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4304" title="Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件">Repomix 使用教程：把代码仓库打包成 AI 能读懂的一个文件</a></p>
+                <p class="item-date">2026年8月18日</p>
+            </div>
+        </li>
+        <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4181" title="给 Codex 装一个 AI 无限画布：Cowart 安装与使用教程">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/8a66e2f646c50338831a3e9f4071b28c-480x300.png" class="attachment-default size-default wp-post-image" alt="给 Codex 装一个 AI 无限画布：Cowart 安装与使用教程" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4181" title="给 Codex 装一个 AI 无限画布：Cowart 安装与使用教程">给 Codex 装一个 AI 无限画布：Cowart 安装与使用教程</a></p>
+                <p class="item-date">2026年8月12日</p>
+            </div>
+        </li>
+        <li class="item">
+                            <div class="item-img">
+                    <a class="item-img-inner" href="https://www.opcchina.ai/?p=4329" title="Watch Skill 使用教程：让 Codex 看懂视频和录屏">
+                        <img width="480" height="300" src="https://www.opcchina.ai/wp-content/uploads/2026/08/2026081903254550-480x300.png" class="attachment-default size-default wp-post-image" alt="Watch Skill 使用教程：让 Codex 看懂视频和录屏" decoding="async" loading="lazy" />                    </a>
+                </div>
+                        <div class="item-content">
+                <p class="item-title"><a href="https://www.opcchina.ai/?p=4329" title="Watch Skill 使用教程：让 Codex 看懂视频和录屏">Watch Skill 使用教程：让 Codex 看懂视频和录屏</a></p>
+                <p class="item-date">2026年8月19日</p>
+            </div>
+        </li>
+                </ul>
+        </div><div class="widget widget_lastest_products"><h3 class="widget-title">产品设计</h3></div>    </aside>
+    </div>
+
+    <div class="container hidden-xs j-partner">
+        <div class="sec-panel">
+                                <div class="sec-panel-head">
+                        <h2><span>合作伙伴</span> <small>高校和企业部分合作伙伴</small> <a  class="more">联系我们</a></h2>
+                    </div>
+                                <div class="sec-panel-body">
+                    <ul class="list list-partner" style="--list-cols: 7">
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308214518.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308214440.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308214329.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308214388.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308214243.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308214171.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308214058.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/deepseek.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308265118.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308265063.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308265014.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308264856.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308264770.png" alt="" decoding="async" loading="lazy">                            </li>
+                                                    <li class="list-partner-item">
+                                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060308264712.png" alt="" decoding="async" loading="lazy">                            </li>
+                                            </ul>
+                </div>
+                    </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-col-wrap footer-with-logo-icon">
+                        <div class="footer-col footer-col-logo">
+                <img src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060213464370.png" alt="OPC中国" decoding="async" loading="lazy">            </div>
+                        <div class="footer-col footer-col-copy">
+                <ul class="footer-nav hidden-xs"><li id="menu-item-152" class="menu-item menu-item-152"><a href="https://www.opcchina.ai/?page_id=4024">联系我们</a></li>
+<li id="menu-item-130" class="menu-item menu-item-130"><a href="https://www.opcchina.ai/?cat=7">即梦AI</a></li>
+<li id="menu-item-157" class="menu-item menu-item-157"><a href="https://www.opcchina.ai/?page_id=155">Skills专题</a></li>
+<li id="menu-item-129" class="menu-item menu-item-129"><a href="https://www.opcchina.ai/?page_id=4028">专栏作家</a></li>
+</ul>                <div class="copyright">
+                    <p>Copyright © 2026 OPC中国 版权所有 Powered by <a href="https://www.agentcome.net" target="_blank" rel="noopener noreferrer">杭州具身智能体教育科技有限公司</a></p>
+                </div>
+            </div>
+                        <div class="footer-col footer-col-sns">
+                <div class="footer-sns">
+                                                <a class="sns-wx" href="javascript:;" aria-label="icon">
+                                <i class="wpcom-icon fa fa-wechat sns-icon"></i>                                <span style="background-image:url('//www.opcchina.ai/wp-content/uploads/2026/06/qrcode_for_gh_194be1ee8d6e_860-1.jpg');"></span>                            </a>
+                                                    <a class="sns-wx" href="javascript:;" aria-label="icon">
+                                <i class="wpcom-icon ri-wechat-channels-line sns-icon"></i>                                <span style="background-image:url('//www.opcchina.ai/wp-content/uploads/2026/06/ScreenShot_2026-06-03_164826_291.png');"></span>                            </a>
+                                                    <a href="https://github.com/opcchina" aria-label="icon">
+                                <i class="wpcom-icon fa fa-github sns-icon"></i>                                                            </a>
+                                                    <a href="https://www.zhihu.com/people/opcchina" aria-label="icon">
+                                <i class="wpcom-icon ri-zhihu-fill sns-icon"></i>                                                            </a>
+                                        </div>
+            </div>
+                    </div>
+    </div>
+</footer>
+            <div class="action action-style-0 action-color-1 action-pos-1" style="bottom:120px;">
+                                                <div class="action-item">
+                                    <i class="wpcom-icon fa fa-comments action-item-icon"></i>                                                                        <div class="action-item-inner action-item-type-2">
+                                        <h3 style="text-align: center;">联系我们</h3>
+<h5 style="text-align: center;"><span style="color: #2d6ded; font-size: 24px; line-height: 2;"><strong>135-1682-0181</strong></span></h5>
+<p>客服微信：OPC_China</p>
+<p>视频号：OPC中国、OPCChina.ai</p>
+<p>微信公众号：OPCChina</p>
+<p>工作时间：周一至周五，9:30-18:30，节假日休息</p>
+                                    </div>
+                                </div>
+                                                                                    <div class="action-item">
+                                    <i class="wpcom-icon fa fa-wechat action-item-icon"></i>                                                                        <div class="action-item-inner action-item-type-1">
+                                        <img class="action-item-img" src="//www.opcchina.ai/wp-content/uploads/2026/06/2026060415082280.png" alt="关注微信" decoding="async" loading="lazy">                                    </div>
+                                </div>
+                                                                                        <div class="action-item j-share">
+                        <i class="wpcom-icon wi action-item-icon"><svg aria-hidden="true"><use xlink:href="#wi-share"></use></svg></i>                                            </div>
+                                    <div class="action-item gotop j-top">
+                        <i class="wpcom-icon wi action-item-icon"><svg aria-hidden="true"><use xlink:href="#wi-arrow-up-2"></use></svg></i>                                            </div>
+                            </div>
+          <script id="module-highlight-js"> (function($) { $(function() { $("pre code").each(function(i, e) { var thisclass = $(this).attr("class"); if (typeof thisclass !== "undefined") { if ( thisclass.indexOf("katex") === -1 && thisclass.indexOf("mermaid") === -1 && thisclass.indexOf("seq") === -1 && thisclass.indexOf("flow") === -1 ) { if (typeof hljs !== "undefined") { $(this).closest("pre").addClass("hljs"); hljs.highlightBlock(e); } else { console.log("%c WP Githuber MD %c You have enabled highlight.js modules already, but you have to update this post to take effect, identifying which file should be loaded.\nGithuber MD does not load a whole-fat-packed file for every post.", "background: #222; color: #bada55", "color: #637338"); } } } }); }); })(jQuery); </script>  <script id="module-clipboard"> (function($) { $(function() { var pre = document.getElementsByTagName("pre"); var pasteContent = document.getElementById("paste-content"); var hasLanguage = false; for (var i = 0; i < pre.length; i++) { var codeClass = pre[i].children[0].className; var isLanguage = codeClass.indexOf("language-"); var excludedCodeClassNames = [ "language-katex", "language-seq", "language-sequence", "language-flow", "language-flowchart", "language-mermaid", ]; var isExcluded = excludedCodeClassNames.indexOf(codeClass); if (isExcluded !== -1) { isLanguage = -1; } if (isLanguage !== -1) { var current_pre = pre[i]; var parent = current_pre.parentNode; var div = document.createElement("div"); div.style['position'] = 'relative'; parent.replaceChild(div, current_pre); var button = document.createElement("button"); button.className = "copy-button"; button.textContent = "Copy"; div.appendChild(current_pre); div.appendChild(button); hasLanguage = true; } }; if (hasLanguage) { var copyCode = new ClipboardJS(".copy-button", { target: function(trigger) { return trigger.previousElementSibling; } }); copyCode.on("success", function(event) { event.clearSelection(); event.trigger.textContent = "Copied"; window.setTimeout(function() { event.trigger.textContent = "Copy"; }, 2000); }); } }); })(jQuery); </script> <script id="main-js-extra">
+var _wpcom_js = {"webp":"","ajaxurl":"https://www.opcchina.ai/wp-admin/admin-ajax.php","theme_url":"https://www.opcchina.ai/wp-content/themes/justnews","slide_speed":"5000","is_admin":"0","lang":"zh_CN","js_lang":{"share_to":"\u5206\u4eab\u5230:","copy_done":"\u590d\u5236\u6210\u529f\uff01","copy_fail":"\u6d4f\u89c8\u5668\u6682\u4e0d\u652f\u6301\u62f7\u8d1d\u529f\u80fd","confirm":"\u786e\u5b9a","qrcode":"\u4e8c\u7ef4\u7801","page_loaded":"\u5df2\u7ecf\u5230\u5e95\u4e86","no_content":"\u6682\u65e0\u5185\u5bb9","load_failed":"\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","expand_more":"\u9605\u8bfb\u5269\u4f59 %s"},"share":"1","share_items":{"weibo":{"title":"\u5fae\u535a","icon":"weibo"},"wechat":{"title":"\u5fae\u4fe1","icon":"wechat"}},"user_card_height":"356","poster":{"notice":"\u8bf7\u300c\u70b9\u51fb\u4e0b\u8f7d\u300d\u6216\u300c\u957f\u6309\u4fdd\u5b58\u56fe\u7247\u300d\u540e\u5206\u4eab\u7ed9\u66f4\u591a\u597d\u53cb","generating":"\u6b63\u5728\u751f\u6210\u6d77\u62a5\u56fe\u7247...","failed":"\u6d77\u62a5\u56fe\u7247\u751f\u6210\u5931\u8d25"},"top_news":{"content":"OPC\u4e2d\u56fd\uff0c\u201c\u667a\u80fd\u4f53\u6765\u4e86\u201d\u65d7\u4e0bOPC\u5f00\u6e90\u5171\u521b\u793e\u533a\uff01","classes":"top-news","background":"background-color: #FF6900;background-image: linear-gradient(90deg, #FF6900 0%, #FF6900 100%);"},"video_height":"484","fixed_sidebar":"1","dark_style":"0","font_url":"//www.opcchina.ai/wp-content/uploads/wpcom/fonts.f5a8b036905c9579.css","follow_btn":"\u003Ci class=\"wpcom-icon wi\"\u003E\u003Csvg aria-hidden=\"true\"\u003E\u003Cuse xlink:href=\"#wi-add\"\u003E\u003C/use\u003E\u003C/svg\u003E\u003C/i\u003E\u5173\u6ce8","followed_btn":"\u5df2\u5173\u6ce8","user_card":"1"};
+//# sourceURL=main-js-extra
+</script>
+<script id="main-js" src="https://www.opcchina.ai/wp-content/themes/justnews/js/main.js?ver=6.23.1"></script>
+<script id="wpcom-icons-js" src="https://www.opcchina.ai/wp-content/themes/justnews/themer/assets/js/icons-2.8.9.js?ver=2.8.9"></script>
+<script id="wpcom-member-js-extra">
+var _wpmx_js = {"ajaxurl":"https://www.opcchina.ai/wp-admin/admin-ajax.php","plugin_url":"https://www.opcchina.ai/wp-content/plugins/wpcom-member/","ver":"1.7.27","max_upload_size":"52428800","js_lang":{"login_desc":"\u60a8\u8fd8\u672a\u767b\u5f55\uff0c\u8bf7\u767b\u5f55\u540e\u518d\u8fdb\u884c\u76f8\u5173\u64cd\u4f5c\uff01","login_title":"\u8bf7\u767b\u5f55","login_btn":"\u767b\u5f55","reg_btn":"\u6ce8\u518c"},"login_url":"/?modal-type=login","register_url":"https://www.opcchina.ai/?page_id=12&modal-type=register","errors":{"require":"\u4e0d\u80fd\u4e3a\u7a7a","email":"\u8bf7\u8f93\u5165\u6b63\u786e\u7684\u7535\u5b50\u90ae\u7bb1","pls_enter":"\u8bf7\u8f93\u5165","password":"\u5bc6\u7801\u5fc5\u987b\u4e3a6~32\u4e2a\u5b57\u7b26","passcheck":"\u4e24\u6b21\u5bc6\u7801\u8f93\u5165\u4e0d\u4e00\u81f4","phone":"\u8bf7\u8f93\u5165\u6b63\u786e\u7684\u624b\u673a\u53f7\u7801","terms":"\u8bf7\u9605\u8bfb\u5e76\u540c\u610f\u6761\u6b3e","sms_code":"\u9a8c\u8bc1\u7801\u9519\u8bef","captcha_verify":"\u8bf7\u70b9\u51fb\u6309\u94ae\u8fdb\u884c\u9a8c\u8bc1","captcha_fail":"\u4eba\u673a\u9a8c\u8bc1\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5","nonce":"\u968f\u673a\u6570\u6821\u9a8c\u5931\u8d25","req_error":"\u8bf7\u6c42\u5931\u8d25"}};
+//# sourceURL=wpcom-member-js-extra
+</script>
+<script id="wpcom-member-js" src="https://www.opcchina.ai/wp-content/plugins/wpcom-member/js/index.js?ver=1.7.27"></script>
+<script id="clipboard-js" src="https://www.opcchina.ai/wp-includes/js/clipboard.min.js?ver=2.0.11"></script>
+<script id="QAPress-js-js-extra">
+var QAPress_js = {"ajaxurl":"https://www.opcchina.ai/wp-admin/admin-ajax.php","ajaxloading":"https://www.opcchina.ai/wp-content/plugins/qapress/images/loading.gif","max_upload_size":"2097152","compress_img_size":"1920","lang":{"delete":"\u5220\u9664","nocomment":"\u6682\u65e0\u56de\u590d","nocomment2":"\u6682\u65e0\u8bc4\u8bba","addcomment":"\u6211\u6765\u56de\u590d","submit":"\u53d1\u5e03","loading":"\u6b63\u5728\u52a0\u8f7d...","error1":"\u53c2\u6570\u9519\u8bef\uff0c\u8bf7\u91cd\u8bd5","error2":"\u8bf7\u6c42\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","confirm":"\u5220\u9664\u64cd\u4f5c\u65e0\u6cd5\u6062\u590d\uff0c\u5e76\u5c06\u540c\u65f6\u5220\u9664\u5f53\u524d\u56de\u590d\u7684\u8bc4\u8bba\u4fe1\u606f\uff0c\u60a8\u786e\u5b9a\u8981\u5220\u9664\u5417\uff1f","confirm2":"\u5220\u9664\u64cd\u4f5c\u65e0\u6cd5\u6062\u590d\uff0c\u60a8\u786e\u5b9a\u8981\u5220\u9664\u5417\uff1f","confirm3":"\u5220\u9664\u64cd\u4f5c\u65e0\u6cd5\u6062\u590d\uff0c\u5e76\u5c06\u540c\u65f6\u5220\u9664\u5f53\u524d\u95ee\u9898\u7684\u56de\u590d\u8bc4\u8bba\u4fe1\u606f\uff0c\u60a8\u786e\u5b9a\u8981\u5220\u9664\u5417\uff1f","deleting":"\u6b63\u5728\u5220\u9664...","success":"\u64cd\u4f5c\u6210\u529f\uff01","denied":"\u65e0\u64cd\u4f5c\u6743\u9650\uff01","error3":"\u64cd\u4f5c\u5f02\u5e38\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","empty":"\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a","submitting":"\u6b63\u5728\u63d0\u4ea4...","success2":"\u63d0\u4ea4\u6210\u529f\uff01","ncomment":"0\u6761\u8bc4\u8bba","login":"\u62b1\u6b49\uff0c\u60a8\u9700\u8981\u767b\u5f55\u624d\u80fd\u8fdb\u884c\u56de\u590d","error4":"\u63d0\u4ea4\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","need_title":"\u8bf7\u8f93\u5165\u6807\u9898","need_cat":"\u8bf7\u9009\u62e9\u5206\u7c7b","need_content":"\u8bf7\u8f93\u5165\u5185\u5bb9","success3":"\u66f4\u65b0\u6210\u529f\uff01","success4":"\u53d1\u5e03\u6210\u529f\uff01","need_all":"\u6807\u9898\u3001\u5206\u7c7b\u548c\u5185\u5bb9\u4e0d\u80fd\u4e3a\u7a7a","length":"\u5185\u5bb9\u957f\u5ea6\u4e0d\u80fd\u5c11\u4e8e10\u4e2a\u5b57\u7b26","load_done":"\u56de\u590d\u5df2\u7ecf\u5168\u90e8\u52a0\u8f7d","load_fail":"\u52a0\u8f7d\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","load_more":"\u70b9\u51fb\u52a0\u8f7d\u66f4\u591a","approve":"\u786e\u5b9a\u8981\u5c06\u5f53\u524d\u95ee\u9898\u8bbe\u7f6e\u4e3a\u5ba1\u6838\u901a\u8fc7\u5417\uff1f","end":"\u5df2\u7ecf\u5230\u5e95\u4e86","upload_fail":"\u56fe\u7247\u4e0a\u4f20\u51fa\u9519\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01","file_types":"\u4ec5\u652f\u6301\u4e0a\u4f20jpg\u3001png\u3001gif\u683c\u5f0f\u7684\u56fe\u7247\u6587\u4ef6","file_size":"\u56fe\u7247\u5927\u5c0f\u4e0d\u80fd\u8d85\u8fc72M","uploading":"\u6b63\u5728\u4e0a\u4f20...","upload":"\u63d2\u5165\u56fe\u7247"}};
+//# sourceURL=QAPress-js-js-extra
+</script>
+<script id="QAPress-js-js" src="https://www.opcchina.ai/wp-content/plugins/qapress/js/qa.js?ver=4.11.1"></script>
+<script id="wp-embed-js" src="https://www.opcchina.ai/wp-content/themes/justnews/js/wp-embed.js?ver=6.23.1"></script>
+</body>
+</html>
